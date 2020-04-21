@@ -2,6 +2,7 @@ import * as PIXI from 'pixi.js';
 
 export interface Coin {
   container: PIXI.Container;
+  reset: () => void;
   update: (delta: number) => void;
   addCoin: (num?: number) => number;
   subtractCoin: (num?: number) => { newTotal: number; goodPurchase: boolean };
@@ -18,11 +19,13 @@ export const coin = (props: Props): Coin => {
   container.x = pos.x;
   container.y = pos.y;
 
-  let coinState = {
+  let state = {
     total: 0,
   };
 
-  const coinString = (): string => `= ${coinState.total}`;
+  const initialState = { ...state };
+
+  const coinString = (): string => `= ${state.total}`;
 
   const texture = PIXI.Texture.from('../../assets/coin.png');
   const sprite = new PIXI.Sprite(texture);
@@ -50,22 +53,30 @@ export const coin = (props: Props): Coin => {
 
   container.addChild(coinText);
 
-  const updateCoinText = () => {
+  const updateCoinText = (): void => {
     coinText.text = coinString();
   };
 
+  // Reset called by play again and also on init
+  const reset = (): void => {
+    console.log('The Coin Reset');
+    state = { ...initialState };
+    updateCoinText();
+  };
+  reset();
+
   const addCoin = (num = 1): number => {
-    const newTotal = coinState.total + num;
-    coinState = { ...coinState, total: newTotal };
+    const newTotal = state.total + num;
+    state = { ...state, total: newTotal };
     updateCoinText();
     return newTotal;
   };
   const subtractCoin = (
     num = -1
   ): { newTotal: number; goodPurchase: boolean } => {
-    const goodPurchase = coinState.total === 0 ? false : true;
-    const newTotal = goodPurchase ? coinState.total + num : 0;
-    coinState = { ...coinState, total: newTotal };
+    const goodPurchase = state.total === 0 ? false : true;
+    const newTotal = goodPurchase ? state.total + num : 0;
+    state = { ...state, total: newTotal };
     updateCoinText();
     return { newTotal, goodPurchase };
   };
@@ -74,5 +85,5 @@ export const coin = (props: Props): Coin => {
     // Update called by main
   };
 
-  return { container, update, addCoin, subtractCoin };
+  return { container, reset, update, addCoin, subtractCoin };
 };

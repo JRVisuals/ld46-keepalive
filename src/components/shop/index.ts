@@ -78,6 +78,8 @@ export const shop = (props: Props): Shop => {
   container.addChild(potionSprite);
 
   potionSprite.interactive = true;
+  potionSprite.buttonMode = true;
+
   potionSprite.on('mousedown', buyPotion).on('touchstart', buyPotion);
 
   const update = (delta): void => {

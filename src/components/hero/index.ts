@@ -15,6 +15,7 @@ import { HeroNumbers } from '../heroNumbers';
 
 export interface Hero {
   container: PIXI.Container;
+  reset: () => void;
   update: (delta: number) => void;
   getCurrentFrame: () => number;
   gotHit: () => void;
@@ -29,23 +30,26 @@ interface Props {
   heroNubmers: HeroNumbers;
   hpDisplay: (hp: number) => void;
   coinDisplay: Coin;
+  onHeroDied: () => void;
 }
 
 export const hero = (props: Props): Hero => {
   const HERO_FRAMES = 4;
   const pos = props.pos ?? { x: 0, y: 0 };
   const container = new PIXI.Container();
-  container.x = 0 - TILE_WIDTH;
-  container.y = pos.y;
 
-  const { heroNubmers, hpDisplay, coinDisplay } = props;
+  const { heroNubmers, hpDisplay, coinDisplay, onHeroDied } = props;
 
-  const state = {
+  let state = {
     hp: 100,
+    xOrrig: 0 - TILE_WIDTH,
+    yOrrig: pos.y,
     yVel: 0,
     xVel: GROUND_MOVE_SPEED * 0.5,
     status: 'SPAWNING',
   };
+
+  const initialState = { ...state };
 
   // Old school spritesheet
   const frames = [];
@@ -67,6 +71,23 @@ export const hero = (props: Props): Hero => {
   pixiSound.add('quaf', '../../assets/quaf.mp3');
   pixiSound.add('quafquick', '../../assets/quaf-short.mp3');
 
+  const updateHpDisplay = (): void => {
+    console.log(`now hero has ${state.hp}HP`);
+    hpDisplay(state.hp / 100);
+  };
+
+  // Reset called by play again and also on init
+  const reset = (): void => {
+    console.log('The Hero Reset');
+    state = { ...initialState };
+    container.x = state.xOrrig;
+    container.y = state.yOrrig;
+    container.rotation = 0;
+    updateHpDisplay();
+    anim.gotoAndPlay(0);
+  };
+  reset();
+
   const doAttack = (): void => {
     console.log('doAttack');
     pixiSound.play('attack', { loop: false, volume: 1 });
@@ -78,23 +99,20 @@ export const hero = (props: Props): Hero => {
     state.status = 'DYING';
     state.yVel = -6;
     pixiSound.play('scream', { loop: false, volume: 1 });
-  };
-
-  const updateHpDisplay = (): void => {
-    console.log(`now hero has ${state.hp}HP`);
-    hpDisplay(state.hp / 100);
+    onHeroDied();
   };
 
   const getCurrentFrame = (): number => anim.currentFrame;
 
   const buyPotion = (): void => {
+    if (state.status != 'ON_SCREEN') return;
     const { goodPurchase } = coinDisplay.subtractCoin();
     // Make sure we can affor this
     if (!goodPurchase) return;
     // play uncorking sound
     pixiSound.stop('quaf');
     pixiSound.stop('quafquick');
-    Math.random() > 0.9
+    Math.random() > 0.75
       ? pixiSound.play('quaf', { loop: false, volume: 1 })
       : pixiSound.play('quafquick', { loop: false, volume: 1 });
 
@@ -205,6 +223,7 @@ export const hero = (props: Props): Hero => {
 
   return {
     container,
+    reset,
     update,
     getCurrentFrame,
     gotHit,

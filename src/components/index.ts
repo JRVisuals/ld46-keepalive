@@ -1,10 +1,11 @@
+export { audio } from './audio';
 export { background } from './background';
-export { ground } from './ground';
-export { hero } from './hero';
-export { heroNumbers } from './heroNumbers';
-export { hearts } from './hearts';
+export { btnAgain } from './buttons';
 export { coin } from './coin';
 export { enemy } from './enemy';
 export { enemyManager } from './enemy/manager';
+export { ground } from './ground';
+export { hearts } from './hearts';
+export { hero } from './hero';
+export { heroNumbers } from './heroNumbers';
 export { shop } from './shop';
-export { audio } from './audio';

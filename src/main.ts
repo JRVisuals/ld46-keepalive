@@ -12,6 +12,7 @@ import {
 import './index.scss';
 
 import * as comp from './components';
+import { Hero } from './components/hero';
 
 const hostDiv = document.getElementById('canvas');
 const hostWidth = APP_WIDTH;
@@ -32,6 +33,8 @@ console.log('pixiconfig', hostDiv, pixiConfig);
 
   const { app, mainContainer } = initPIXI(pixiConfig, hostDiv);
   app.renderer.autoDensity = true;
+
+  let hero: Hero = null;
 
   // Background
   const bg = comp.background({});
@@ -54,15 +57,36 @@ console.log('pixiconfig', hostDiv, pixiConfig);
   const coin = comp.coin({ pos: { x: 30, y: APP_HEIGHT - 30 } });
   mainContainer.addChild(coin.container);
 
-  // Hero
+  // Play Again Button
+  let btnAgain = null;
+  const onPlayAgain = (): void => {
+    if (hero.getStatus() === 'OFF_SCREEN') {
+      hero.reset();
+      coin.reset();
+      // shop.reset();
+      // enemyManager.reset();
+      btnAgain.setEnabled(false);
+    }
+  };
+  btnAgain = comp.btnAgain({
+    onPress: onPlayAgain,
+    pos: { x: APP_WIDTH / 2, y: APP_HEIGHT / 2 + 50 },
+  });
+  btnAgain.setEnabled(false);
 
+  // Events
+  const onHeroDied = (): void => {
+    btnAgain.setEnabled(true);
+  };
+
+  // Hero
   const heroNubmers = comp.heroNumbers({
     pos: {
       x: APP_WIDTH * 0.25,
       y: APP_HEIGHT - TILE_HEIGHT - HERO_HEIGHT * 0.5 + 8,
     },
   });
-  const hero = comp.hero({
+  hero = comp.hero({
     pos: {
       x: APP_WIDTH * 0.25,
       y: APP_HEIGHT - TILE_HEIGHT - HERO_HEIGHT * 0.5 + 8,
@@ -70,6 +94,7 @@ console.log('pixiconfig', hostDiv, pixiConfig);
     heroNubmers: heroNubmers,
     hpDisplay: hearts.updateDisplay,
     coinDisplay: coin,
+    onHeroDied,
   });
   mainContainer.addChild(hero.container);
   mainContainer.addChild(heroNubmers.container);
@@ -87,11 +112,11 @@ console.log('pixiconfig', hostDiv, pixiConfig);
   });
   mainContainer.addChild(enemyManager.container);
 
+  mainContainer.addChild(btnAgain.container);
+
   // Add music as a component
   const audioLayer = comp.audio();
   audioLayer.init();
-
-  // Collision Detection
 
   // Register component UPDATE routines
   // ------------------------------------
