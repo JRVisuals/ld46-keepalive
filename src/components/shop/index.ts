@@ -25,7 +25,7 @@ export const shop = (props: Props): Shop => {
     healthPotions: 10,
   };
 
-  const texture = PIXI.Texture.from('../../assets/shopPanel.png');
+  const texture = PIXI.Texture.from('./assets/shopPanel.png');
   const sprite = new PIXI.Sprite(texture);
   sprite.anchor.set(0);
   container.addChild(sprite);
@@ -70,7 +70,7 @@ export const shop = (props: Props): Shop => {
     hero.buyPotion();
   };
 
-  const potionTexture = PIXI.Texture.from('../../assets/healthPotion.png');
+  const potionTexture = PIXI.Texture.from('./assets/healthPotion.png');
   const potionSprite = new PIXI.Sprite(potionTexture);
   potionSprite.anchor.set(0.5);
   potionSprite.x = 37;

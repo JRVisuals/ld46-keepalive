@@ -18,7 +18,7 @@ export const ground = (props: Props): ReturnType => {
   container.x = pos.x;
   container.y = pos.y;
 
-  const texture = PIXI.Texture.from('../../assets/groundTile.png');
+  const texture = PIXI.Texture.from('./assets/groundTile.png');
 
   // sprite.scale.set(0.5);
   // sprite.blendMode = PIXI.BLEND_MODES.SCREEN;

@@ -1,15 +1,12 @@
 {
-  "name": "dcollage",
-  "version": "0.1.0",
+  "name": "ld46",
+  "version": "0.2.0",
   "description": "A digital collage boilerplate.",
   "main": "main.js",
-  "repository": "https://github.com/jrod-disco/dcollage",
+  "repository": "https://github.com/jrod-disco/ld46-keepalive",
   "author": "jrod-disco <jrod.disco@gmail.com>",
   "license": "MIT",
   "private": false,
-  "dependencies": {
-    "@rollup/plugin-url": "^4.0.2"
-  },
   "devDependencies": {
     "@pixi/filter-glitch": "^3.1.1",
     "@rollup/plugin-node-resolve": "^7.1.1",
@@ -33,7 +30,7 @@
     "typescript": "^3.8.3"
   },
   "scripts": {
-    "start": "rollup -c -w -m",
+    "start": "rollup -c -w",
     "clean": "rimraf dist",
     "build": "rollup -c"
   }

@@ -35,7 +35,7 @@ export const enemy = (props: Props): Enemy => {
 
   const { destroyManagerInstance } = props;
 
-  const texture = PIXI.Texture.from('../../assets/enemy.png');
+  const texture = PIXI.Texture.from('./assets/enemy.png');
   const sprite = new PIXI.Sprite(texture);
   sprite.anchor.set(0.5);
   container.addChild(sprite);

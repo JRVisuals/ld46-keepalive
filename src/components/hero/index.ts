@@ -54,7 +54,7 @@ export const hero = (props: Props): Hero => {
   // Old school spritesheet
   const frames = [];
   for (let i = 1; i <= HERO_FRAMES; i++) {
-    frames.push(PIXI.Texture.from(`../../assets/hero${i}.png`));
+    frames.push(PIXI.Texture.from(`./assets/hero${i}.png`));
   }
   const anim = new PIXI.AnimatedSprite(frames);
   anim.animationSpeed = 0.12;
@@ -65,11 +65,11 @@ export const hero = (props: Props): Hero => {
   // Sound bits
   const pixiSound = PIXISOUND.default;
   // Load these up on startup...
-  pixiSound.add('scream', '../../assets/wilhelm.mp3');
-  pixiSound.add('gotHit', '../../assets/gotHit1.mp3');
-  pixiSound.add('attack', '../../assets/attack1.mp3');
-  pixiSound.add('quaf', '../../assets/quaf.mp3');
-  pixiSound.add('quafquick', '../../assets/quaf-short.mp3');
+  pixiSound.add('scream', './assets/wilhelm.mp3');
+  pixiSound.add('gotHit', './assets/gotHit1.mp3');
+  pixiSound.add('attack', './assets/attack1.mp3');
+  pixiSound.add('quaf', './assets/quaf.mp3');
+  pixiSound.add('quafquick', './assets/quaf-short.mp3');
 
   const updateHpDisplay = (): void => {
     console.log(`now hero has ${state.hp}HP`);

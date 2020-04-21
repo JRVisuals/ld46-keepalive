@@ -25,7 +25,7 @@ export const hearts = (props: Props): ReturnType => {
   // Old school spritesheet
   const frames = [];
   for (let i = 1; i <= HEART_FRAMES; i++) {
-    frames.push(PIXI.Texture.from(`../../assets/heart${i}.png`));
+    frames.push(PIXI.Texture.from(`./assets/heart${i}.png`));
   }
   const anim = new PIXI.AnimatedSprite(frames);
   anim.gotoAndStop(0);

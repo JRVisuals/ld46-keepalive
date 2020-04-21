@@ -1,6 +1,6 @@
 import * as PIXI from 'pixi.js';
 import { PixiPlugin } from 'gsap/PixiPlugin';
-
+import jrvascii from './util/jrvascii';
 import initPIXI, { PixiConfig } from './pixi';
 import {
   APP_HEIGHT,
@@ -27,9 +27,9 @@ const pixiConfig: PixiConfig = {
 // No anti-alias
 PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
 
-console.log('pixiconfig', hostDiv, pixiConfig);
 (function app(): void {
-  PixiPlugin.registerPIXI(PIXI);
+  jrvascii();
+  // PixiPlugin.registerPIXI(PIXI);
 
   const { app, mainContainer } = initPIXI(pixiConfig, hostDiv);
   app.renderer.autoDensity = true;

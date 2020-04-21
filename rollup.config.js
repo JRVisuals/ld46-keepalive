@@ -6,7 +6,6 @@ import typescript from 'rollup-plugin-typescript2';
 import commonjs from 'rollup-plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import copy from 'rollup-plugin-copy';
-//import url from '@rollup/plugin-url';
 
 export default [
   {
@@ -15,6 +14,9 @@ export default [
       {
         file: './dist/app.js',
         format: 'iife',
+        globals: {
+          'pixi.js': 'PIXI',
+        },
       },
     ],
 
