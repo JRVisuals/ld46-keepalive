@@ -26,7 +26,7 @@ export default [
         },
       }),
       scss(),
-      html({ template: './src/index.html' }),
+      html({ template: './src/index.html', inject: false }),
       copy({
         targets: [
           {
