@@ -9,7 +9,7 @@ import copy from 'rollup-plugin-copy';
 
 export default [
   {
-    input: './src/app.ts',
+    input: './src/main.ts',
     output: [
       {
         file: './dist/app.js',

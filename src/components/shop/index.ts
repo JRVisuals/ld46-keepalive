@@ -31,9 +31,9 @@ export const shop = (props: Props): Shop => {
   container.addChild(sprite);
 
   // Text
-  const textStyle = new PIXI.TextStyle({
+  const style = {
     fontFamily: 'Impact, Charcoal, sans-serif',
-    fontSize: 16,
+    fontSize: 12,
     fontWeight: 'bold',
     fill: ['#ccc'],
     fillGradientType: 1,
@@ -41,14 +41,30 @@ export const shop = (props: Props): Shop => {
     dropShadow: true,
     dropShadowColor: '#000000',
     dropShadowBlur: 10,
-    dropShadowDistance: 5,
+    dropShadowDistance: 0,
+  };
+  const textStyle = new PIXI.TextStyle(style);
+  const textStyleSmall = new PIXI.TextStyle({
+    ...style,
+    fill: ['#999'],
+    fontSize: 12,
+    fontWeight: 'regular',
   });
 
   const shopText = new PIXI.Text('KEEP YE ALIVE', textStyle);
   shopText.anchor.set(0.5);
   shopText.x = 112;
-  shopText.y = 23;
-  container.addChild(shopText);
+  shopText.y = 18;
+  // container.addChild(shopText);
+
+  const shopTextSmall = new PIXI.Text(
+    'Click and item to purchase it for The Hero.',
+    textStyleSmall
+  );
+  shopTextSmall.anchor.set(0.5);
+  shopTextSmall.x = 112;
+  shopTextSmall.y = 18;
+  container.addChild(shopTextSmall);
 
   const buyPotion = (): void => {
     hero.buyPotion();
