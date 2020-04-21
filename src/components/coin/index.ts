@@ -24,7 +24,7 @@ export const coin = (props: Props): Coin => {
 
   const coinString = (): string => `= ${coinState.total}`;
 
-  const texture = PIXI.Texture.from('../../assets/ld46/coin.png');
+  const texture = PIXI.Texture.from('../../assets/coin.png');
   const sprite = new PIXI.Sprite(texture);
   sprite.anchor.set(0.5);
   container.addChild(sprite);

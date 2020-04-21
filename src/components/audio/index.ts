@@ -9,7 +9,7 @@ export const audio = (): ReturnType => {
   const pixiSound = PIXISOUND.default;
 
   // Load these up on startup...
-  pixiSound.add('exampleSound', '../../assets/ld46/example.mp3');
+  pixiSound.add('exampleSound', '../../assets/example.mp3');
 
   // Called when we've got all the things...
   const init = (): void => {
