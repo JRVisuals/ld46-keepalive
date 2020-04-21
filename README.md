@@ -1,4 +1,4 @@
-# Bootstrapped with DCollage (Digital Collage Boilerplate w/ PIXIJS)
+### Bootstrapped with DCollage (Digital Collage Boilerplate w/ PIXIJS)
 
 The goal of DCollage is to facilitate the creation of multi-layered, interactive, collages similar to those I created back in the days of Flash. Surprise it works for simple games too!
 
@@ -6,9 +6,11 @@ The goal of DCollage is to facilitate the creation of multi-layered, interactive
 
 **Keep Ye Alive** is a game began as a [Ludum Dare](https://ldjam.com/events/ludum-dare/46) compo submission. It was created alone, and from scratch (boilerplate aside) in 24 hours. The first commit and tag are the state in which the game was submitted. Future commits are my efforts to flesh it out into the game I conceptualized.
 
-[My Ludum Dare Submission Page](https://ldjam.com/events/ludum-dare/46/keep-ye-alive) - Please take a moment to vote and leave feedback if you're a participant
-[Play the Original Here](https://www.jrvisuals.com/games/ld46/) - This is the product of 24 hours as it was submitted for the Compo
-[Play the Most Recent Build](https://www.jrvisuals.com/games/ld46-latest/) - This is where I'm posting progress made outside of the bounds of the Compo
+![Cover Image](https://jrvisuals.com/games/ld46-latest/github-images/keepyealivecover.jpg)
+
+- [My Ludum Dare Submission Page](https://ldjam.com/events/ludum-dare/46/keep-ye-alive) - Please take a moment to vote and leave feedback if you're a participant
+- [Play the Original Here](https://www.jrvisuals.com/games/ld46/) - This is the product of 24 hours as it was submitted for the Compo
+- [Play the Most Recent Build](https://www.jrvisuals.com/games/ld46-latest/) - This is where I'm posting progress made outside of the bounds of the Compo
 
 ## Concept and Mechanics
 
