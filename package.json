@@ -7,16 +7,18 @@
   "author": "jrod-disco <jrod.disco@gmail.com>",
   "license": "MIT",
   "private": false,
-  "dependencies": {},
+  "dependencies": {
+    "@rollup/plugin-url": "^4.0.2"
+  },
   "devDependencies": {
-    "gsap": "^3.2.5",
-    "pixi-sound": "^3.0.4",
-    "pixi.js": "^5.1.6",
     "@pixi/filter-glitch": "^3.1.1",
     "@rollup/plugin-node-resolve": "^7.1.1",
     "@typescript-eslint/eslint-plugin": "^2.24.0",
     "@typescript-eslint/parser": "^2.24.0",
     "eslint": "^6.8.0",
+    "gsap": "^3.2.5",
+    "pixi-sound": "^3.0.4",
+    "pixi.js": "^5.1.6",
     "prettier": "^2.0.1",
     "rimraf": "^3.0.2",
     "rollup": "^2.1.0",
@@ -31,7 +33,7 @@
     "typescript": "^3.8.3"
   },
   "scripts": {
-    "start": "rollup -c -w",
+    "start": "rollup -c -w -m",
     "clean": "rimraf dist",
     "build": "rollup -c"
   }

@@ -6,6 +6,7 @@ import typescript from 'rollup-plugin-typescript2';
 import commonjs from 'rollup-plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import copy from 'rollup-plugin-copy';
+//import url from '@rollup/plugin-url';
 
 export default [
   {
@@ -18,7 +19,7 @@ export default [
     ],
 
     plugins: [
-      resolve({ browser: true, preferBuiltins: false }),
+      resolve({ base: 'src', browser: true, preferBuiltins: false }),
       typescript({}),
       commonjs({
         namedExports: {
@@ -27,6 +28,7 @@ export default [
       }),
       scss(),
       html({ template: './src/index.html', inject: false }),
+
       copy({
         targets: [
           {
@@ -38,5 +40,7 @@ export default [
       serve('dist/'),
       livereload(),
     ],
+    // Don't bundle PIXI -- coming via CDN in index.html
+    external: ['pixi.js'],
   },
 ];
