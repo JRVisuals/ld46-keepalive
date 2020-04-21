@@ -1,4 +1,4 @@
-# Bootstrapped with DCollage (Digital Collage Boilerplate w/ PIXIJS)
+### Bootstrapped with DCollage (Digital Collage Boilerplate w/ PIXIJS)
 
 The goal of DCollage is to facilitate the creation of multi-layered, interactive, collages similar to those I created back in the days of Flash. Surprise it works for simple games too!
 
