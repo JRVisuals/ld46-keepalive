@@ -31,8 +31,8 @@
     "typescript": "^3.8.3"
   },
   "scripts": {
-    "start": "rollup -c -w",
+    "start": "rollup -c -w --environment BUILD:dev",
     "clean": "rimraf dist",
-    "build": "rollup -c"
+    "build": "rimraf dist && rollup -c --environment BUILD:prod"
   }
 }

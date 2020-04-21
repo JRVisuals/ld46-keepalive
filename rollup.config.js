@@ -8,6 +8,9 @@ import resolve from '@rollup/plugin-node-resolve';
 import copy from 'rollup-plugin-copy';
 import { terser } from 'rollup-plugin-terser';
 
+const isProd = process.env.BUILD === 'prod';
+const isDev = process.env.BUILD === 'dev';
+
 export default [
   {
     input: './src/main.ts',
@@ -31,7 +34,7 @@ export default [
       }),
       scss(),
       html({ template: './src/index.html', inject: false }),
-      terser(),
+      isProd && terser(),
       copy({
         targets: [
           {
@@ -40,8 +43,8 @@ export default [
           },
         ],
       }),
-      serve('dist/'),
-      livereload(),
+      isDev && serve('dist/'),
+      isDev && livereload(),
     ],
     // Don't bundle PIXI -- coming via CDN in index.html
     external: ['pixi.js'],

@@ -4,8 +4,6 @@ interface ReturnType {
   init: () => void;
 }
 export const audio = (): ReturnType => {
-  console.log('audio layer created');
-
   const pixiSound = PIXISOUND.default;
 
   // Load these up on startup...

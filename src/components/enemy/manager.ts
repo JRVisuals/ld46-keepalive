@@ -61,7 +61,6 @@ export const enemyManager = (props: ManagerProps): ManagerReturnType => {
 
   const spawnEnemy = (): void => {
     if (lastHeroStatus === 'SPAWNING') return;
-    console.log('new enemy');
     // Enemy
     const newPos = { ...pos, x: APP_WIDTH + TILE_WIDTH };
     const newEnemy = enemy({

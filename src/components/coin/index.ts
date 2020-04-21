@@ -59,7 +59,6 @@ export const coin = (props: Props): Coin => {
 
   // Reset called by play again and also on init
   const reset = (): void => {
-    console.log('The Coin Reset');
     state = { ...initialState };
     updateCoinText();
   };

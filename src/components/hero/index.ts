@@ -78,7 +78,6 @@ export const hero = (props: Props): Hero => {
 
   // Reset called by play again and also on init
   const reset = (): void => {
-    console.log('The Hero Reset');
     state = { ...initialState };
     container.x = state.xOrrig;
     container.y = state.yOrrig;
@@ -89,12 +88,10 @@ export const hero = (props: Props): Hero => {
   reset();
 
   const doAttack = (): void => {
-    console.log('doAttack');
     pixiSound.play('attack', { loop: false, volume: 1 });
   };
   const getDead = (): void => {
     if (state.status === 'DYING') return;
-    console.log(' get dead ');
     anim.gotoAndStop(1);
     state.status = 'DYING';
     state.yVel = -6;
@@ -145,7 +142,6 @@ export const hero = (props: Props): Hero => {
 
   const exitedScreen = (): void => {
     state.status = 'OFF_SCREEN';
-    console.log('cleanup');
   };
 
   const moveToGround = (): void => {
@@ -179,7 +175,6 @@ export const hero = (props: Props): Hero => {
   };
   const spawnToHome = (): void => {
     if (state.status !== 'SPAWNING') return;
-    console.log('spawning');
     let nextX = container.x + state.xVel;
     if (nextX >= pos.x) {
       nextX = pos.x;
