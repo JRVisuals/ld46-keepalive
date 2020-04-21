@@ -6,6 +6,7 @@ import typescript from 'rollup-plugin-typescript2';
 import commonjs from 'rollup-plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import copy from 'rollup-plugin-copy';
+import { terser } from 'rollup-plugin-terser';
 
 export default [
   {
@@ -30,7 +31,7 @@ export default [
       }),
       scss(),
       html({ template: './src/index.html', inject: false }),
-
+      terser(),
       copy({
         targets: [
           {

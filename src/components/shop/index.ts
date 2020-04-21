@@ -1,6 +1,5 @@
 import * as PIXI from 'pixi.js';
-import { hero, Hero } from '../hero';
-import { coin } from '../coin';
+import { Hero } from '../hero';
 
 export interface Shop {
   container: PIXI.Container;
@@ -21,9 +20,9 @@ export const shop = (props: Props): Shop => {
 
   const { hero } = props;
 
-  let shopState = {
-    healthPotions: 10,
-  };
+  // let shopState = {
+  //   healthPotions: 10,
+  // };
 
   const texture = PIXI.Texture.from('./assets/shopPanel.png');
   const sprite = new PIXI.Sprite(texture);

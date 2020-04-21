@@ -21,9 +21,9 @@ export const btnAgain = (props: Props): Button => {
   const texture = PIXI.Texture.from('./assets/btn_again.png');
   const sprite = new PIXI.Sprite(texture);
   sprite.anchor.set(0.5);
-  sprite.interactive = true;
+  sprite.interactive = false;
   sprite.buttonMode = true;
-
+  container.alpha = 0;
   sprite.on('mousedown', onPress).on('touchstart', onPress);
 
   container.addChild(sprite);
