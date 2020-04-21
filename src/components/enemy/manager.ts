@@ -5,6 +5,7 @@ import {
   TILE_WIDTH,
   HERO_ATTACK_FRAME,
   HERO_COLLISION_BUFFER,
+  ENEMY_RESPAWN_COOLDOWN,
 } from '../../constants';
 import { enemy, Enemy } from '.';
 import { Hero, hero } from '../hero';
@@ -23,7 +24,6 @@ export const enemyManager = (props: ManagerProps): ManagerReturnType => {
   const pos = props.pos ?? { x: 0, y: 0 };
   const enemies = [];
 
-  const minSpawnGap = 5000;
   let timeSinceLastSpawn = 0;
 
   const container = new PIXI.Container();
@@ -73,7 +73,10 @@ export const enemyManager = (props: ManagerProps): ManagerReturnType => {
 
   const update = (delta): void => {
     // Update called by main
-    if (Math.random() > 0.9 && Date.now() > timeSinceLastSpawn + minSpawnGap) {
+    if (
+      Math.random() > 0.9 &&
+      Date.now() > timeSinceLastSpawn + ENEMY_RESPAWN_COOLDOWN
+    ) {
       timeSinceLastSpawn = Date.now();
       spawnEnemy();
     }
