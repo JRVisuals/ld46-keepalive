@@ -43,7 +43,7 @@ export const ground = (props: Props): ReturnType => {
     });
   };
 
-  const update = (delta): void => {
+  const update = (): void => {
     // Update called by main
     moveTiles();
   };

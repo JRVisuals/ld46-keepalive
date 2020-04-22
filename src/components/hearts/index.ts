@@ -8,7 +8,6 @@ interface ReturnType {
 }
 
 interface Props {
-  app?: PIXI.Application;
   pos?: { x: number; y: number };
 }
 
@@ -19,8 +18,6 @@ export const hearts = (props: Props): ReturnType => {
   const container = new PIXI.Container();
   container.x = pos.x;
   container.y = pos.y;
-
-  const app = props.app ?? null;
 
   // Old school spritesheet
   const frames = [];
@@ -39,7 +36,7 @@ export const hearts = (props: Props): ReturnType => {
     anim.gotoAndStop(frameToShow);
   };
 
-  const update = (delta): void => {
+  const update = (): void => {
     // Update called by main
   };
 

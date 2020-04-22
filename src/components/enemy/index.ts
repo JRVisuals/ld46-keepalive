@@ -1,7 +1,6 @@
 import * as PIXI from 'pixi.js';
 import {
   GROUND_MOVE_SPEED,
-  APP_WIDTH,
   APP_HEIGHT,
   TILE_WIDTH,
   TILE_HEIGHT,
@@ -83,7 +82,7 @@ export const enemy = (props: Props): Enemy => {
     container.rotation += 0.1;
   };
 
-  const update = (delta): void => {
+  const update = (): void => {
     // Update called by main
     switch (enemyState.status) {
       case 'OFF_SCREEN':
