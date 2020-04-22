@@ -1,6 +1,6 @@
 // App
 export const APP_HEIGHT = 200;
-export const APP_WIDTH = 400;
+export const APP_WIDTH = 350;
 // Ground
 export const TILE_HEIGHT = 64;
 export const TILE_WIDTH = 64;

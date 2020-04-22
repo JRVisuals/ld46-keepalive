@@ -100,7 +100,7 @@ PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
   mainContainer.addChild(heroNubmers.container);
 
   // Shoppe
-  const shop = comp.shop({ pos: { x: APP_WIDTH - 234, y: 10 }, hero });
+  const shop = comp.shop({ pos: { x: APP_WIDTH - 227, y: 5 }, hero });
   mainContainer.addChild(shop.container);
 
   // Enemy Manager
