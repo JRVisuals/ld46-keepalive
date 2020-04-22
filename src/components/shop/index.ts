@@ -54,8 +54,8 @@ export const shop = (props: Props): Shop => {
     textStyleSmall
   );
   shopTextSmall.anchor.set(0);
-  shopTextSmall.x = 105;
-  shopTextSmall.y = 18;
+  shopTextSmall.x = 98;
+  shopTextSmall.y = 15;
   container.addChild(shopTextSmall);
 
   const buyPotion = (): void => {
@@ -70,11 +70,11 @@ export const shop = (props: Props): Shop => {
     // hero.buyPotion();
   };
 
-  const potionY = 59;
+  const potionY = 50;
   const potionTexture = PIXI.Texture.from('./assets/healthPotion.png');
   const potionSprite = new PIXI.Sprite(potionTexture);
   potionSprite.anchor.set(0.5);
-  potionSprite.x = 42;
+  potionSprite.x = 37;
   potionSprite.y = potionY;
   container.addChild(potionSprite);
   potionSprite.interactive = true;
@@ -84,7 +84,7 @@ export const shop = (props: Props): Shop => {
   const shieldPotionTexture = PIXI.Texture.from('./assets/shieldPotion.png');
   const shieldPotionSprite = new PIXI.Sprite(shieldPotionTexture);
   shieldPotionSprite.anchor.set(0.5);
-  shieldPotionSprite.x = 88;
+  shieldPotionSprite.x = 83;
   shieldPotionSprite.y = potionY;
   container.addChild(shieldPotionSprite);
   shieldPotionSprite.interactive = true;
@@ -98,7 +98,7 @@ export const shop = (props: Props): Shop => {
   );
   const bigHealthPotionSprite = new PIXI.Sprite(bigHealthPotionTexture);
   bigHealthPotionSprite.anchor.set(0.5);
-  bigHealthPotionSprite.x = 134;
+  bigHealthPotionSprite.x = 129;
   bigHealthPotionSprite.y = potionY;
   container.addChild(bigHealthPotionSprite);
   bigHealthPotionSprite.interactive = true;
@@ -109,14 +109,14 @@ export const shop = (props: Props): Shop => {
 
   const createShopCoins = (): void => {
     const coinData = [
-      { cost: 1, posX: 42 },
-      { cost: 2, posX: 88 },
-      { cost: 3, posX: 134 },
+      { cost: 1, posX: 37 },
+      { cost: 2, posX: 83 },
+      { cost: 3, posX: 129 },
     ];
     coinData.forEach((coins) => {
       const coinsContainer = new PIXI.Container();
       coinsContainer.x = coins.posX;
-      coinsContainer.y = potionY + 33;
+      coinsContainer.y = potionY + 35;
       container.addChild(coinsContainer);
       for (let i = 0; i < coins.cost; i++) {
         const shopCoinTex = PIXI.Texture.from('./assets/shopCoin.png');
@@ -127,7 +127,6 @@ export const shop = (props: Props): Shop => {
       }
     });
   };
-
   createShopCoins();
 
   const update = (delta): void => {
