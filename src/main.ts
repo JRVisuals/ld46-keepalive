@@ -63,6 +63,7 @@ PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
     if (hero.getStatus() === 'OFF_SCREEN') {
       hero.reset();
       coin.reset();
+      runtime.reset();
       // shop.reset();
       // enemyManager.reset();
       btnAgain.setEnabled(false);
@@ -99,6 +100,10 @@ PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
   mainContainer.addChild(hero.container);
   mainContainer.addChild(heroNubmers.container);
 
+  // Run Time
+  const runtime = comp.runtime({ hero, pos: { x: 55, y: 30 } });
+  mainContainer.addChild(runtime.container);
+
   // Shoppe
   const shop = comp.shop({ pos: { x: APP_WIDTH - 217, y: 5 }, hero });
   mainContainer.addChild(shop.container);
@@ -127,5 +132,6 @@ PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
     enemyManager.update(delta);
     enemyManager.checkCollisions(hero);
     hero.update(delta);
+    runtime.update(delta);
   });
 })();

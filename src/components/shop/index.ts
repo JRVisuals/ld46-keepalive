@@ -12,6 +12,7 @@ export type ItemData = {
   cost: number;
   cooldown: number;
   spriteRef: PIXI.Sprite;
+  isAvailable: boolean;
 };
 
 export interface ShopState {
@@ -48,6 +49,7 @@ export const shop = (props: Props): Shop => {
         cost: 1,
         cooldown: 5000,
         spriteRef: tempSprite,
+        isAvailable: true,
       },
       {
         type: 'potion',
@@ -58,6 +60,7 @@ export const shop = (props: Props): Shop => {
         cost: 2,
         cooldown: 5000,
         spriteRef: tempSprite,
+        isAvailable: false,
       },
       {
         type: 'potion',
@@ -68,6 +71,7 @@ export const shop = (props: Props): Shop => {
         cost: 3,
         cooldown: 5000,
         spriteRef: tempSprite,
+        isAvailable: false,
       },
       {
         type: 'potion',
@@ -78,6 +82,7 @@ export const shop = (props: Props): Shop => {
         cost: 4,
         cooldown: 5000,
         spriteRef: tempSprite,
+        isAvailable: true,
       },
     ],
   };
@@ -129,10 +134,10 @@ export const shop = (props: Props): Shop => {
       itemData.spriteRef.alpha = 1;
       gsap.to(itemData.spriteRef, 0.2, {
         alpha: 0,
-        x: currentX - 20,
+        x: itemData.posX - 20,
         ease: Power0.easeIn,
         onComplete: () => {
-          itemData.spriteRef.x = currentX;
+          itemData.spriteRef.x = itemData.posX;
           gsap.to(itemData.spriteRef, 0.3, {
             delay: 0.3,
             alpha: 1,
@@ -141,10 +146,13 @@ export const shop = (props: Props): Shop => {
         },
       });
     } else {
-      itemData.spriteRef.x = currentX - 5;
+      itemData.spriteRef.x = itemData.posX - 5;
       gsap.to(itemData.spriteRef, 0.3, {
         x: currentX,
         ease: Bounce.easeOut,
+        onComplete: () => {
+          itemData.spriteRef.x = itemData.posX;
+        },
       });
     }
   };
@@ -160,26 +168,30 @@ export const shop = (props: Props): Shop => {
     potionSprite.x = item.posX;
     potionSprite.y = potionY;
     container.addChild(potionSprite);
-    potionSprite.interactive = true;
-    potionSprite.buttonMode = true;
-    potionSprite
-      .on('mousedown', () => {
-        purchaseItem(item);
-      })
-      .on('touchstart', () => {
-        purchaseItem(item);
-      });
-    // The coins below
-    const coinsContainer = new PIXI.Container();
-    coinsContainer.x = item.posX;
-    coinsContainer.y = potionY + 35;
-    container.addChild(coinsContainer);
-    for (let i = 0; i < item.cost; i++) {
-      const shopCoinTex = PIXI.Texture.from('./assets/shopCoin.png');
-      const shopCoinSprite = new PIXI.Sprite(shopCoinTex);
-      shopCoinSprite.anchor.set(0.5);
-      shopCoinSprite.x = 10 * i - (item.cost - 1) * 5;
-      coinsContainer.addChild(shopCoinSprite);
+    if (item.isAvailable) {
+      potionSprite.interactive = true;
+      potionSprite.buttonMode = true;
+      potionSprite
+        .on('mousedown', () => {
+          purchaseItem(item);
+        })
+        .on('touchstart', () => {
+          purchaseItem(item);
+        });
+      // The coins below
+      const coinsContainer = new PIXI.Container();
+      coinsContainer.x = item.posX;
+      coinsContainer.y = potionY + 35;
+      container.addChild(coinsContainer);
+      for (let i = 0; i < item.cost; i++) {
+        const shopCoinTex = PIXI.Texture.from('./assets/shopCoin.png');
+        const shopCoinSprite = new PIXI.Sprite(shopCoinTex);
+        shopCoinSprite.anchor.set(0.5);
+        shopCoinSprite.x = 10 * i - (item.cost - 1) * 5;
+        coinsContainer.addChild(shopCoinSprite);
+      }
+    } else {
+      potionSprite.alpha = 0.35;
     }
   });
 

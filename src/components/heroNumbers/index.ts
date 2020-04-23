@@ -73,7 +73,7 @@ export const heroNumbers = (props: Props): HeroNumbers => {
     });
 
     gsap.to(healthText, 0.3, {
-      y: healthStartY - 55,
+      y: healthStartY - 40,
       ease: Power0.easeOut,
     });
   };

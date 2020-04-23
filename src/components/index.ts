@@ -9,3 +9,4 @@ export { hearts } from './hearts';
 export { hero } from './hero';
 export { heroNumbers } from './heroNumbers';
 export { shop } from './shop';
+export { runtime } from './runtime';
