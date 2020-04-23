@@ -1,6 +1,6 @@
 import * as PIXI from 'pixi.js';
 import * as PIXISOUND from 'pixi-sound';
-
+import { ItemData } from '../shop';
 import {
   ENEMY_DPH,
   GROUND_MOVE_SPEED,
@@ -8,7 +8,6 @@ import {
   APP_HEIGHT,
   TILE_HEIGHT,
   TILE_WIDTH,
-  POTION_HEAL,
 } from '../../constants';
 import { Coin } from '../coin';
 import { HeroNumbers } from '../heroNumbers';
@@ -22,7 +21,7 @@ export interface Hero {
   getCoin: () => void;
   doAttack: () => void;
   getStatus: () => string;
-  buyPotion: () => void;
+  buyPotion: (itemData: ItemData) => boolean;
 }
 
 interface Props {
@@ -101,11 +100,13 @@ export const hero = (props: Props): Hero => {
 
   const getCurrentFrame = (): number => anim.currentFrame;
 
-  const buyPotion = (): void => {
-    if (state.status != 'ON_SCREEN') return;
-    const { goodPurchase } = coinDisplay.subtractCoin();
+  // Returns false if the purchase failed for some reason
+  const buyPotion = (itemData: ItemData): boolean => {
+    if (state.status != 'ON_SCREEN') return false;
+    const { goodPurchase } = coinDisplay.subtractCoin(itemData.cost);
     // Make sure we can affor this
-    if (!goodPurchase) return;
+    if (!goodPurchase) return false;
+
     // play uncorking sound
     pixiSound.stop('quaf');
     pixiSound.stop('quafquick');
@@ -113,11 +114,22 @@ export const hero = (props: Props): Hero => {
       ? pixiSound.play('quaf', { loop: false, volume: 1 })
       : pixiSound.play('quafquick', { loop: false, volume: 1 });
 
-    // put this healing sequence elsewhere
-    const newHp = state.hp + POTION_HEAL <= 100 ? state.hp + POTION_HEAL : 100;
-    state.hp = newHp;
-    heroNubmers.animateNumbers({ damageDone: POTION_HEAL, isHealing: true });
-    updateHpDisplay();
+    switch (itemData.action) {
+      case 'heal':
+        // execute healing action
+        const POTION_HEAL = itemData.amount;
+        const newHp =
+          state.hp + POTION_HEAL <= 100 ? state.hp + POTION_HEAL : 100;
+        state.hp = newHp;
+        heroNubmers.animateNumbers({
+          damageDone: POTION_HEAL,
+          isHealing: true,
+        });
+        updateHpDisplay();
+        break;
+    }
+
+    return true;
   };
   const getStatus = (): string => {
     return state.status;

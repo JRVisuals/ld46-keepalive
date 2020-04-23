@@ -73,9 +73,11 @@ export const coin = (props: Props): Coin => {
   const subtractCoin = (
     num = -1
   ): { newTotal: number; goodPurchase: boolean } => {
-    const goodPurchase = state.total === 0 ? false : true;
-    const newTotal = goodPurchase ? state.total + num : 0;
-    state = { ...state, total: newTotal };
+    const coinsToSubtract = num > 0 ? num * -1 : num;
+
+    const newTotal = state.total + coinsToSubtract;
+    const goodPurchase = newTotal >= 0 ? true : false;
+    if (goodPurchase) state = { ...state, total: newTotal };
     updateCoinText();
     return { newTotal, goodPurchase };
   };

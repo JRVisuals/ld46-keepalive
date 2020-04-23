@@ -1,6 +1,22 @@
 import * as PIXI from 'pixi.js';
+import gsap, { Bounce, Power0 } from 'gsap';
+
 import { Hero } from '../hero';
 
+export type ItemData = {
+  type: string;
+  action: string;
+  amount: number;
+  image: string;
+  posX: number;
+  cost: number;
+  cooldown: number;
+  spriteRef: PIXI.Sprite;
+};
+
+export interface ShopState {
+  items: Array<ItemData>;
+}
 export interface Shop {
   container: PIXI.Container;
   update: (delta: number) => void;
@@ -20,14 +36,48 @@ export const shop = (props: Props): Shop => {
 
   const { hero } = props;
 
-  let shopState = {
+  const tempSprite = new PIXI.Sprite();
+  const shopState: ShopState = {
     items: [
       {
         type: 'potion',
         action: 'heal',
         amount: 10,
+        image: 'healthPotion.png',
+        posX: 37,
         cost: 1,
         cooldown: 5000,
+        spriteRef: tempSprite,
+      },
+      {
+        type: 'potion',
+        action: 'shield',
+        image: 'shieldPotion.png',
+        amount: 15,
+        posX: 83,
+        cost: 2,
+        cooldown: 5000,
+        spriteRef: tempSprite,
+      },
+      {
+        type: 'potion',
+        action: 'haste',
+        image: 'hastePotion.png',
+        amount: 5,
+        posX: 129,
+        cost: 3,
+        cooldown: 5000,
+        spriteRef: tempSprite,
+      },
+      {
+        type: 'potion',
+        action: 'heal',
+        image: 'healthPotion2.png',
+        amount: 50,
+        posX: 174,
+        cost: 4,
+        cooldown: 5000,
+        spriteRef: tempSprite,
       },
     ],
   };
@@ -58,76 +108,80 @@ export const shop = (props: Props): Shop => {
   shopTextSmall.y = 15;
   container.addChild(shopTextSmall);
 
-  const buyPotion = (): void => {
-    hero.buyPotion();
+  // Called when someone clicks an item in the shop
+  const purchaseItem = (itemData: ItemData): void => {
+    // Do things based on the item action value
+    let purchaseSuccess = false;
+    switch (itemData.action) {
+      case 'heal':
+        purchaseSuccess = hero.buyPotion(itemData);
+        console.log('purchaseSuccess', purchaseSuccess);
+        break;
+      case 'shield':
+        break;
+      case 'haste':
+        break;
+    }
+    console.log('purchaseItem', itemData);
+    // Animate bottle depending on success
+    const currentX = itemData.spriteRef.x;
+    if (purchaseSuccess) {
+      itemData.spriteRef.alpha = 1;
+      gsap.to(itemData.spriteRef, 0.2, {
+        alpha: 0,
+        x: currentX - 20,
+        ease: Power0.easeIn,
+        onComplete: () => {
+          itemData.spriteRef.x = currentX;
+          gsap.to(itemData.spriteRef, 0.3, {
+            delay: 0.3,
+            alpha: 1,
+            ease: Power0.easeOut,
+          });
+        },
+      });
+    } else {
+      itemData.spriteRef.x = currentX - 5;
+      gsap.to(itemData.spriteRef, 0.3, {
+        x: currentX,
+        ease: Bounce.easeOut,
+      });
+    }
   };
 
-  const buyShieldPotion = (): void => {
-    // hero.buyPotion();
-  };
-
-  const buyBigHealthPotion = (): void => {
-    // hero.buyPotion();
-  };
-
+  // Display Potions in Shoppe
   const potionY = 50;
-  const potionTexture = PIXI.Texture.from('./assets/healthPotion.png');
-  const potionSprite = new PIXI.Sprite(potionTexture);
-  potionSprite.anchor.set(0.5);
-  potionSprite.x = 37;
-  potionSprite.y = potionY;
-  container.addChild(potionSprite);
-  potionSprite.interactive = true;
-  potionSprite.buttonMode = true;
-  potionSprite.on('mousedown', buyPotion).on('touchstart', buyPotion);
-
-  const shieldPotionTexture = PIXI.Texture.from('./assets/shieldPotion.png');
-  const shieldPotionSprite = new PIXI.Sprite(shieldPotionTexture);
-  shieldPotionSprite.anchor.set(0.5);
-  shieldPotionSprite.x = 83;
-  shieldPotionSprite.y = potionY;
-  container.addChild(shieldPotionSprite);
-  shieldPotionSprite.interactive = true;
-  shieldPotionSprite.buttonMode = true;
-  shieldPotionSprite
-    .on('mousedown', buyShieldPotion)
-    .on('touchstart', buyShieldPotion);
-
-  const bigHealthPotionTexture = PIXI.Texture.from(
-    './assets/healthPotion2.png'
-  );
-  const bigHealthPotionSprite = new PIXI.Sprite(bigHealthPotionTexture);
-  bigHealthPotionSprite.anchor.set(0.5);
-  bigHealthPotionSprite.x = 129;
-  bigHealthPotionSprite.y = potionY;
-  container.addChild(bigHealthPotionSprite);
-  bigHealthPotionSprite.interactive = true;
-  bigHealthPotionSprite.buttonMode = true;
-  bigHealthPotionSprite
-    .on('mousedown', buyBigHealthPotion)
-    .on('touchstart', buyBigHealthPotion);
-
-  const createShopCoins = (): void => {
-    const coinData = [
-      { cost: 1, posX: 37 },
-      { cost: 2, posX: 83 },
-      { cost: 3, posX: 129 },
-    ];
-    coinData.forEach((coins) => {
-      const coinsContainer = new PIXI.Container();
-      coinsContainer.x = coins.posX;
-      coinsContainer.y = potionY + 35;
-      container.addChild(coinsContainer);
-      for (let i = 0; i < coins.cost; i++) {
-        const shopCoinTex = PIXI.Texture.from('./assets/shopCoin.png');
-        const shopCoinSprite = new PIXI.Sprite(shopCoinTex);
-        shopCoinSprite.anchor.set(0.5);
-        shopCoinSprite.x = 10 * i - (coins.cost - 1) * 5;
-        coinsContainer.addChild(shopCoinSprite);
-      }
-    });
-  };
-  createShopCoins();
+  shopState.items.map((item) => {
+    // The potion itself
+    const potionTexture = PIXI.Texture.from(`./assets/${item.image}`);
+    const potionSprite = new PIXI.Sprite(potionTexture);
+    item.spriteRef = potionSprite;
+    potionSprite.anchor.set(0.5);
+    potionSprite.x = item.posX;
+    potionSprite.y = potionY;
+    container.addChild(potionSprite);
+    potionSprite.interactive = true;
+    potionSprite.buttonMode = true;
+    potionSprite
+      .on('mousedown', () => {
+        purchaseItem(item);
+      })
+      .on('touchstart', () => {
+        purchaseItem(item);
+      });
+    // The coins below
+    const coinsContainer = new PIXI.Container();
+    coinsContainer.x = item.posX;
+    coinsContainer.y = potionY + 35;
+    container.addChild(coinsContainer);
+    for (let i = 0; i < item.cost; i++) {
+      const shopCoinTex = PIXI.Texture.from('./assets/shopCoin.png');
+      const shopCoinSprite = new PIXI.Sprite(shopCoinTex);
+      shopCoinSprite.anchor.set(0.5);
+      shopCoinSprite.x = 10 * i - (item.cost - 1) * 5;
+      coinsContainer.addChild(shopCoinSprite);
+    }
+  });
 
   const update = (delta): void => {
     // Update called by main

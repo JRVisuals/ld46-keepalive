@@ -13,6 +13,6 @@ export const HERO_ATTACK_FRAME = 3;
 export const ENEMY_DPH = 10;
 export const ENEMY_RESPAWN_COOLDOWN = 5000;
 // Shop
-export const POTION_HEAL = 15;
+
 // Environment
 export const GRAVITY_Y = 0.38;
