@@ -8,6 +8,7 @@ import {
   APP_HEIGHT,
   TILE_HEIGHT,
   TILE_WIDTH,
+  HERO_FRAMES,
 } from '../../constants';
 import { Coin } from '../coin';
 import { HeroNumbers } from '../heroNumbers';
@@ -33,7 +34,6 @@ interface Props {
 }
 
 export const hero = (props: Props): Hero => {
-  const HERO_FRAMES = 4;
   const pos = props.pos ?? { x: 0, y: 0 };
   const container = new PIXI.Container();
 
