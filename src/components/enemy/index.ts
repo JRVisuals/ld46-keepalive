@@ -1,9 +1,11 @@
 import * as PIXI from 'pixi.js';
+import gsap, { Power0 } from 'gsap';
 import {
   GROUND_MOVE_SPEED,
   APP_HEIGHT,
   TILE_WIDTH,
   TILE_HEIGHT,
+  ENEMY_FRAMES,
 } from '../../constants';
 
 export interface Enemy {
@@ -34,10 +36,24 @@ export const enemy = (props: Props): Enemy => {
 
   const { destroyManagerInstance } = props;
 
-  const texture = PIXI.Texture.from('./assets/enemy.png');
-  const sprite = new PIXI.Sprite(texture);
-  sprite.anchor.set(0.5);
-  container.addChild(sprite);
+  // Old school spritesheet
+  const liveFrames = [];
+  for (let i = 1; i <= ENEMY_FRAMES; i++) {
+    liveFrames.push(PIXI.Texture.from(`./assets/enemy_cube${i}.png`));
+  }
+  const liveAnim = new PIXI.AnimatedSprite(liveFrames);
+  liveAnim.animationSpeed = 0.09;
+  liveAnim.anchor.set(0.5);
+  container.addChild(liveAnim);
+  liveAnim.gotoAndPlay(0);
+
+  const deathFrames = [];
+  for (let i = 5; i <= 9; i++) {
+    deathFrames.push(PIXI.Texture.from(`./assets/enemy_cube${i}.png`));
+  }
+  const deathAnim = new PIXI.AnimatedSprite(deathFrames);
+  deathAnim.animationSpeed = 0.17;
+  deathAnim.anchor.set(0.5);
 
   const getStatus = (): string => {
     return enemyState.status;
@@ -57,7 +73,7 @@ export const enemy = (props: Props): Enemy => {
     const movementSpeed =
       enemyState.status === 'DYING'
         ? GROUND_MOVE_SPEED
-        : GROUND_MOVE_SPEED * 1.5;
+        : GROUND_MOVE_SPEED * 1.1;
     const nextX = container.x - movementSpeed;
     if (nextX < -TILE_WIDTH) exitedScreen();
     container.x = nextX;
@@ -68,8 +84,13 @@ export const enemy = (props: Props): Enemy => {
     container.x += 10;
     enemyState.status = 'DYING';
     enemyState.yVel = -5;
+
+    container.removeChild(liveAnim);
+    container.addChild(deathAnim);
+    deathAnim.gotoAndPlay(0);
   };
 
+  // Not used
   const moveToDeath = (): void => {
     enemyState.yVel =
       enemyState.yVel > GROUND_MOVE_SPEED * 1.5
@@ -82,6 +103,19 @@ export const enemy = (props: Props): Enemy => {
     container.rotation += 0.1;
   };
 
+  const checkDeathFrame = (): void => {
+    if (deathAnim.currentFrame === 4) {
+      deathAnim.stop();
+      gsap.to(deathAnim, 0.2, {
+        alpha: 0,
+        ease: Power0.easeOut,
+        onComplete: () => {
+          exitedScreen();
+        },
+      });
+    }
+  };
+
   const update = (): void => {
     // Update called by main
     switch (enemyState.status) {
@@ -92,8 +126,9 @@ export const enemy = (props: Props): Enemy => {
         moveTowardHero();
         break;
       case 'DYING':
-        moveToDeath();
-        moveTowardHero();
+        //moveToDeath();
+        //moveTowardHero();
+        checkDeathFrame();
         break;
     }
   };

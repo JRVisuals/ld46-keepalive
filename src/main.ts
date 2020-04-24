@@ -112,7 +112,7 @@ PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
   const enemyManager = comp.enemyManager({
     pos: {
       x: APP_WIDTH - TILE_WIDTH,
-      y: APP_HEIGHT - TILE_HEIGHT - HERO_HEIGHT * 0.5 + 8,
+      y: APP_HEIGHT - TILE_HEIGHT - HERO_HEIGHT * 0.5 + 12,
     },
   });
   mainContainer.addChild(enemyManager.container);
