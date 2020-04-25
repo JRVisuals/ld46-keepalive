@@ -1,5 +1,7 @@
 import * as PIXI from 'pixi.js';
-import { PixiPlugin } from 'gsap/PixiPlugin';
+import gsap from 'gsap';
+import PixiPlugin from 'gsap/PixiPlugin';
+
 import jrvascii from './util/jrvascii';
 import initPIXI, { PixiConfig } from './pixi';
 import {
@@ -11,8 +13,8 @@ import {
 } from './constants';
 import './index.scss';
 
-import * as comp from './components';
-import { Hero } from './components/hero';
+import * as COMP from './components';
+import * as HERO from './components/hero';
 
 const hostDiv = document.getElementById('canvas');
 const hostWidth = APP_WIDTH;
@@ -29,19 +31,20 @@ PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
 
 (function app(): void {
   jrvascii();
-  // PixiPlugin.registerPIXI(PIXI);
-
+  PixiPlugin.registerPIXI(PIXI);
+  gsap.registerPlugin(PixiPlugin);
   const { app, mainContainer } = initPIXI(pixiConfig, hostDiv);
   app.renderer.autoDensity = true;
 
-  let hero: Hero = null;
+  let hero: HERO.Hero = null;
+  let runtime = null;
 
   // Background
-  const bg = comp.background({});
+  const bg = COMP.background({});
   mainContainer.addChild(bg.container);
 
   // Ground
-  const ground = comp.ground({
+  const ground = COMP.ground({
     pos: {
       x: TILE_WIDTH * -1,
       y: APP_HEIGHT - TILE_HEIGHT * 0.5,
@@ -50,17 +53,19 @@ PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
   mainContainer.addChild(ground.container);
 
   // Hearts
-  const hearts = comp.hearts({ pos: { x: 30, y: 30 } });
+  const hearts = COMP.hearts({ pos: { x: 32, y: 32 } });
   mainContainer.addChild(hearts.container);
 
   // Coin
-  const coin = comp.coin({ pos: { x: 30, y: APP_HEIGHT - 30 } });
+  const coin = COMP.coin({ pos: { x: 30, y: APP_HEIGHT - 30 } });
   mainContainer.addChild(coin.container);
 
   // Play Again Button
   let btnAgain = null;
+
   const onPlayAgain = (): void => {
-    if (hero.getStatus() === 'OFF_SCREEN') {
+    console.log('play again called');
+    if (hero.getStatus() === HERO.STATUS.OFF_SCREEN) {
       hero.reset();
       coin.reset();
       runtime.reset();
@@ -69,7 +74,7 @@ PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
       btnAgain.setEnabled(false);
     }
   };
-  btnAgain = comp.btnAgain({
+  btnAgain = COMP.btnAgain({
     onPress: onPlayAgain,
     pos: { x: APP_WIDTH / 2, y: APP_HEIGHT / 2 + 50 },
   });
@@ -77,17 +82,18 @@ PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
 
   // Events
   const onHeroDied = (): void => {
+    console.log('enabling button');
     btnAgain.setEnabled(true);
   };
 
   // Hero
-  const heroNubmers = comp.heroNumbers({
+  const heroNubmers = COMP.heroNumbers({
     pos: {
       x: APP_WIDTH * 0.25,
       y: APP_HEIGHT - TILE_HEIGHT - HERO_HEIGHT * 0.5 + 8,
     },
   });
-  hero = comp.hero({
+  hero = COMP.hero({
     pos: {
       x: APP_WIDTH * 0.25,
       y: APP_HEIGHT - TILE_HEIGHT - HERO_HEIGHT * 0.5 + 8,
@@ -101,15 +107,15 @@ PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
   mainContainer.addChild(heroNubmers.container);
 
   // Run Time
-  const runtime = comp.runtime({ hero, pos: { x: 55, y: 30 } });
+  runtime = COMP.runtime({ hero, pos: { x: 55, y: 30 } });
   mainContainer.addChild(runtime.container);
 
   // Shoppe
-  const shop = comp.shop({ pos: { x: APP_WIDTH - 217, y: 5 }, hero });
+  const shop = COMP.shop({ pos: { x: APP_WIDTH - 217, y: 5 }, hero });
   mainContainer.addChild(shop.container);
 
   // Enemy Manager
-  const enemyManager = comp.enemyManager({
+  const enemyManager = COMP.enemyManager({
     pos: {
       x: APP_WIDTH - TILE_WIDTH,
       y: APP_HEIGHT - TILE_HEIGHT - HERO_HEIGHT * 0.5 + 12,
@@ -120,7 +126,7 @@ PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
   mainContainer.addChild(btnAgain.container);
 
   // Add music as a component
-  const audioLayer = comp.audio();
+  const audioLayer = COMP.audio();
   audioLayer.init();
 
   // Register component UPDATE routines

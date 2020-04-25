@@ -1,5 +1,5 @@
 import * as PIXI from 'pixi.js';
-import { Hero } from '../hero';
+import * as HERO from '../hero';
 
 export interface RunTime {
   container: PIXI.Container;
@@ -9,7 +9,7 @@ export interface RunTime {
 
 interface Props {
   pos?: { x: number; y: number };
-  hero: Hero;
+  hero: HERO.Hero;
 }
 
 export const runtime = (props: Props): RunTime => {
@@ -66,7 +66,10 @@ export const runtime = (props: Props): RunTime => {
 
   const update = (delta): void => {
     // Update called by main
-    if (hero.getStatus() === 'OFF_SCREEN' || hero.getStatus() === 'SPAWNING')
+    if (
+      hero.getStatus() === HERO.STATUS.OFF_SCREEN ||
+      hero.getStatus() === HERO.STATUS.SPAWNING
+    )
       return;
     if (Date.now() > lastUpdateTime + 10) {
       state.currentTime += 0.01;

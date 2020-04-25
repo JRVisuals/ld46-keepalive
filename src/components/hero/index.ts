@@ -1,6 +1,6 @@
 import * as PIXI from 'pixi.js';
 import * as PIXISOUND from 'pixi-sound';
-import { ItemData } from '../shop';
+import * as SHOP from '../shop/shopItems';
 import {
   ENEMY_DPH,
   GROUND_MOVE_SPEED,
@@ -21,8 +21,16 @@ export interface Hero {
   gotHit: () => void;
   getCoin: () => void;
   doAttack: () => void;
-  getStatus: () => string;
-  buyPotion: (itemData: ItemData) => boolean;
+  getStatus: () => STATUS;
+  buyPotion: (itemData: SHOP.ItemData) => boolean;
+}
+
+export enum STATUS {
+  SPAWNING,
+  DYING,
+  RECOVERING,
+  ON_SCREEN,
+  OFF_SCREEN,
 }
 
 interface Props {
@@ -45,7 +53,7 @@ export const hero = (props: Props): Hero => {
     yOrrig: pos.y,
     yVel: 0,
     xVel: GROUND_MOVE_SPEED * 0.5,
-    status: 'SPAWNING',
+    status: STATUS.SPAWNING,
   };
 
   const initialState = { ...state };
@@ -90,9 +98,9 @@ export const hero = (props: Props): Hero => {
     pixiSound.play('attack', { loop: false, volume: 1 });
   };
   const getDead = (): void => {
-    if (state.status === 'DYING') return;
+    if (state.status === STATUS.DYING) return;
     anim.gotoAndStop(1);
-    state.status = 'DYING';
+    state.status = STATUS.DYING;
     state.yVel = -6;
     pixiSound.play('scream', { loop: false, volume: 1 });
     onHeroDied();
@@ -101,8 +109,8 @@ export const hero = (props: Props): Hero => {
   const getCurrentFrame = (): number => anim.currentFrame;
 
   // Returns false if the purchase failed for some reason
-  const buyPotion = (itemData: ItemData): boolean => {
-    if (state.status != 'ON_SCREEN') return false;
+  const buyPotion = (itemData: SHOP.ItemData): boolean => {
+    if (state.status != STATUS.ON_SCREEN) return false;
     const { goodPurchase } = coinDisplay.subtractCoin(itemData.cost);
     // Make sure we can affor this
     if (!goodPurchase) return false;
@@ -115,7 +123,7 @@ export const hero = (props: Props): Hero => {
       : pixiSound.play('quafquick', { loop: false, volume: 1 });
 
     switch (itemData.action) {
-      case 'heal':
+      case SHOP.Actions.HEAL:
         // execute healing action
         const POTION_HEAL = itemData.amount;
         const newHp =
@@ -131,7 +139,7 @@ export const hero = (props: Props): Hero => {
 
     return true;
   };
-  const getStatus = (): string => {
+  const getStatus = (): STATUS => {
     return state.status;
   };
   const getCoin = (): void => {
@@ -139,9 +147,9 @@ export const hero = (props: Props): Hero => {
   };
 
   const gotHit = (): void => {
-    if (state.status !== 'ON_SCREEN') return;
+    if (state.status !== STATUS.ON_SCREEN) return;
     pixiSound.play('gotHit', { loop: false, volume: 0.5 });
-    state.status = 'RECOVERING';
+    state.status = STATUS.RECOVERING;
     state.yVel = -2 * Math.random() * 2 - 1;
     state.xVel = -2 * Math.random() * 3 - 2;
     const damageDone = ENEMY_DPH; // buffs to take effect here
@@ -153,7 +161,7 @@ export const hero = (props: Props): Hero => {
   };
 
   const exitedScreen = (): void => {
-    state.status = 'OFF_SCREEN';
+    state.status = STATUS.OFF_SCREEN;
   };
 
   const moveToGround = (): void => {
@@ -181,17 +189,17 @@ export const hero = (props: Props): Hero => {
     if (nextX >= pos.x) {
       nextX = pos.x;
       state.xVel = 0;
-      state.status = 'ON_SCREEN';
+      state.status = STATUS.ON_SCREEN;
     }
     container.x = nextX;
   };
   const spawnToHome = (): void => {
-    if (state.status !== 'SPAWNING') return;
+    if (state.status !== STATUS.SPAWNING) return;
     let nextX = container.x + state.xVel;
     if (nextX >= pos.x) {
       nextX = pos.x;
       state.xVel = 0;
-      state.status = 'ON_SCREEN';
+      state.status = STATUS.ON_SCREEN;
     }
     container.x = nextX;
   };
@@ -211,18 +219,18 @@ export const hero = (props: Props): Hero => {
   const update = (delta): void => {
     // Update called by main
     switch (state.status) {
-      case 'OFF_SCREEN':
+      case STATUS.OFF_SCREEN:
         break;
-      case 'ON_SCREEN':
+      case STATUS.ON_SCREEN:
         moveToGround();
-      case 'SPAWNING':
+      case STATUS.SPAWNING:
         spawnToHome();
         break;
-      case 'RECOVERING':
+      case STATUS.RECOVERING:
         moveToGround();
         moveToHome();
         break;
-      case 'DYING':
+      case STATUS.DYING:
         moveToDeath();
         break;
     }

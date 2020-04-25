@@ -33,6 +33,15 @@ Given the opportunity I'll keep working on this on and off until the next LD in 
 - Ground block variety
 - Background parallax layer variety
 
+### Next Up : Getting the Shop Working
+
+- ~~Have the heart be mask based rather than frames based to show 0-100 HP~~
+- Tweak potions so they can't be purchased until they respawn
+- Get spritesheets working
+- Add cooldown to potions
+- Add cooldown visual
+- Further refactoring of shop inventory to make it more dynamic
+
 ## Tools Used
 
 - Visual Studio Code

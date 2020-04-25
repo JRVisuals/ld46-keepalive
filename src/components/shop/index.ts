@@ -3,20 +3,10 @@ import gsap, { Bounce, Power0 } from 'gsap';
 
 import { Hero } from '../hero';
 
-export type ItemData = {
-  type: string;
-  action: string;
-  amount: number;
-  image: string;
-  posX: number;
-  cost: number;
-  cooldown: number;
-  spriteRef: PIXI.Sprite;
-  isAvailable: boolean;
-};
+import { Actions, ItemData, itemList } from './shopItems';
 
 export interface ShopState {
-  items: Array<ItemData>;
+  items: ItemData[];
 }
 export interface Shop {
   container: PIXI.Container;
@@ -37,55 +27,7 @@ export const shop = (props: Props): Shop => {
 
   const { hero } = props;
 
-  const tempSprite = new PIXI.Sprite();
-  const shopState: ShopState = {
-    items: [
-      {
-        type: 'potion',
-        action: 'heal',
-        amount: 10,
-        image: 'healthPotion.png',
-        posX: 37,
-        cost: 1,
-        cooldown: 5000,
-        spriteRef: tempSprite,
-        isAvailable: true,
-      },
-      {
-        type: 'potion',
-        action: 'shield',
-        image: 'shieldPotion.png',
-        amount: 15,
-        posX: 83,
-        cost: 2,
-        cooldown: 5000,
-        spriteRef: tempSprite,
-        isAvailable: false,
-      },
-      {
-        type: 'potion',
-        action: 'haste',
-        image: 'hastePotion.png',
-        amount: 5,
-        posX: 129,
-        cost: 3,
-        cooldown: 5000,
-        spriteRef: tempSprite,
-        isAvailable: false,
-      },
-      {
-        type: 'potion',
-        action: 'heal',
-        image: 'healthPotion2.png',
-        amount: 50,
-        posX: 174,
-        cost: 4,
-        cooldown: 5000,
-        spriteRef: tempSprite,
-        isAvailable: true,
-      },
-    ],
-  };
+  const shopState: ShopState = { items: itemList };
 
   const texture = PIXI.Texture.from('./assets/shopPanel.png');
   const sprite = new PIXI.Sprite(texture);
@@ -118,13 +60,13 @@ export const shop = (props: Props): Shop => {
     // Do things based on the item action value
     let purchaseSuccess = false;
     switch (itemData.action) {
-      case 'heal':
+      case Actions.HEAL:
         purchaseSuccess = hero.buyPotion(itemData);
         console.log('purchaseSuccess', purchaseSuccess);
         break;
-      case 'shield':
+      case Actions.SHIELD:
         break;
-      case 'haste':
+      case Actions.SPEED:
         break;
     }
     console.log('purchaseItem', itemData);
@@ -161,7 +103,7 @@ export const shop = (props: Props): Shop => {
   const potionY = 50;
   shopState.items.map((item) => {
     // The potion itself
-    const potionTexture = PIXI.Texture.from(`./assets/${item.image}`);
+    const potionTexture = item.texture;
     const potionSprite = new PIXI.Sprite(potionTexture);
     item.spriteRef = potionSprite;
     potionSprite.anchor.set(0.5);

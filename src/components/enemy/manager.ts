@@ -8,12 +8,12 @@ import {
   ENEMY_RESPAWN_COOLDOWN,
 } from '../../constants';
 import { enemy, Enemy } from '.';
-import { Hero, hero } from '../hero';
+import * as HERO from '../hero';
 
 interface ManagerReturnType {
   container: PIXI.Container;
   update: (delta: number) => void;
-  checkCollisions: (hero: Hero) => void;
+  checkCollisions: (hero: HERO.Hero) => void;
 }
 
 interface ManagerProps {
@@ -36,9 +36,9 @@ export const enemyManager = (props: ManagerProps): ManagerReturnType => {
     });
   };
 
-  let lastHeroStatus = '';
+  let lastHeroStatus: HERO.STATUS = null;
 
-  const checkCollisions = (hero: Hero): void => {
+  const checkCollisions = (hero: HERO.Hero): void => {
     lastHeroStatus = hero.getStatus();
     enemies.forEach((enemy) => {
       if (
@@ -60,7 +60,7 @@ export const enemyManager = (props: ManagerProps): ManagerReturnType => {
   };
 
   const spawnEnemy = (): void => {
-    if (lastHeroStatus === 'SPAWNING') return;
+    if (lastHeroStatus === HERO.STATUS.SPAWNING) return;
     // Enemy
     const newPos = { ...pos, x: APP_WIDTH + TILE_WIDTH };
     const newEnemy = enemy({
