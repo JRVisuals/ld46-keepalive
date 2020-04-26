@@ -64,7 +64,7 @@ export const itemList: ItemData[] = [
   {
     type: Types.POTION,
     action: Actions.HEAL,
-    texture: '/assets/healthPotion2.png',
+    texture: './assets/healthPotion2.png',
     amount: 50,
     posX: 174,
     cost: 4,
