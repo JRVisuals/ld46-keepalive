@@ -11,14 +11,14 @@ export interface PixiConfig {
 const initPIXI = (
   pixiConfig: PixiConfig,
   baseElement: HTMLElement
-): { app: PIXI.Application; mainContainer: PIXI.Container } => {
-  const app = new PIXI.Application(pixiConfig);
-  baseElement.appendChild(app.view);
+): { pixiApp: PIXI.Application; mainContainer: PIXI.Container } => {
+  const pixiApp = new PIXI.Application(pixiConfig);
+  baseElement.appendChild(pixiApp.view);
 
   const mainContainer = new PIXI.Container();
-  app.stage.addChild(mainContainer);
+  pixiApp.stage.addChild(mainContainer);
 
-  return { app, mainContainer };
+  return { pixiApp, mainContainer };
 };
 
 export default initPIXI;

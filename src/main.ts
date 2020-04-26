@@ -29,13 +29,22 @@ const pixiConfig: PixiConfig = {
 // No anti-alias
 PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
 
-(function app(): void {
+interface BootstrapApp {
+  app: PIXI.Application;
+}
+
+const bootstrapApp = (props: { animations: any }): BootstrapApp => {
   jrvascii();
+
+  // Instantiate PIXI
   PixiPlugin.registerPIXI(PIXI);
   gsap.registerPlugin(PixiPlugin);
-  const { app, mainContainer } = initPIXI(pixiConfig, hostDiv);
-  app.renderer.autoDensity = true;
+  const { pixiApp, mainContainer } = initPIXI(pixiConfig, hostDiv);
+  pixiApp.renderer.autoDensity = true;
 
+  const { animations } = props;
+
+  // Declare component variables in advance when needed
   let hero: HERO.Hero = null;
   let runtime = null;
 
@@ -111,7 +120,11 @@ PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
   mainContainer.addChild(runtime.container);
 
   // Shoppe
-  const shop = COMP.shop({ pos: { x: APP_WIDTH - 217, y: 5 }, hero });
+  const shop = COMP.shop({
+    pos: { x: APP_WIDTH - 217, y: 5 },
+    hero,
+    anims: { hourglass: animations.hourglass },
+  });
   mainContainer.addChild(shop.container);
 
   // Enemy Manager
@@ -131,7 +144,7 @@ PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
 
   // Register component UPDATE routines
   // ------------------------------------
-  app.ticker.add((delta) => {
+  pixiApp.ticker.add((delta) => {
     // Update it
     ground.update(delta);
     bg.update(delta);
@@ -140,4 +153,26 @@ PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
     hero.update(delta);
     runtime.update(delta);
   });
-})();
+
+  return { app: pixiApp };
+};
+
+const onAssetsLoaded = (): void => {
+  console.log('onAssetsLoaded');
+
+  // Hold all animations in an array
+  const animations = {};
+
+  // Create animations from loaded sheets and assets
+  const animName = 'hourglass';
+  const sheet =
+    PIXI.Loader.shared.resources['./assets/ld46sprites.json'].spritesheet;
+  animations[animName] = sheet;
+  console.log('sheet', sheet, animations);
+
+  // Boostrap the app once assets are loaded
+  // TODO add proper preloader
+  bootstrapApp({ animations });
+};
+
+PIXI.Loader.shared.add('./assets/ld46sprites.json').load(onAssetsLoaded);

@@ -17,6 +17,7 @@ interface Props {
   app?: PIXI.Application;
   pos?: { x: number; y: number };
   hero: Hero;
+  anims: { hourglass: PIXI.Spritesheet };
 }
 
 export const shop = (props: Props): Shop => {
@@ -25,7 +26,7 @@ export const shop = (props: Props): Shop => {
   container.x = pos.x;
   container.y = pos.y;
 
-  const { hero } = props;
+  const { hero, anims } = props;
 
   const shopState: ShopState = { items: itemList };
 
@@ -33,6 +34,8 @@ export const shop = (props: Props): Shop => {
   const sprite = new PIXI.Sprite(texture);
   sprite.anchor.set(0);
   container.addChild(sprite);
+
+  console.log('anims', anims);
 
   // Text
   const style = {
@@ -55,8 +58,32 @@ export const shop = (props: Props): Shop => {
   shopTextSmall.y = 15;
   container.addChild(shopTextSmall);
 
+  // Called after an item is purchased and its cooldonw timeout is called
+  const coolDownOver = (itemData: ItemData): void => {
+    gsap.to(itemData.cooldownSpriteRef, 0.3, {
+      delay: 0.3,
+      alpha: 0,
+      ease: Power0.easeOut,
+      onComplete: () => {
+        itemData.cooldownSpriteRef.stop();
+      },
+    });
+
+    gsap.to(itemData.spriteRef, 0.3, {
+      delay: 0.3,
+      alpha: 1,
+      ease: Power0.easeOut,
+      onComplete: () => {
+        itemData.isCooling = false;
+        itemData.spriteRef.interactive = true;
+      },
+    });
+  };
+
   // Called when someone clicks an item in the shop
   const purchaseItem = (itemData: ItemData): void => {
+    // Bail if item is on cooldown
+    if (itemData.isCooling) return;
     // Do things based on the item action value
     let purchaseSuccess = false;
     switch (itemData.action) {
@@ -73,6 +100,17 @@ export const shop = (props: Props): Shop => {
     // Animate bottle depending on success
     const currentX = itemData.spriteRef.x;
     if (purchaseSuccess) {
+      itemData.isCooling = true;
+      itemData.spriteRef.interactive = false;
+      itemData.cooldownSpriteRef.play();
+      gsap.to(itemData.cooldownSpriteRef, 0.3, {
+        delay: 0.3,
+        alpha: 1,
+        ease: Power0.easeOut,
+      });
+      setTimeout(() => {
+        coolDownOver(itemData);
+      }, itemData.cooldown);
       itemData.spriteRef.alpha = 1;
       gsap.to(itemData.spriteRef, 0.2, {
         alpha: 0,
@@ -80,11 +118,6 @@ export const shop = (props: Props): Shop => {
         ease: Power0.easeIn,
         onComplete: () => {
           itemData.spriteRef.x = itemData.posX;
-          gsap.to(itemData.spriteRef, 0.3, {
-            delay: 0.3,
-            alpha: 1,
-            ease: Power0.easeOut,
-          });
         },
       });
     } else {
@@ -103,13 +136,32 @@ export const shop = (props: Props): Shop => {
   const potionY = 50;
   shopState.items.map((item) => {
     // The potion itself
-    const potionTexture = item.texture;
+
+    const potionTexture =
+      typeof item.texture === 'string'
+        ? PIXI.Texture.from(item.texture)
+        : item.texture;
+
     const potionSprite = new PIXI.Sprite(potionTexture);
     item.spriteRef = potionSprite;
     potionSprite.anchor.set(0.5);
     potionSprite.x = item.posX;
     potionSprite.y = potionY;
     container.addChild(potionSprite);
+
+    // The cooldown hourglass
+
+    const hourglassAnim = new PIXI.AnimatedSprite(
+      anims.hourglass.animations['hourglass']
+    );
+    item.cooldownSpriteRef = hourglassAnim;
+    hourglassAnim.x = item.posX + 1;
+    hourglassAnim.y = potionY + 7;
+    hourglassAnim.anchor.set(0.5);
+    hourglassAnim.animationSpeed = 0.1;
+    container.addChild(hourglassAnim);
+    hourglassAnim.alpha = 0;
+
     if (item.isAvailable) {
       potionSprite.interactive = true;
       potionSprite.buttonMode = true;

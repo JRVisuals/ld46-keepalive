@@ -23,10 +23,10 @@ The initial build only had a single red potion which cost one coin and a single 
 Given the opportunity I'll keep working on this on and off until the next LD in October of 2020. These are some things I would like to add:
 
 - Additional shop items: other potions, weapons, armor, etc
-- Real enemy artwork and enemy variety
+- Real enemy artwork and enemy variety (~~slime~~, skeleton, giant head)
 - A wave system and increasing difficulty over time
-- A time survived clock
-- Title and instructions along with a real game loop lol
+- ~~A time survived clock~~
+- Title and instructions along with a ~real game loop~ lol
 - More music and sound
 - Post effects like glows and sparks
 - Additional animation frames for all the things
@@ -35,12 +35,14 @@ Given the opportunity I'll keep working on this on and off until the next LD in 
 
 ### Next Up : Getting the Shop Working
 
+- Get haste potion working
+- Get armor potion workin
 - ~~Have the heart be mask based rather than frames based to show 0-100 HP~~
-- Tweak potions so they can't be purchased until they respawn
-- Get spritesheets working
-- Add cooldown to potions
-- Add cooldown visual
-- Further refactoring of shop inventory to make it more dynamic
+- ~~Tweak potions so they can't be purchased until they respawn~~
+- ~~Get spritesheets working~~
+- ~~Add cooldown to potions~~
+- ~~Add cooldown visual~~
+- ~~Further refactoring of shop inventory to make it more dynamic~~
 
 ## Tools Used
 
