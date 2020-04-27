@@ -48,6 +48,10 @@ const bootstrapApp = (props: { animations: any }): BootstrapApp => {
   let hero: HERO.Hero = null;
   let runtime = null;
 
+  // Add music as a component
+  const audioLayer = COMP.audio();
+  audioLayer.music.mainTheme();
+
   // Background
   const bg = COMP.background({});
   mainContainer.addChild(bg.container);
@@ -81,6 +85,7 @@ const bootstrapApp = (props: { animations: any }): BootstrapApp => {
       // shop.reset();
       // enemyManager.reset();
       btnAgain.setEnabled(false);
+      audioLayer.music.mainTheme();
     }
   };
   btnAgain = COMP.btnAgain({
@@ -92,6 +97,7 @@ const bootstrapApp = (props: { animations: any }): BootstrapApp => {
   // Events
   const onHeroDied = (): void => {
     console.log('enabling button');
+    audioLayer.music.somber();
     btnAgain.setEnabled(true);
   };
 
@@ -138,14 +144,10 @@ const bootstrapApp = (props: { animations: any }): BootstrapApp => {
 
   mainContainer.addChild(btnAgain.container);
 
-  // Add music as a component
-  const audioLayer = COMP.audio();
-  audioLayer.init();
-
   // Register component UPDATE routines
   // ------------------------------------
   pixiApp.ticker.add((delta) => {
-    // Update it
+    // Update All The Things
     ground.update(delta);
     bg.update(delta);
     enemyManager.update(delta);

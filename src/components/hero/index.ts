@@ -102,7 +102,7 @@ export const hero = (props: Props): Hero => {
     anim.gotoAndStop(1);
     state.status = STATUS.DYING;
     state.yVel = -6;
-    pixiSound.play('scream', { loop: false, volume: 1 });
+    pixiSound.play('scream', { loop: false, volume: 0.75 });
     onHeroDied();
   };
 

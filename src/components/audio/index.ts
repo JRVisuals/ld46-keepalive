@@ -1,20 +1,26 @@
 import * as PIXISOUND from 'pixi-sound';
 
 interface ReturnType {
-  init: () => void;
+  music: { mainTheme: () => void; somber: () => void };
 }
 export const audio = (): ReturnType => {
-  const pixiSound = PIXISOUND.default;
+  const musicBed = PIXISOUND.default;
 
   // Load these up on startup...
-  pixiSound.add('exampleSound', './assets/example.mp3');
-
+  musicBed.add('MainTheme', './assets/KeepYeAlive_MainRiff.mp3');
+  musicBed.add('Somber', './assets/KeepYeAlive_Somber.mp3');
   // Called when we've got all the things...
-  const init = (): void => {
-    pixiSound.play('exampleSound', { loop: true, volume: 0.1 });
+  const mainTheme = (): void => {
+    musicBed.stop('Somber');
+    musicBed.play('MainTheme', { loop: true, volume: 0.5 });
+  };
+
+  const somber = (): void => {
+    musicBed.stop('MainTheme');
+    musicBed.play('Somber', { loop: true, volume: 0.65 });
   };
 
   return {
-    init,
+    music: { mainTheme, somber },
   };
 };
