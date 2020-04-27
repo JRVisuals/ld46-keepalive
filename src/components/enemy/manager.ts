@@ -42,17 +42,21 @@ export const enemyManager = (props: ManagerProps): ManagerReturnType => {
     lastHeroStatus = hero.getStatus();
     enemies.forEach((enemy) => {
       if (
+        // In collision range, and enemy is not mid-death
         enemy.container.x <= hero.container.x + HERO_COLLISION_BUFFER &&
-        enemy.container.x >= hero.container.x - HERO_COLLISION_BUFFER
+        enemy.container.x >= hero.container.x - HERO_COLLISION_BUFFER &&
+        enemy.self.getStatus() != 'DYING'
       ) {
         if (
-          hero.getCurrentFrame() == HERO_ATTACK_FRAME &&
-          enemy.self.getStatus() != 'DYING'
+          // Hero is attacking and enemy is not dying
+          hero.getCurrentFrame() == HERO_ATTACK_FRAME
         ) {
+          // Hero Attacks!
           enemy.self.gotKilled();
           hero.doAttack();
           hero.getCoin();
         } else {
+          // Hero is hit
           hero.gotHit();
         }
       }
