@@ -71,7 +71,7 @@ export const enemy = (props: Props): Enemy => {
 
   const moveTowardHero = (): void => {
     const movementSpeed =
-      enemyState.status === 'DYING'
+      enemyState.status === 'DYING' || enemyState.status === 'DEAD'
         ? GROUND_MOVE_SPEED
         : GROUND_MOVE_SPEED * 1.1;
     const nextX = container.x - movementSpeed;
@@ -106,13 +106,14 @@ export const enemy = (props: Props): Enemy => {
   const checkDeathFrame = (): void => {
     if (deathAnim.currentFrame === 4) {
       deathAnim.stop();
-      gsap.to(deathAnim, 0.2, {
-        alpha: 0,
-        ease: Power0.easeOut,
-        onComplete: () => {
-          exitedScreen();
-        },
-      });
+      enemyState.status = 'DEAD';
+      // gsap.to(deathAnim, 0.2, {
+      //   alpha: 0,
+      //   ease: Power0.easeOut,
+      //   onComplete: () => {
+      //     exitedScreen();
+      //   },
+      // });
     }
   };
 
@@ -123,6 +124,7 @@ export const enemy = (props: Props): Enemy => {
         return;
         break;
       case 'ON_SCREEN':
+      case 'DEAD':
         moveTowardHero();
         break;
       case 'DYING':

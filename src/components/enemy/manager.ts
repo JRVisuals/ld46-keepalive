@@ -45,7 +45,8 @@ export const enemyManager = (props: ManagerProps): ManagerReturnType => {
         // In collision range, and enemy is not mid-death
         enemy.container.x <= hero.container.x + HERO_COLLISION_BUFFER &&
         enemy.container.x >= hero.container.x - HERO_COLLISION_BUFFER &&
-        enemy.self.getStatus() != 'DYING'
+        enemy.self.getStatus() != 'DYING' &&
+        enemy.self.getStatus() != 'DEAD'
       ) {
         if (
           // Hero is attacking and enemy is not dying

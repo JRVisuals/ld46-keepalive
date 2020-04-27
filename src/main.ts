@@ -105,7 +105,7 @@ const bootstrapApp = (props: { animations: any }): BootstrapApp => {
   const heroNubmers = COMP.heroNumbers({
     pos: {
       x: APP_WIDTH * 0.25,
-      y: APP_HEIGHT - TILE_HEIGHT - HERO_HEIGHT * 0.5 + 8,
+      y: APP_HEIGHT - TILE_HEIGHT - HERO_HEIGHT * 0.5 + 5,
     },
   });
   hero = COMP.hero({
