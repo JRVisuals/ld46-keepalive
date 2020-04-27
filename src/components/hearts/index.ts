@@ -1,11 +1,10 @@
 import * as PIXI from 'pixi.js';
 import gsap, { Bounce, Power0 } from 'gsap';
 
-import { mapToRange } from '../../util/mapToRange';
 interface ReturnType {
   container: PIXI.Container;
   update: (delta: number) => void;
-  updateDisplay: (pct: number) => void;
+  updateDisplay: (healthPct?: number, armorPct?: number) => void;
 }
 
 interface Props {
@@ -13,8 +12,6 @@ interface Props {
 }
 
 export const hearts = (props: Props): ReturnType => {
-  const HEART_FRAMES = 5;
-
   const pos = props.pos ?? { x: 0, y: 0 };
   const container = new PIXI.Container();
   container.x = pos.x;
@@ -49,17 +46,27 @@ export const hearts = (props: Props): ReturnType => {
     PIXI.Texture.from(`./assets/heart_outline.png`)
   );
 
-  container.addChild(base, fill, fillWhite, outline);
+  // shield icon
+  const shieldIcon = new PIXI.Sprite(
+    PIXI.Texture.from(`./assets/heart_shield.png`)
+  );
+
+  shieldIcon.alpha = 0;
+
+  container.addChild(base, fill, fillWhite, outline, shieldIcon);
 
   // keep track of last percentage
   // so we know if we're increasing or decreasing for animation below
-  let lastPct = 100;
-  const updateDisplay = (pct: number): void => {
-    const isGaining = lastPct < pct;
-    lastPct = pct;
-    const newX = -32 + mapToRange(pct, 0, 100, 0, 32) * 100;
-    fillWhite.alpha = isGaining ? 0.5 : 1;
-    container.scale.set(isGaining ? 1.2 : 0.8);
+  let lastHealthPct = 100;
+  let lastShieldPct = 0;
+  const updateDisplay = (health, shield): void => {
+    const isGainingHealth = lastHealthPct < health;
+
+    lastHealthPct = health;
+    lastShieldPct = shield;
+    const newX = -32 + (health / 100) * 32;
+    fillWhite.alpha = isGainingHealth ? 0.5 : 1;
+    container.scale.set(isGainingHealth ? 1.2 : 0.8);
     gsap.to(fillMask, 0.25, {
       x: newX,
       ease: Bounce.easeOut,
@@ -68,11 +75,12 @@ export const hearts = (props: Props): ReturnType => {
       alpha: 0,
       ease: Power0.easeOut,
     });
-
     gsap.to(container, 0.45, {
       pixi: { scale: 1 },
       ease: Bounce.easeOut,
     });
+
+    shieldIcon.alpha = shield > 0 ? 1 : 0;
   };
 
   const update = (): void => {

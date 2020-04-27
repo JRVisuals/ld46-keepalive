@@ -89,9 +89,10 @@ export const shop = (props: Props): Shop => {
     switch (itemData.action) {
       case Actions.HEAL:
         purchaseSuccess = hero.buyPotion(itemData);
-        console.log('purchaseSuccess', purchaseSuccess);
         break;
       case Actions.SHIELD:
+        purchaseSuccess = hero.buyPotion(itemData);
+        console.log('purchaseSuccess', purchaseSuccess);
         break;
       case Actions.SPEED:
         break;

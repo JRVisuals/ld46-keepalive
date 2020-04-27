@@ -33,10 +33,23 @@ export enum STATUS {
   OFF_SCREEN,
 }
 
+interface HeroState {
+  hp: number;
+  xOrrig: number;
+  yOrrig: number;
+  yVel: number;
+  xVel: number;
+  status: STATUS;
+  effects: {
+    shield: number;
+    cooldownSpeed: number;
+  };
+}
+
 interface Props {
   pos?: { x: number; y: number };
   heroNubmers: HeroNumbers;
-  hpDisplay: (hp: number) => void;
+  hpDisplay: (hp: number, shield: number) => void;
   coinDisplay: Coin;
   onHeroDied: () => void;
 }
@@ -54,6 +67,10 @@ export const hero = (props: Props): Hero => {
     yVel: 0,
     xVel: GROUND_MOVE_SPEED * 0.5,
     status: STATUS.SPAWNING,
+    effects: {
+      shield: 0,
+      cooldownSpeed: 0,
+    },
   };
 
   const initialState = { ...state };
@@ -79,8 +96,8 @@ export const hero = (props: Props): Hero => {
   pixiSound.add('quafquick', './assets/quaf-short.mp3');
 
   const updateHpDisplay = (): void => {
-    console.log(`now hero has ${state.hp}HP`);
-    hpDisplay(state.hp / 100);
+    console.log(`now hero has ${state.hp}HP and ${state.effects.shield}SHIELD`);
+    hpDisplay(state.hp, state.effects.shield);
   };
 
   // Reset called by play again and also on init
@@ -93,6 +110,19 @@ export const hero = (props: Props): Hero => {
     anim.gotoAndPlay(0);
   };
   reset();
+
+  // Buff / Debuf for Shield Potion - just adds a number to the state
+  // Armor basically acts as overheal and soaks up (physical) damage first
+  const buffShield = (amount: number, duration: number): void => {
+    state.effects.shield += amount;
+    state.effects.shield < 0 ? (state.effects.shield = 0) : null;
+    updateHpDisplay();
+    // If we have a duration, set the timeout to nullify the effects
+    duration &&
+      setTimeout(() => {
+        buffShield(amount * -1, 0);
+      }, duration);
+  };
 
   const doAttack = (): void => {
     pixiSound.play('attack', { loop: false, volume: 1 });
@@ -135,6 +165,11 @@ export const hero = (props: Props): Hero => {
         });
         updateHpDisplay();
         break;
+      case SHOP.Actions.SHIELD:
+        // execute shield buff
+        buffShield(itemData.amount, itemData.duration);
+        updateHpDisplay();
+        break;
     }
 
     return true;
@@ -148,14 +183,32 @@ export const hero = (props: Props): Hero => {
 
   const gotHit = (): void => {
     if (state.status !== STATUS.ON_SCREEN) return;
-    pixiSound.play('gotHit', { loop: false, volume: 0.5 });
+
     state.status = STATUS.RECOVERING;
     state.yVel = -2 * Math.random() * 2 - 1;
     state.xVel = -2 * Math.random() * 3 - 2;
-    const damageDone = ENEMY_DPH; // buffs to take effect here
-    const newHp = state.hp - ENEMY_DPH >= 0 ? state.hp - damageDone : 0;
-    state.hp = newHp;
-    heroNubmers.animateNumbers({ damageDone, isHealing: false });
+
+    // Buffs
+    const damageReduction = 0;
+    const damageTaken = ENEMY_DPH - damageReduction;
+    const damageDone = damageTaken > 0 ? damageTaken : 0;
+    let newHp;
+    let newShield;
+    if (state.effects.shield > 0) {
+      // block sound here
+      pixiSound.play('gotHit', { loop: false, volume: 0.2 });
+      newShield =
+        state.effects.shield - damageDone >= 0
+          ? state.effects.shield - damageDone
+          : 0;
+      state.effects.shield = newShield;
+      // animate blocked numbers?
+    } else {
+      pixiSound.play('gotHit', { loop: false, volume: 0.5 });
+      newHp = state.hp - damageDone >= 0 ? state.hp - damageDone : 0;
+      state.hp = newHp;
+      heroNubmers.animateNumbers({ damageDone, isHealing: false });
+    }
     updateHpDisplay();
     if (newHp === 0) getDead();
   };

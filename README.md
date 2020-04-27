@@ -40,6 +40,7 @@ Given the opportunity I'll keep working on this on and off until the next LD in 
 
 - Get haste potion working
 - Get armor potion workin
+- Tooltips for potions
 - ~~Have the heart be mask based rather than frames based to show 0-100 HP~~
 - ~~Tweak potions so they can't be purchased until they respawn~~
 - ~~Get spritesheets working~~
