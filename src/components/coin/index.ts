@@ -37,10 +37,10 @@ export const coin = (props: Props): Coin => {
     fontFamily: 'Impact, Charcoal, sans-serif',
     fontSize: 18,
     fontWeight: 'bold',
-    fill: ['#ccc'],
+    fill: ['#fff'],
     fillGradientType: 1,
     fillGradientStops: [0.35],
-    dropShadow: true,
+    dropShadow: false,
     dropShadowColor: '#000000',
     dropShadowBlur: 10,
     dropShadowDistance: 5,
@@ -49,7 +49,7 @@ export const coin = (props: Props): Coin => {
   const coinText = new PIXI.Text(coinString(), textStyle);
   coinText.anchor.set(0, 0.5);
   coinText.x = 20;
-  coinText.y = 2;
+  coinText.y = -1;
 
   container.addChild(coinText);
 

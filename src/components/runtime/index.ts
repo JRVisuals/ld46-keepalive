@@ -33,15 +33,16 @@ export const runtime = (props: Props): RunTime => {
   // Text
   const textStyle = new PIXI.TextStyle({
     fontFamily: 'Impact, Charcoal, sans-serif',
-    fontSize: 28,
+    fontSize: 26,
     fontWeight: 'bold',
     fill: ['#ccc'],
-    fillGradientType: 1,
-    fillGradientStops: [0.35],
-    dropShadow: true,
+    //fillGradientType: 1,
+    //fillGradientStops: [0.35],
+    dropShadow: false,
     dropShadowColor: '#000000',
     dropShadowBlur: 10,
     dropShadowDistance: 5,
+    align: 'left',
   });
 
   const timeText = new PIXI.Text(timeString(), textStyle);
