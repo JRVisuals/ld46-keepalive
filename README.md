@@ -24,14 +24,17 @@ Given the opportunity I'll keep working on this on and off until the next LD in 
 
 - Additional shop items: other potions, weapons, armor, etc
 - Real enemy artwork and enemy variety (~~slime~~, skeleton, giant head)
+- Refactor enemy manamgement system to make it more dynamic
 - A wave system and increasing difficulty over time
 - ~~A time survived clock~~
 - Title and instructions along with a ~real game loop~ lol
-- More music and sound
+- More music and sound (~~main theme~~, ~~menu theme~~, longer main theme w/ melody)
 - Post effects like glows and sparks
 - Additional animation frames for all the things
 - Ground block variety
 - Background parallax layer variety
+- Finish a run (sorry the princes is in another castle), get bonus/buff, next level (?)
+- Custom bitmap fonts (big one for time and coins, small one for menus)
 
 ### Next Up : Getting the Shop Working
 
