@@ -49,7 +49,7 @@ interface HeroState {
 interface Props {
   pos?: { x: number; y: number };
   heroNubmers: HeroNumbers;
-  hpDisplay: (hp: number, shield: number) => void;
+  hpDisplay: (props) => void;
   coinDisplay: Coin;
   onHeroDied: () => void;
 }
@@ -57,6 +57,8 @@ interface Props {
 export const hero = (props: Props): Hero => {
   const pos = props.pos ?? { x: 0, y: 0 };
   const container = new PIXI.Container();
+
+  container.name = 'hero';
 
   const { heroNubmers, hpDisplay, coinDisplay, onHeroDied } = props;
 
@@ -69,6 +71,7 @@ export const hero = (props: Props): Hero => {
     status: STATUS.SPAWNING,
     effects: {
       shield: 0,
+      shieldExpire: 0,
       cooldownSpeed: 0,
     },
   };
@@ -92,12 +95,13 @@ export const hero = (props: Props): Hero => {
   pixiSound.add('scream', './assets/wilhelm.mp3');
   pixiSound.add('gotHit', './assets/gotHit1.mp3');
   pixiSound.add('attack', './assets/attack1.mp3');
+  pixiSound.add('block', './assets/block1.mp3');
   pixiSound.add('quaf', './assets/quaf.mp3');
   pixiSound.add('quafquick', './assets/quaf-short.mp3');
 
   const updateHpDisplay = (): void => {
     console.log(`now hero has ${state.hp}HP and ${state.effects.shield}SHIELD`);
-    hpDisplay(state.hp, state.effects.shield);
+    hpDisplay({ health: state.hp, shield: state.effects.shield });
   };
 
   // Reset called by play again and also on init
@@ -118,10 +122,7 @@ export const hero = (props: Props): Hero => {
     state.effects.shield < 0 ? (state.effects.shield = 0) : null;
     updateHpDisplay();
     // If we have a duration, set the timeout to nullify the effects
-    duration &&
-      setTimeout(() => {
-        buffShield(amount * -1, 0);
-      }, duration);
+    if (duration > 0) state.effects.shieldExpire = Date.now() + duration;
   };
 
   const doAttack = (): void => {
@@ -132,7 +133,7 @@ export const hero = (props: Props): Hero => {
     anim.gotoAndStop(1);
     state.status = STATUS.DYING;
     state.yVel = -6;
-    pixiSound.play('scream', { loop: false, volume: 0.5 });
+    pixiSound.play('scream', { loop: false, volume: 0.4 });
     onHeroDied();
   };
 
@@ -195,21 +196,22 @@ export const hero = (props: Props): Hero => {
     let newHp;
     let newShield;
     if (state.effects.shield > 0) {
-      // block sound here
-      pixiSound.play('gotHit', { loop: false, volume: 0.2 });
+      pixiSound.play('block', { loop: false, volume: 0.45 });
       newShield =
         state.effects.shield - damageDone >= 0
           ? state.effects.shield - damageDone
           : 0;
       state.effects.shield = newShield;
-      // animate blocked numbers?
+      heroNubmers.animateNumbers({ damageDone: 0, isHealing: false });
+      updateHpDisplay();
     } else {
-      pixiSound.play('gotHit', { loop: false, volume: 0.5 });
+      pixiSound.play('gotHit', { loop: false, volume: 0.65 });
       newHp = state.hp - damageDone >= 0 ? state.hp - damageDone : 0;
       state.hp = newHp;
       heroNubmers.animateNumbers({ damageDone, isHealing: false });
+      updateHpDisplay();
     }
-    updateHpDisplay();
+
     if (newHp === 0) getDead();
   };
 
@@ -269,8 +271,26 @@ export const hero = (props: Props): Hero => {
     container.rotation -= 0.1;
   };
 
+  // Check Buffs
+  const checkBuffs = (): void => {
+    // Shield Ran Out
+    if (state.effects.shield && state.effects.shieldExpire <= Date.now()) {
+      console.log('shield buff ran out');
+      state.effects.shield = 0;
+      updateHpDisplay();
+    }
+    // Shield is almost out
+    const shieldTimeRemaining = state.effects.shieldExpire - Date.now();
+    if (state.effects.shield && shieldTimeRemaining <= 3000) {
+      console.log('shield is low');
+      hpDisplay({ shieldTimeRemaining });
+    }
+  };
+
   const update = (delta): void => {
     // Update called by main
+
+    // Updates Based on State
     switch (state.status) {
       case STATUS.OFF_SCREEN:
         break;
@@ -287,6 +307,8 @@ export const hero = (props: Props): Hero => {
         moveToDeath();
         break;
     }
+
+    checkBuffs();
   };
 
   return {

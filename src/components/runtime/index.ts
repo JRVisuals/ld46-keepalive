@@ -18,6 +18,8 @@ export const runtime = (props: Props): RunTime => {
   container.x = pos.x;
   container.y = pos.y;
 
+  container.name = 'runtime';
+
   const { hero } = props;
 
   let state = {

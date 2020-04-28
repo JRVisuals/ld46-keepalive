@@ -27,6 +27,8 @@ export const enemy = (props: Props): Enemy => {
   container.x = pos.x;
   container.y = pos.y;
 
+  container.name = 'enemy';
+
   const yGrav = 0.3;
 
   const enemyState = {

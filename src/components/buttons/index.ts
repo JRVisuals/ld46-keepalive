@@ -18,6 +18,8 @@ export const btnAgain = (props: Props): Button => {
   container.x = pos.x;
   container.y = pos.y;
 
+  container.name = 'btnAgain';
+
   const texture = PIXI.Texture.from('./assets/btn_again.png');
   const sprite = new PIXI.Sprite(texture);
   sprite.anchor.set(0.5);

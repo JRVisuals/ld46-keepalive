@@ -18,6 +18,8 @@ export const ground = (props: Props): ReturnType => {
   container.x = pos.x;
   container.y = pos.y;
 
+  container.name = 'ground';
+
   const texture = PIXI.Texture.from('./assets/groundTile.png');
 
   // sprite.scale.set(0.5);

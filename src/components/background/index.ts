@@ -16,6 +16,8 @@ export const background = (props: Props): ReturnType => {
   container.x = pos.x;
   container.y = pos.y;
 
+  container.name = 'background';
+
   const texture = PIXI.Texture.from('./assets/bg.png');
   // const sprite = new PIXI.Sprite(texture);
   // sprite.anchor.set(0);

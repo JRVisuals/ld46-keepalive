@@ -19,6 +19,8 @@ export const coin = (props: Props): Coin => {
   container.x = pos.x;
   container.y = pos.y;
 
+  container.name = 'coin';
+
   let state = {
     total: 0,
   };

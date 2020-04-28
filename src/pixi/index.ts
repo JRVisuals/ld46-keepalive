@@ -15,10 +15,11 @@ const initPIXI = (
   const pixiApp = new PIXI.Application(pixiConfig);
   baseElement.appendChild(pixiApp.view);
 
-  const mainContainer = new PIXI.Container();
-  pixiApp.stage.addChild(mainContainer);
+  const container = new PIXI.Container();
+  container.name = 'main';
+  pixiApp.stage.addChild(container);
 
-  return { pixiApp, mainContainer };
+  return { pixiApp, mainContainer: container };
 };
 
 export default initPIXI;

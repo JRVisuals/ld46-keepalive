@@ -23,6 +23,8 @@ The initial build only had a single red potion which cost one coin and a single 
 Given the opportunity I'll keep working on this on and off until the next LD in October of 2020. These are some things I would like to add:
 
 - Additional shop items: other potions, weapons, armor, etc
+  - Potion ideas:
+    - Invisibility - enemies do not attack the hero
 - Real enemy artwork and enemy variety (~~slime~~, skeleton, giant head)
 - Refactor enemy manamgement system to make it more dynamic
 - A wave system and increasing difficulty over time

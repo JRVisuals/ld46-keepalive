@@ -27,6 +27,7 @@ export const enemyManager = (props: ManagerProps): ManagerReturnType => {
   let timeSinceLastSpawn = 0;
 
   const container = new PIXI.Container();
+  container.name = 'enemyManager';
 
   const destroyEnemy = (enemyContainer: PIXI.Sprite | PIXI.Container): void => {
     container.removeChild(enemyContainer);

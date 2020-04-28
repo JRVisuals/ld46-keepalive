@@ -26,6 +26,8 @@ export const shop = (props: Props): Shop => {
   container.x = pos.x;
   container.y = pos.y;
 
+  container.name = 'shop';
+
   const { hero, anims } = props;
 
   const shopState: ShopState = { items: itemList };

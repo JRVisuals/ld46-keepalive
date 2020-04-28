@@ -77,6 +77,6 @@ export const itemList: ItemData[] = [
     cooldown: 7500,
     spriteRef: null,
     cooldownSpriteRef: null,
-    isAvailable: false,
+    isAvailable: true,
   },
 ];

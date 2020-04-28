@@ -18,6 +18,8 @@ export const heroNumbers = (props: Props): HeroNumbers => {
   container.x = pos.x;
   container.y = pos.y;
 
+  container.name = 'heroNumbers';
+
   // Text
   const style = {
     fontFamily: 'Impact, Charcoal, sans-serif',
