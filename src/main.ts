@@ -125,6 +125,12 @@ const bootstrapApp = (props: { animations: any }): BootstrapApp => {
   runtime = COMP.runtime({ hero, pos: { x: 55, y: 30 } });
   mainContainer.addChild(runtime.container);
 
+  // Wave Display
+  const waveDisplay = COMP.waveDisplay({
+    pos: { x: APP_WIDTH - 10, y: APP_HEIGHT - 30 },
+  });
+  mainContainer.addChild(waveDisplay.container);
+
   // Shoppe
   const shop = COMP.shop({
     pos: { x: APP_WIDTH - 217, y: 5 },
@@ -139,6 +145,7 @@ const bootstrapApp = (props: { animations: any }): BootstrapApp => {
       x: APP_WIDTH - TILE_WIDTH,
       y: APP_HEIGHT - TILE_HEIGHT - HERO_HEIGHT * 0.5 + 12,
     },
+    updateWaveDisplay: waveDisplay.updateDisplay,
   });
   mainContainer.addChild(enemyManager.container);
 

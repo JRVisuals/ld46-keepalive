@@ -69,7 +69,6 @@ export const hearts = (props: Props): ReturnType => {
   const triggerLowShieldWarning = (): void => {
     if (!lowShieldTriggered) {
       lowShieldTriggered = true;
-      console.log('lowShieldTriggered');
       shieldTween = gsap.to(shieldIcon, 0.2, {
         pixi: { alpha: 0.65 },
         ease: Power0.easeInOut,

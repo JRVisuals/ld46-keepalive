@@ -27,7 +27,7 @@ Given the opportunity I'll keep working on this on and off until the next LD in 
     - Invisibility - enemies do not attack the hero
 - Real enemy artwork and enemy variety (~~slime~~, skeleton, giant head)
 - Refactor enemy manamgement system to make it more dynamic
-- A wave system and increasing difficulty over time
+- Refactor Component Type definitions to use a base type and extend as needed
 - ~~A time survived clock~~
 - Title and instructions along with a ~real game loop~ lol
 - More music and sound (~~main theme~~, ~~menu theme~~, longer main theme w/ melody)
@@ -38,11 +38,19 @@ Given the opportunity I'll keep working on this on and off until the next LD in 
 - Finish a run (sorry the princes is in another castle), get bonus/buff, next level (?)
 - Custom bitmap fonts (big one for time and coins, small one for menus)
 
-### Next Up : Getting the Shop Working
+### Next Up : Getting Enemy Waves Working
+
+- A wave system and increasing difficulty over time
+  - Wave manager
+  - Wave timer
+  - Data structure to define waves
+  - Refactor existing enemy manager to work with wave system
+
+### (Pause) : Getting the Shop Working
 
 - Get haste potion working
-- Get armor potion workin
 - Tooltips for potions
+- ~~Get armor potion workin~~
 - ~~Have the heart be mask based rather than frames based to show 0-100 HP~~
 - ~~Tweak potions so they can't be purchased until they respawn~~
 - ~~Get spritesheets working~~

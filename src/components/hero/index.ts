@@ -275,14 +275,12 @@ export const hero = (props: Props): Hero => {
   const checkBuffs = (): void => {
     // Shield Ran Out
     if (state.effects.shield && state.effects.shieldExpire <= Date.now()) {
-      console.log('shield buff ran out');
       state.effects.shield = 0;
       updateHpDisplay();
     }
     // Shield is almost out
     const shieldTimeRemaining = state.effects.shieldExpire - Date.now();
     if (state.effects.shield && shieldTimeRemaining <= 3000) {
-      console.log('shield is low');
       hpDisplay({ shieldTimeRemaining });
     }
   };
