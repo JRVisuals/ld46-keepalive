@@ -2,7 +2,7 @@
 
 "ground1.png":
 {
-	"frame": {"x":0,"y":0,"w":64,"h":64},
+	"frame": {"x":1,"y":1,"w":64,"h":64},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":64},
@@ -10,7 +10,7 @@
 },
 "ground2.png":
 {
-	"frame": {"x":0,"y":128,"w":64,"h":64},
+	"frame": {"x":1,"y":133,"w":64,"h":64},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":64},
@@ -18,7 +18,7 @@
 },
 "ground3.png":
 {
-	"frame": {"x":0,"y":192,"w":64,"h":64},
+	"frame": {"x":1,"y":199,"w":64,"h":64},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":64},
@@ -26,7 +26,7 @@
 },
 "ground4.png":
 {
-	"frame": {"x":64,"y":0,"w":64,"h":64},
+	"frame": {"x":1,"y":265,"w":64,"h":64},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":64},
@@ -34,7 +34,7 @@
 },
 "ground5.png":
 {
-	"frame": {"x":128,"y":0,"w":64,"h":64},
+	"frame": {"x":1,"y":331,"w":64,"h":64},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":64},
@@ -42,7 +42,7 @@
 },
 "ground6.png":
 {
-	"frame": {"x":192,"y":0,"w":64,"h":64},
+	"frame": {"x":1,"y":397,"w":64,"h":64},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":64},
@@ -50,7 +50,7 @@
 },
 "ground7.png":
 {
-	"frame": {"x":64,"y":64,"w":64,"h":64},
+	"frame": {"x":1,"y":463,"w":64,"h":64},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":64},
@@ -58,7 +58,7 @@
 },
 "ground8.png":
 {
-	"frame": {"x":64,"y":128,"w":64,"h":64},
+	"frame": {"x":1,"y":529,"w":64,"h":64},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":64},
@@ -66,7 +66,7 @@
 },
 "ground9.png":
 {
-	"frame": {"x":64,"y":192,"w":64,"h":64},
+	"frame": {"x":1,"y":595,"w":64,"h":64},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":64},
@@ -74,7 +74,7 @@
 },
 "ground10.png":
 {
-	"frame": {"x":0,"y":64,"w":64,"h":64},
+	"frame": {"x":1,"y":67,"w":64,"h":64},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":64},
@@ -82,7 +82,7 @@
 },
 "hourglass1.png":
 {
-	"frame": {"x":176,"y":64,"w":15,"h":16},
+	"frame": {"x":37,"y":661,"w":15,"h":16},
 	"rotated": true,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":0,"w":15,"h":16},
@@ -90,15 +90,15 @@
 },
 "hourglass2.png":
 {
-	"frame": {"x":192,"y":64,"w":15,"h":16},
-	"rotated": true,
+	"frame": {"x":19,"y":678,"w":15,"h":16},
+	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":0,"w":15,"h":16},
 	"sourceSize": {"w":16,"h":16}
 },
 "hourglass3.png":
 {
-	"frame": {"x":208,"y":64,"w":15,"h":16},
+	"frame": {"x":36,"y":678,"w":15,"h":16},
 	"rotated": true,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":0,"w":15,"h":16},
@@ -106,7 +106,7 @@
 },
 "hourglass4.png":
 {
-	"frame": {"x":224,"y":64,"w":15,"h":16},
+	"frame": {"x":36,"y":695,"w":15,"h":16},
 	"rotated": true,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":0,"w":15,"h":16},
@@ -114,7 +114,7 @@
 },
 "hourglass5.png":
 {
-	"frame": {"x":128,"y":64,"w":16,"h":16},
+	"frame": {"x":1,"y":661,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -122,7 +122,7 @@
 },
 "hourglass6.png":
 {
-	"frame": {"x":160,"y":64,"w":16,"h":15},
+	"frame": {"x":19,"y":661,"w":16,"h":15},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":15},
@@ -130,7 +130,7 @@
 },
 "hourglass7.png":
 {
-	"frame": {"x":144,"y":64,"w":16,"h":16},
+	"frame": {"x":1,"y":679,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -145,8 +145,8 @@
 	"version": "1.0",
 	"image": "ld46sprites.png",
 	"format": "RGBA8888",
-	"size": {"w":256,"h":256},
+	"size": {"w":66,"h":711},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:47ab3bf43a47763adf1a9a4ae7a307ce:60e6ae3059a4562c6c66276ca82ee0ec:66b9ca235882602baa21d573f2bef1dc$"
+	"smartupdate": "$TexturePacker:SmartUpdate:1767c290b1930ac91151ae689fac1d50:60e6ae3059a4562c6c66276ca82ee0ec:66b9ca235882602baa21d573f2bef1dc$"
 }
 }
