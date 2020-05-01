@@ -11,6 +11,13 @@ interface Props {
   pos?: { x: number; y: number };
 }
 
+/**
+ * Play Again button
+ *
+ * @param props - Standard component properties. **Plus** the `onPress` callback.
+ *
+ * @returns Interface object containing methods that can be called on this module
+ */
 export const btnAgain = (props: Props): Button => {
   const { onPress } = props;
   const pos = props.pos ?? { x: 0, y: 0 };

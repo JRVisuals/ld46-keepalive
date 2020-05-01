@@ -22,6 +22,9 @@ export enum Actions {
   SPEED,
 }
 
+/**
+ * Data for items available in the shoppe
+ */
 export const itemList: ItemData[] = [
   {
     type: Types.POTION,

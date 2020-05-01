@@ -1,4 +1,4 @@
-[ld46](../README.md) › [Globals](../globals.md) › ["main"](../modules/_main_.md) › [BootstrapApp](_main_.bootstrapapp.md)
+[ld46](../README.md) › ["main"](../modules/_main_.md) › [BootstrapApp](_main_.bootstrapapp.md)
 
 # Interface: BootstrapApp
 
@@ -18,4 +18,4 @@
 
 • **app**: *Application*
 
-*Defined in [main.ts:37](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/main.ts#L37)*
+*Defined in [main.ts:37](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/main.ts#L37)*

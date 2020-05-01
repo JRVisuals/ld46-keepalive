@@ -1,4 +1,4 @@
-[ld46](../README.md) › [Globals](../globals.md) › ["components/index"](_components_index_.md)
+[ld46](../README.md) › ["components/index"](_components_index_.md)
 
 # Module: "components/index"
 

@@ -1,4 +1,4 @@
-[ld46](../README.md) › [Globals](../globals.md) › ["components/hearts/index"](_components_hearts_index_.md)
+[ld46](../README.md) › ["components/hearts/index"](_components_hearts_index_.md)
 
 # Module: "components/hearts/index"
 
@@ -19,12 +19,16 @@
 
 ▸ **hearts**(`props`: [Props](../interfaces/_components_background_index_.props.md)): *[ReturnType](../interfaces/_components_audio_index_.returntype.md)*
 
-*Defined in [components/hearts/index.ts:18](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/hearts/index.ts#L18)*
+*Defined in [components/hearts/index.ts:24](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/hearts/index.ts#L24)*
+
+Display UI for Hero health and shield buff states.
 
 **Parameters:**
 
-Name | Type |
------- | ------ |
-`props` | [Props](../interfaces/_components_background_index_.props.md) |
+Name | Type | Description |
+------ | ------ | ------ |
+`props` | [Props](../interfaces/_components_background_index_.props.md) | Standard component properties.  |
 
 **Returns:** *[ReturnType](../interfaces/_components_audio_index_.returntype.md)*
+
+Interface object containing methods that can be called on this module

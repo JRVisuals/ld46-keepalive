@@ -1,4 +1,4 @@
-[ld46](../README.md) › [Globals](../globals.md) › ["components/enemy/manager"](../modules/_components_enemy_manager_.md) › [ManagerProps](_components_enemy_manager_.managerprops.md)
+[ld46](../README.md) › ["components/enemy/manager"](../modules/_components_enemy_manager_.md) › [ManagerProps](_components_enemy_manager_.managerprops.md)
 
 # Interface: ManagerProps
 
@@ -19,7 +19,7 @@
 
 • **pos**? : *object*
 
-*Defined in [components/enemy/manager.ts:22](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/enemy/manager.ts#L22)*
+*Defined in [components/enemy/manager.ts:22](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/enemy/manager.ts#L22)*
 
 #### Type declaration:
 
@@ -33,7 +33,7 @@ ___
 
 • **updateWaveDisplay**: *function*
 
-*Defined in [components/enemy/manager.ts:23](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/enemy/manager.ts#L23)*
+*Defined in [components/enemy/manager.ts:23](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/enemy/manager.ts#L23)*
 
 #### Type declaration:
 

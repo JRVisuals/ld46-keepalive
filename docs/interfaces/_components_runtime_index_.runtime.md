@@ -1,4 +1,4 @@
-[ld46](../README.md) › [Globals](../globals.md) › ["components/runtime/index"](../modules/_components_runtime_index_.md) › [RunTime](_components_runtime_index_.runtime.md)
+[ld46](../README.md) › ["components/runtime/index"](../modules/_components_runtime_index_.md) › [RunTime](_components_runtime_index_.runtime.md)
 
 # Interface: RunTime
 
@@ -20,7 +20,7 @@
 
 • **container**: *Container*
 
-*Defined in [components/runtime/index.ts:5](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/runtime/index.ts#L5)*
+*Defined in [components/runtime/index.ts:5](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/runtime/index.ts#L5)*
 
 ___
 
@@ -28,7 +28,7 @@ ___
 
 • **reset**: *function*
 
-*Defined in [components/runtime/index.ts:6](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/runtime/index.ts#L6)*
+*Defined in [components/runtime/index.ts:6](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/runtime/index.ts#L6)*
 
 #### Type declaration:
 
@@ -40,7 +40,7 @@ ___
 
 • **update**: *function*
 
-*Defined in [components/runtime/index.ts:7](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/runtime/index.ts#L7)*
+*Defined in [components/runtime/index.ts:7](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/runtime/index.ts#L7)*
 
 #### Type declaration:
 

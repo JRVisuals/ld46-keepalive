@@ -1,4 +1,4 @@
-[ld46](../README.md) › [Globals](../globals.md) › ["components/hearts/index"](../modules/_components_hearts_index_.md) › [Props](_components_hearts_index_.props.md)
+[ld46](../README.md) › ["components/hearts/index"](../modules/_components_hearts_index_.md) › [Props](_components_hearts_index_.props.md)
 
 # Interface: Props
 
@@ -18,7 +18,7 @@
 
 • **pos**? : *object*
 
-*Defined in [components/hearts/index.ts:15](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/hearts/index.ts#L15)*
+*Defined in [components/hearts/index.ts:15](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/hearts/index.ts#L15)*
 
 #### Type declaration:
 

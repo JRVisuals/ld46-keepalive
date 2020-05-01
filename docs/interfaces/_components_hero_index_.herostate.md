@@ -1,4 +1,4 @@
-[ld46](../README.md) › [Globals](../globals.md) › ["components/hero/index"](../modules/_components_hero_index_.md) › [HeroState](_components_hero_index_.herostate.md)
+[ld46](../README.md) › ["components/hero/index"](../modules/_components_hero_index_.md) › [HeroState](_components_hero_index_.herostate.md)
 
 # Interface: HeroState
 
@@ -24,7 +24,7 @@
 
 • **effects**: *object*
 
-*Defined in [components/hero/index.ts:43](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/hero/index.ts#L43)*
+*Defined in [components/hero/index.ts:43](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/hero/index.ts#L43)*
 
 #### Type declaration:
 
@@ -38,7 +38,7 @@ ___
 
 • **hp**: *number*
 
-*Defined in [components/hero/index.ts:37](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/hero/index.ts#L37)*
+*Defined in [components/hero/index.ts:37](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/hero/index.ts#L37)*
 
 ___
 
@@ -46,7 +46,7 @@ ___
 
 • **status**: *[STATUS](../enums/_components_hero_index_.status.md)*
 
-*Defined in [components/hero/index.ts:42](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/hero/index.ts#L42)*
+*Defined in [components/hero/index.ts:42](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/hero/index.ts#L42)*
 
 ___
 
@@ -54,7 +54,7 @@ ___
 
 • **xOrrig**: *number*
 
-*Defined in [components/hero/index.ts:38](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/hero/index.ts#L38)*
+*Defined in [components/hero/index.ts:38](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/hero/index.ts#L38)*
 
 ___
 
@@ -62,7 +62,7 @@ ___
 
 • **xVel**: *number*
 
-*Defined in [components/hero/index.ts:41](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/hero/index.ts#L41)*
+*Defined in [components/hero/index.ts:41](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/hero/index.ts#L41)*
 
 ___
 
@@ -70,7 +70,7 @@ ___
 
 • **yOrrig**: *number*
 
-*Defined in [components/hero/index.ts:39](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/hero/index.ts#L39)*
+*Defined in [components/hero/index.ts:39](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/hero/index.ts#L39)*
 
 ___
 
@@ -78,4 +78,4 @@ ___
 
 • **yVel**: *number*
 
-*Defined in [components/hero/index.ts:40](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/hero/index.ts#L40)*
+*Defined in [components/hero/index.ts:40](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/hero/index.ts#L40)*

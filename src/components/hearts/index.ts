@@ -14,7 +14,13 @@ interface ReturnType {
 interface Props {
   pos?: { x: number; y: number };
 }
-
+/**
+ * Display UI for Hero health and shield buff states.
+ *
+ * @param props - Standard component properties.
+ *
+ * @returns Interface object containing methods that can be called on this module
+ */
 export const hearts = (props: Props): ReturnType => {
   const pos = props.pos ?? { x: 0, y: 0 };
   const container = new PIXI.Container();

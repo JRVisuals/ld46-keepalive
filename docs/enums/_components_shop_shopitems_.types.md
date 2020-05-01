@@ -1,4 +1,4 @@
-[ld46](../README.md) › [Globals](../globals.md) › ["components/shop/shopItems"](../modules/_components_shop_shopitems_.md) › [Types](_components_shop_shopitems_.types.md)
+[ld46](../README.md) › ["components/shop/shopItems"](../modules/_components_shop_shopitems_.md) › [Types](_components_shop_shopitems_.types.md)
 
 # Enumeration: Types
 
@@ -14,4 +14,4 @@
 
 • **POTION**:
 
-*Defined in [components/shop/shopItems.ts:17](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/shop/shopItems.ts#L17)*
+*Defined in [components/shop/shopItems.ts:17](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/shop/shopItems.ts#L17)*

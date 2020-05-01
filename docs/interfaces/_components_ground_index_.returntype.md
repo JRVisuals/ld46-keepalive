@@ -1,4 +1,4 @@
-[ld46](../README.md) › [Globals](../globals.md) › ["components/ground/index"](../modules/_components_ground_index_.md) › [ReturnType](_components_ground_index_.returntype.md)
+[ld46](../README.md) › ["components/ground/index"](../modules/_components_ground_index_.md) › [ReturnType](_components_ground_index_.returntype.md)
 
 # Interface: ReturnType
 
@@ -19,7 +19,7 @@
 
 • **container**: *Container*
 
-*Defined in [components/ground/index.ts:7](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/ground/index.ts#L7)*
+*Defined in [components/ground/index.ts:7](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/ground/index.ts#L7)*
 
 ___
 
@@ -27,7 +27,7 @@ ___
 
 • **update**: *function*
 
-*Defined in [components/ground/index.ts:8](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/ground/index.ts#L8)*
+*Defined in [components/ground/index.ts:8](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/ground/index.ts#L8)*
 
 #### Type declaration:
 

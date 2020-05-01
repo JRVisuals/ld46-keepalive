@@ -1,4 +1,4 @@
-[ld46](../README.md) › [Globals](../globals.md) › ["components/runtime/index"](../modules/_components_runtime_index_.md) › [Props](_components_runtime_index_.props.md)
+[ld46](../README.md) › ["components/runtime/index"](../modules/_components_runtime_index_.md) › [Props](_components_runtime_index_.props.md)
 
 # Interface: Props
 
@@ -19,7 +19,7 @@
 
 • **hero**: *[Hero](_components_hero_index_.hero.md)*
 
-*Defined in [components/runtime/index.ts:12](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/runtime/index.ts#L12)*
+*Defined in [components/runtime/index.ts:12](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/runtime/index.ts#L12)*
 
 ___
 
@@ -27,7 +27,7 @@ ___
 
 • **pos**? : *object*
 
-*Defined in [components/runtime/index.ts:11](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/runtime/index.ts#L11)*
+*Defined in [components/runtime/index.ts:11](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/runtime/index.ts#L11)*
 
 #### Type declaration:
 

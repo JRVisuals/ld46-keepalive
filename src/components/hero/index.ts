@@ -54,6 +54,13 @@ interface Props {
   onHeroDied: () => void;
 }
 
+/**
+ * **Our Hero.** Handles all of the hero display and logic other than external items like {@link heroNumbers}, {@link hpDisplay}, {@link coinDisplay}, etc.
+ *
+ * @param props - Standard component properties. **Plus** References and callbacks to external modules.
+ *
+ * @returns Interface object containing methods that can be called on this module
+ */
 export const hero = (props: Props): Hero => {
   const pos = props.pos ?? { x: 0, y: 0 };
   const container = new PIXI.Container();

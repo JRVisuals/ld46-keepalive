@@ -9,10 +9,16 @@ export interface Coin {
 }
 
 interface Props {
-  app?: PIXI.Application;
   pos?: { x: number; y: number };
 }
 
+/**
+ * Display UI for Hero gold (coins) earned.
+ *
+ * @param props - Standard component properties.
+ *
+ * @returns Interface object containing methods that can be called on this module
+ */
 export const coin = (props: Props): Coin => {
   const pos = props.pos ?? { x: 0, y: 0 };
   const container = new PIXI.Container();

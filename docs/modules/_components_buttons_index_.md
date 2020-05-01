@@ -1,4 +1,4 @@
-[ld46](../README.md) › [Globals](../globals.md) › ["components/buttons/index"](_components_buttons_index_.md)
+[ld46](../README.md) › ["components/buttons/index"](_components_buttons_index_.md)
 
 # Module: "components/buttons/index"
 
@@ -19,12 +19,16 @@
 
 ▸ **btnAgain**(`props`: [Props](../interfaces/_components_background_index_.props.md)): *[Button](../interfaces/_components_buttons_index_.button.md)*
 
-*Defined in [components/buttons/index.ts:14](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/buttons/index.ts#L14)*
+*Defined in [components/buttons/index.ts:21](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/buttons/index.ts#L21)*
+
+Play Again button
 
 **Parameters:**
 
-Name | Type |
------- | ------ |
-`props` | [Props](../interfaces/_components_background_index_.props.md) |
+Name | Type | Description |
+------ | ------ | ------ |
+`props` | [Props](../interfaces/_components_background_index_.props.md) | Standard component properties. **Plus** the `onPress` callback.  |
 
 **Returns:** *[Button](../interfaces/_components_buttons_index_.button.md)*
+
+Interface object containing methods that can be called on this module

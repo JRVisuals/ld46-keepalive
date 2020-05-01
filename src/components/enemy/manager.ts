@@ -28,6 +28,14 @@ interface State {
   currentWaveData: Wave;
   currentWaveEnemiesSlain: number;
 }
+
+/**
+ * Manages various aspects of on-screen enemies and waves of enemies including collision detection between enemies and The Hero.
+ *
+ * @param props - Standard component properties. **Plus** A callback to update {@link waveDisplay}
+ *
+ * @returns Interface object containing methods that can be called on this module
+ */
 export const enemyManager = (props: ManagerProps): ManagerReturnType => {
   const pos = props.pos ?? { x: 0, y: 0 };
   const { updateWaveDisplay } = props;

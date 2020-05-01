@@ -1,3 +1,6 @@
+/**
+ * Barrel file for all component modules
+ */
 export { audio } from './audio';
 export { background } from './background';
 export { btnAgain } from './buttons';

@@ -12,6 +12,13 @@ interface Props {
   hero: HERO.Hero;
 }
 
+/**
+ * Run Time UI. Displays how long the current run has been going/
+ *
+ * @param props - Standard component properties. **Plus** A reference to the Hero instance.
+ *
+ * @returns Interface object containing methods that can be called on this module
+ */
 export const runtime = (props: Props): RunTime => {
   const pos = props.pos ?? { x: 0, y: 0 };
   const container = new PIXI.Container();

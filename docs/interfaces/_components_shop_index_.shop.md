@@ -1,4 +1,4 @@
-[ld46](../README.md) › [Globals](../globals.md) › ["components/shop/index"](../modules/_components_shop_index_.md) › [Shop](_components_shop_index_.shop.md)
+[ld46](../README.md) › ["components/shop/index"](../modules/_components_shop_index_.md) › [Shop](_components_shop_index_.shop.md)
 
 # Interface: Shop
 
@@ -19,7 +19,7 @@
 
 • **container**: *Container*
 
-*Defined in [components/shop/index.ts:12](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/shop/index.ts#L12)*
+*Defined in [components/shop/index.ts:12](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/shop/index.ts#L12)*
 
 ___
 
@@ -27,7 +27,7 @@ ___
 
 • **update**: *function*
 
-*Defined in [components/shop/index.ts:13](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/shop/index.ts#L13)*
+*Defined in [components/shop/index.ts:13](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/shop/index.ts#L13)*
 
 #### Type declaration:
 

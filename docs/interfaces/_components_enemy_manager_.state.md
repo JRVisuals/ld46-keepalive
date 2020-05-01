@@ -1,4 +1,4 @@
-[ld46](../README.md) › [Globals](../globals.md) › ["components/enemy/manager"](../modules/_components_enemy_manager_.md) › [State](_components_enemy_manager_.state.md)
+[ld46](../README.md) › ["components/enemy/manager"](../modules/_components_enemy_manager_.md) › [State](_components_enemy_manager_.state.md)
 
 # Interface: State
 
@@ -20,7 +20,7 @@
 
 • **currentWaveData**: *[Wave](../modules/_components_enemy_waves_.md#wave)*
 
-*Defined in [components/enemy/manager.ts:28](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/enemy/manager.ts#L28)*
+*Defined in [components/enemy/manager.ts:28](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/enemy/manager.ts#L28)*
 
 ___
 
@@ -28,7 +28,7 @@ ___
 
 • **currentWaveEnemiesSlain**: *number*
 
-*Defined in [components/enemy/manager.ts:29](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/enemy/manager.ts#L29)*
+*Defined in [components/enemy/manager.ts:29](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/enemy/manager.ts#L29)*
 
 ___
 
@@ -36,4 +36,4 @@ ___
 
 • **currentWaveNum**: *number*
 
-*Defined in [components/enemy/manager.ts:27](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/enemy/manager.ts#L27)*
+*Defined in [components/enemy/manager.ts:27](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/enemy/manager.ts#L27)*

@@ -8,10 +8,16 @@ export interface HeroNumbers {
 }
 
 interface Props {
-  app?: PIXI.Application;
   pos?: { x: number; y: number };
 }
 
+/**
+ * Damage an healing numbers displayed above the hero. Called by the {@link Hero} module when the hero takes damage or heals.
+ *
+ * @param props - Standard component properties.
+ *
+ * @returns Interface object containing methods that can be called on this module
+ */
 export const heroNumbers = (props: Props): HeroNumbers => {
   const pos = props.pos ?? { x: 0, y: 0 };
   const container = new PIXI.Container();

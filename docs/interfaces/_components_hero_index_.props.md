@@ -1,4 +1,4 @@
-[ld46](../README.md) › [Globals](../globals.md) › ["components/hero/index"](../modules/_components_hero_index_.md) › [Props](_components_hero_index_.props.md)
+[ld46](../README.md) › ["components/hero/index"](../modules/_components_hero_index_.md) › [Props](_components_hero_index_.props.md)
 
 # Interface: Props
 
@@ -22,7 +22,7 @@
 
 • **coinDisplay**: *[Coin](_components_coin_index_.coin.md)*
 
-*Defined in [components/hero/index.ts:53](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/hero/index.ts#L53)*
+*Defined in [components/hero/index.ts:53](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/hero/index.ts#L53)*
 
 ___
 
@@ -30,7 +30,7 @@ ___
 
 • **heroNubmers**: *[HeroNumbers](_components_heronumbers_index_.heronumbers.md)*
 
-*Defined in [components/hero/index.ts:51](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/hero/index.ts#L51)*
+*Defined in [components/hero/index.ts:51](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/hero/index.ts#L51)*
 
 ___
 
@@ -38,7 +38,7 @@ ___
 
 • **hpDisplay**: *function*
 
-*Defined in [components/hero/index.ts:52](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/hero/index.ts#L52)*
+*Defined in [components/hero/index.ts:52](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/hero/index.ts#L52)*
 
 #### Type declaration:
 
@@ -56,7 +56,7 @@ ___
 
 • **onHeroDied**: *function*
 
-*Defined in [components/hero/index.ts:54](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/hero/index.ts#L54)*
+*Defined in [components/hero/index.ts:54](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/hero/index.ts#L54)*
 
 #### Type declaration:
 
@@ -68,7 +68,7 @@ ___
 
 • **pos**? : *object*
 
-*Defined in [components/hero/index.ts:50](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/hero/index.ts#L50)*
+*Defined in [components/hero/index.ts:50](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/hero/index.ts#L50)*
 
 #### Type declaration:
 

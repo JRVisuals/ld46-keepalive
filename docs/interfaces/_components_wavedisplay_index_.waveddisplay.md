@@ -1,4 +1,4 @@
-[ld46](../README.md) › [Globals](../globals.md) › ["components/waveDisplay/index"](../modules/_components_wavedisplay_index_.md) › [WavedDisplay](_components_wavedisplay_index_.waveddisplay.md)
+[ld46](../README.md) › ["components/waveDisplay/index"](../modules/_components_wavedisplay_index_.md) › [WavedDisplay](_components_wavedisplay_index_.waveddisplay.md)
 
 # Interface: WavedDisplay
 
@@ -21,7 +21,7 @@
 
 • **container**: *Container*
 
-*Defined in [components/waveDisplay/index.ts:17](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/waveDisplay/index.ts#L17)*
+*Defined in [components/waveDisplay/index.ts:17](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/waveDisplay/index.ts#L17)*
 
 ___
 
@@ -29,7 +29,7 @@ ___
 
 • **reset**: *function*
 
-*Defined in [components/waveDisplay/index.ts:18](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/waveDisplay/index.ts#L18)*
+*Defined in [components/waveDisplay/index.ts:18](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/waveDisplay/index.ts#L18)*
 
 #### Type declaration:
 
@@ -41,7 +41,7 @@ ___
 
 • **update**: *function*
 
-*Defined in [components/waveDisplay/index.ts:19](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/waveDisplay/index.ts#L19)*
+*Defined in [components/waveDisplay/index.ts:19](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/waveDisplay/index.ts#L19)*
 
 #### Type declaration:
 
@@ -59,7 +59,7 @@ ___
 
 • **updateDisplay**: *function*
 
-*Defined in [components/waveDisplay/index.ts:20](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/waveDisplay/index.ts#L20)*
+*Defined in [components/waveDisplay/index.ts:20](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/waveDisplay/index.ts#L20)*
 
 #### Type declaration:
 

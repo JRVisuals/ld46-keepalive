@@ -8,6 +8,13 @@ export interface PixiConfig {
   resolution: number;
 }
 
+/**
+ * Initializes the PIXI container and adds it to the DOM.
+ *
+ * @param pixiConfig - PIXI configuration object
+ * @param baseElement - DOM element to add PIXI canvas to
+ *
+ */
 const initPIXI = (
   pixiConfig: PixiConfig,
   baseElement: HTMLElement

@@ -1,4 +1,4 @@
-[ld46](../README.md) › [Globals](../globals.md) › ["components/enemy/index"](../modules/_components_enemy_index_.md) › [Props](_components_enemy_index_.props.md)
+[ld46](../README.md) › ["components/enemy/index"](../modules/_components_enemy_index_.md) › [Props](_components_enemy_index_.props.md)
 
 # Interface: Props
 
@@ -20,7 +20,7 @@
 
 • **app**? : *Application*
 
-*Defined in [components/enemy/index.ts:19](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/enemy/index.ts#L19)*
+*Defined in [components/enemy/index.ts:19](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/enemy/index.ts#L19)*
 
 ___
 
@@ -28,7 +28,7 @@ ___
 
 • **destroyManagerInstance**: *function*
 
-*Defined in [components/enemy/index.ts:21](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/enemy/index.ts#L21)*
+*Defined in [components/enemy/index.ts:21](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/enemy/index.ts#L21)*
 
 #### Type declaration:
 
@@ -46,7 +46,7 @@ ___
 
 • **pos**? : *object*
 
-*Defined in [components/enemy/index.ts:20](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/enemy/index.ts#L20)*
+*Defined in [components/enemy/index.ts:20](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/enemy/index.ts#L20)*
 
 #### Type declaration:
 

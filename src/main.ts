@@ -68,6 +68,12 @@ preloader.onProgress.add((e, f) =>
   console.log(`Progress ${Math.floor(e.progress)} (${f.name}.${f.extension})`)
 );
 
+/**
+ * Kicks off the application proper by instantiating the various components and wiring up their update methods to the update loop of the main application.
+ *
+ * @param props - Preloaded assets ({@link Animations)}, {@link Sounds}) are passed in via props
+ *
+ */
 const bootstrapApp = (props: {
   animations: Animations;
   sounds: Sounds;

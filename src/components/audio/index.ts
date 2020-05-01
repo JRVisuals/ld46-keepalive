@@ -13,6 +13,8 @@ interface ReturnType {
  * various aspects of the audio for the game.
  *
  * @param sounds - an object containing a number of loader resources
+ *
+ * @returns Interface object containing methods that can be called on this module
  */
 export const audio = (sounds: Sounds): ReturnType => {
   const musicBed = PIXISOUND.default;

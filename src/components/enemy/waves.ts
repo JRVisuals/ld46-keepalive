@@ -6,6 +6,9 @@ export type Wave = {
   respawnCooldown: number;
 };
 
+/**
+ * Data for waves of enemies. Used by the enemy manager
+ */
 export const waves: Array<Wave> = [
   {
     name: 'So it begins...',

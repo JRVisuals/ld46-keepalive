@@ -20,6 +20,13 @@ interface Props {
   anims: { hourglass: PIXI.Spritesheet };
 }
 
+/**
+ * Shop UI and logic module. Handles the display of the item shop for the hero and related animations.
+ *
+ * @param props - Standard component properties.  **Plus** A reference to the Hero instance, spritesheet animations for display.
+ *
+ * @returns Interface object containing methods that can be called on this module
+ */
 export const shop = (props: Props): Shop => {
   const pos = props.pos ?? { x: 0, y: 0 };
   const container = new PIXI.Container();

@@ -1,4 +1,4 @@
-[ld46](../README.md) › [Globals](../globals.md) › ["components/shop/shopItems"](_components_shop_shopitems_.md)
+[ld46](../README.md) › ["components/shop/shopItems"](_components_shop_shopitems_.md)
 
 # Module: "components/shop/shopItems"
 
@@ -23,7 +23,7 @@
 
 Ƭ **ItemData**: *object*
 
-*Defined in [components/shop/shopItems.ts:1](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/shop/shopItems.ts#L1)*
+*Defined in [components/shop/shopItems.ts:1](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/shop/shopItems.ts#L1)*
 
 #### Type declaration:
 
@@ -114,4 +114,6 @@
   },
 ]
 
-*Defined in [components/shop/shopItems.ts:25](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/shop/shopItems.ts#L25)*
+*Defined in [components/shop/shopItems.ts:28](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/shop/shopItems.ts#L28)*
+
+Data for items available in the shoppe

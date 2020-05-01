@@ -1,4 +1,4 @@
-[ld46](../README.md) › [Globals](../globals.md) › ["components/heroNumbers/index"](../modules/_components_heronumbers_index_.md) › [HeroNumbers](_components_heronumbers_index_.heronumbers.md)
+[ld46](../README.md) › ["components/heroNumbers/index"](../modules/_components_heronumbers_index_.md) › [HeroNumbers](_components_heronumbers_index_.heronumbers.md)
 
 # Interface: HeroNumbers
 
@@ -20,7 +20,7 @@
 
 • **animateNumbers**: *function*
 
-*Defined in [components/heroNumbers/index.ts:7](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/heroNumbers/index.ts#L7)*
+*Defined in [components/heroNumbers/index.ts:7](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/heroNumbers/index.ts#L7)*
 
 #### Type declaration:
 
@@ -41,7 +41,7 @@ ___
 
 • **container**: *Container*
 
-*Defined in [components/heroNumbers/index.ts:5](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/heroNumbers/index.ts#L5)*
+*Defined in [components/heroNumbers/index.ts:5](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/heroNumbers/index.ts#L5)*
 
 ___
 
@@ -49,7 +49,7 @@ ___
 
 • **update**: *function*
 
-*Defined in [components/heroNumbers/index.ts:6](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/heroNumbers/index.ts#L6)*
+*Defined in [components/heroNumbers/index.ts:6](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/heroNumbers/index.ts#L6)*
 
 #### Type declaration:
 

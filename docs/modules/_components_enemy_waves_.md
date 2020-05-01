@@ -1,4 +1,4 @@
-[ld46](../README.md) › [Globals](../globals.md) › ["components/enemy/waves"](_components_enemy_waves_.md)
+[ld46](../README.md) › ["components/enemy/waves"](_components_enemy_waves_.md)
 
 # Module: "components/enemy/waves"
 
@@ -18,7 +18,7 @@
 
 Ƭ **Wave**: *object*
 
-*Defined in [components/enemy/waves.ts:3](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/enemy/waves.ts#L3)*
+*Defined in [components/enemy/waves.ts:3](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/enemy/waves.ts#L3)*
 
 #### Type declaration:
 
@@ -58,4 +58,6 @@
   },
 ]
 
-*Defined in [components/enemy/waves.ts:9](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/enemy/waves.ts#L9)*
+*Defined in [components/enemy/waves.ts:12](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/enemy/waves.ts#L12)*
+
+Data for waves of enemies. Used by the enemy manager

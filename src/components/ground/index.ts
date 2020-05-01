@@ -12,6 +12,13 @@ interface Props {
   pos?: { x: number; y: number };
 }
 
+/**
+ * The ground graphics and animation. Does not include background elements.
+ *
+ * @param props - Standard component properties.
+ *
+ * @returns Interface object containing methods that can be called on this module
+ */
 export const ground = (props: Props): ReturnType => {
   const pos = props.pos ?? { x: 0, y: 0 };
   const container = new PIXI.Container();

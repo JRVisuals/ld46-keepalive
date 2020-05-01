@@ -21,6 +21,13 @@ interface Props {
   destroyManagerInstance: (enemy: PIXI.Sprite | PIXI.Container) => void;
 }
 
+/**
+ * A single enemy type (Gelatinous Cube). Handles animation and state for a single enemy.
+ *
+ * @param props - Standard component properties. **Plus** A callback to destroy the enemy manager when needed
+ *
+ * @returns Interface object containing methods that can be called on this module
+ */
 export const enemy = (props: Props): Enemy => {
   const pos = props.pos ?? { x: 0, y: 0 };
   const container = new PIXI.Container();

@@ -1,4 +1,4 @@
-[ld46](../README.md) › [Globals](../globals.md) › ["components/shop/index"](../modules/_components_shop_index_.md) › [Props](_components_shop_index_.props.md)
+[ld46](../README.md) › ["components/shop/index"](../modules/_components_shop_index_.md) › [Props](_components_shop_index_.props.md)
 
 # Interface: Props
 
@@ -21,7 +21,7 @@
 
 • **anims**: *object*
 
-*Defined in [components/shop/index.ts:20](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/shop/index.ts#L20)*
+*Defined in [components/shop/index.ts:20](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/shop/index.ts#L20)*
 
 #### Type declaration:
 
@@ -33,7 +33,7 @@ ___
 
 • **app**? : *Application*
 
-*Defined in [components/shop/index.ts:17](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/shop/index.ts#L17)*
+*Defined in [components/shop/index.ts:17](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/shop/index.ts#L17)*
 
 ___
 
@@ -41,7 +41,7 @@ ___
 
 • **hero**: *[Hero](_components_hero_index_.hero.md)*
 
-*Defined in [components/shop/index.ts:19](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/shop/index.ts#L19)*
+*Defined in [components/shop/index.ts:19](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/shop/index.ts#L19)*
 
 ___
 
@@ -49,7 +49,7 @@ ___
 
 • **pos**? : *object*
 
-*Defined in [components/shop/index.ts:18](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/shop/index.ts#L18)*
+*Defined in [components/shop/index.ts:18](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/shop/index.ts#L18)*
 
 #### Type declaration:
 

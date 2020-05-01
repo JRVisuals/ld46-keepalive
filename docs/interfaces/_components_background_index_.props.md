@@ -1,4 +1,4 @@
-[ld46](../README.md) › [Globals](../globals.md) › ["components/background/index"](../modules/_components_background_index_.md) › [Props](_components_background_index_.props.md)
+[ld46](../README.md) › ["components/background/index"](../modules/_components_background_index_.md) › [Props](_components_background_index_.props.md)
 
 # Interface: Props
 
@@ -18,7 +18,7 @@
 
 • **pos**? : *object*
 
-*Defined in [components/background/index.ts:10](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/background/index.ts#L10)*
+*Defined in [components/background/index.ts:10](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/background/index.ts#L10)*
 
 #### Type declaration:
 

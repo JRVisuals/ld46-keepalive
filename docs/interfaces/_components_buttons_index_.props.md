@@ -1,4 +1,4 @@
-[ld46](../README.md) › [Globals](../globals.md) › ["components/buttons/index"](../modules/_components_buttons_index_.md) › [Props](_components_buttons_index_.props.md)
+[ld46](../README.md) › ["components/buttons/index"](../modules/_components_buttons_index_.md) › [Props](_components_buttons_index_.props.md)
 
 # Interface: Props
 
@@ -19,7 +19,7 @@
 
 • **onPress**: *function*
 
-*Defined in [components/buttons/index.ts:10](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/buttons/index.ts#L10)*
+*Defined in [components/buttons/index.ts:10](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/buttons/index.ts#L10)*
 
 #### Type declaration:
 
@@ -31,7 +31,7 @@ ___
 
 • **pos**? : *object*
 
-*Defined in [components/buttons/index.ts:11](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/buttons/index.ts#L11)*
+*Defined in [components/buttons/index.ts:11](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/buttons/index.ts#L11)*
 
 #### Type declaration:
 

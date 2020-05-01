@@ -1,4 +1,4 @@
-[ld46](../README.md) › [Globals](../globals.md) › ["components/hero/index"](_components_hero_index_.md)
+[ld46](../README.md) › ["components/hero/index"](_components_hero_index_.md)
 
 # Module: "components/hero/index"
 
@@ -24,12 +24,16 @@
 
 ▸ **hero**(`props`: [Props](../interfaces/_components_background_index_.props.md)): *[Hero](../interfaces/_components_hero_index_.hero.md)*
 
-*Defined in [components/hero/index.ts:57](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/hero/index.ts#L57)*
+*Defined in [components/hero/index.ts:64](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/hero/index.ts#L64)*
+
+**Our Hero.** Handles all of the hero display and logic other than external items like [heroNumbers](_components_heronumbers_index_.md#const-heronumbers), [hpDisplay](../interfaces/_components_hero_index_.props.md#hpdisplay), [coinDisplay](../interfaces/_components_hero_index_.props.md#coindisplay), etc.
 
 **Parameters:**
 
-Name | Type |
------- | ------ |
-`props` | [Props](../interfaces/_components_background_index_.props.md) |
+Name | Type | Description |
+------ | ------ | ------ |
+`props` | [Props](../interfaces/_components_background_index_.props.md) | Standard component properties. **Plus** References and callbacks to external modules.  |
 
 **Returns:** *[Hero](../interfaces/_components_hero_index_.hero.md)*
+
+Interface object containing methods that can be called on this module

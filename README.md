@@ -71,6 +71,7 @@ Given the opportunity I'll keep working on this on and off until the next LD in 
 - `yarn start` to go into development mode with live reload
 - `yarn clean` to clean the `/dist` directory
 - `yarn build` to create a distributable bundle in `/dist`
+- `yarn docs` to generate markdown documentation in `/docs`
 
 # The Stack
 
@@ -78,3 +79,4 @@ Given the opportunity I'll keep working on this on and off until the next LD in 
 - TypeScript
 - Prettier
 - Rollup
+- TSDoc / TypeDoc

@@ -1,4 +1,4 @@
-[ld46](../README.md) › [Globals](../globals.md) › ["components/hero/index"](../modules/_components_hero_index_.md) › [Hero](_components_hero_index_.hero.md)
+[ld46](../README.md) › ["components/hero/index"](../modules/_components_hero_index_.md) › [Hero](_components_hero_index_.hero.md)
 
 # Interface: Hero
 
@@ -26,7 +26,7 @@
 
 • **buyPotion**: *function*
 
-*Defined in [components/hero/index.ts:25](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/hero/index.ts#L25)*
+*Defined in [components/hero/index.ts:25](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/hero/index.ts#L25)*
 
 #### Type declaration:
 
@@ -44,7 +44,7 @@ ___
 
 • **container**: *Container*
 
-*Defined in [components/hero/index.ts:17](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/hero/index.ts#L17)*
+*Defined in [components/hero/index.ts:17](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/hero/index.ts#L17)*
 
 ___
 
@@ -52,7 +52,7 @@ ___
 
 • **doAttack**: *function*
 
-*Defined in [components/hero/index.ts:23](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/hero/index.ts#L23)*
+*Defined in [components/hero/index.ts:23](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/hero/index.ts#L23)*
 
 #### Type declaration:
 
@@ -64,7 +64,7 @@ ___
 
 • **getCoin**: *function*
 
-*Defined in [components/hero/index.ts:22](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/hero/index.ts#L22)*
+*Defined in [components/hero/index.ts:22](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/hero/index.ts#L22)*
 
 #### Type declaration:
 
@@ -76,7 +76,7 @@ ___
 
 • **getCurrentFrame**: *function*
 
-*Defined in [components/hero/index.ts:20](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/hero/index.ts#L20)*
+*Defined in [components/hero/index.ts:20](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/hero/index.ts#L20)*
 
 #### Type declaration:
 
@@ -88,7 +88,7 @@ ___
 
 • **getStatus**: *function*
 
-*Defined in [components/hero/index.ts:24](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/hero/index.ts#L24)*
+*Defined in [components/hero/index.ts:24](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/hero/index.ts#L24)*
 
 #### Type declaration:
 
@@ -100,7 +100,7 @@ ___
 
 • **gotHit**: *function*
 
-*Defined in [components/hero/index.ts:21](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/hero/index.ts#L21)*
+*Defined in [components/hero/index.ts:21](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/hero/index.ts#L21)*
 
 #### Type declaration:
 
@@ -112,7 +112,7 @@ ___
 
 • **reset**: *function*
 
-*Defined in [components/hero/index.ts:18](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/hero/index.ts#L18)*
+*Defined in [components/hero/index.ts:18](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/hero/index.ts#L18)*
 
 #### Type declaration:
 
@@ -124,7 +124,7 @@ ___
 
 • **update**: *function*
 
-*Defined in [components/hero/index.ts:19](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/hero/index.ts#L19)*
+*Defined in [components/hero/index.ts:19](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/components/hero/index.ts#L19)*
 
 #### Type declaration:
 

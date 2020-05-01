@@ -1,4 +1,4 @@
-[ld46](../README.md) › [Globals](../globals.md) › ["pixi/index"](../modules/_pixi_index_.md) › [PixiConfig](_pixi_index_.pixiconfig.md)
+[ld46](../README.md) › ["pixi/index"](../modules/_pixi_index_.md) › [PixiConfig](_pixi_index_.pixiconfig.md)
 
 # Interface: PixiConfig
 
@@ -22,7 +22,7 @@
 
 • **antialias**: *boolean*
 
-*Defined in [pixi/index.ts:7](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/pixi/index.ts#L7)*
+*Defined in [pixi/index.ts:7](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/pixi/index.ts#L7)*
 
 ___
 
@@ -30,7 +30,7 @@ ___
 
 • **backgroundColor**: *number*
 
-*Defined in [pixi/index.ts:6](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/pixi/index.ts#L6)*
+*Defined in [pixi/index.ts:6](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/pixi/index.ts#L6)*
 
 ___
 
@@ -38,7 +38,7 @@ ___
 
 • **height**: *number*
 
-*Defined in [pixi/index.ts:5](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/pixi/index.ts#L5)*
+*Defined in [pixi/index.ts:5](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/pixi/index.ts#L5)*
 
 ___
 
@@ -46,7 +46,7 @@ ___
 
 • **resolution**: *number*
 
-*Defined in [pixi/index.ts:8](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/pixi/index.ts#L8)*
+*Defined in [pixi/index.ts:8](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/pixi/index.ts#L8)*
 
 ___
 
@@ -54,4 +54,4 @@ ___
 
 • **width**: *number*
 
-*Defined in [pixi/index.ts:4](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/pixi/index.ts#L4)*
+*Defined in [pixi/index.ts:4](https://github.com/jrod-disco/ld46-keepalive/blob/2baec31/src/pixi/index.ts#L4)*
