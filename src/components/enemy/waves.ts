@@ -2,17 +2,15 @@
 
 export type Wave = {
   name: string;
-  duration: number;
   totalEnemies: number;
   respawnCooldown: number;
 };
 
 export const waves: Array<Wave> = [
   {
-    name: 'First Wave',
-    duration: 10000,
-    totalEnemies: 5,
-    respawnCooldown: 6000,
+    name: 'So it begins...',
+    totalEnemies: 3,
+    respawnCooldown: 3000,
     // enemies: [
     //   {
     //     spriteTexture: '',
@@ -22,15 +20,13 @@ export const waves: Array<Wave> = [
     // ],
   },
   {
-    name: 'Second Wave',
-    duration: 15000,
+    name: "Wait. There's more?!",
     totalEnemies: 10,
     respawnCooldown: 3000,
   },
 
   {
-    name: 'Final Wave',
-    duration: 15000,
+    name: 'Cubes... take me now!',
     totalEnemies: 20,
     respawnCooldown: 1500,
   },

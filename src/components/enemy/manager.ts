@@ -13,6 +13,7 @@ import { WaveInfo } from '../waveDisplay/';
 
 interface ManagerReturnType {
   container: PIXI.Container;
+  reset: () => void;
   update: (delta: number) => void;
   checkCollisions: (hero: HERO.Hero) => void;
 }
@@ -43,6 +44,22 @@ export const enemyManager = (props: ManagerProps): ManagerReturnType => {
 
   let timeSinceLastSpawn = 0;
 
+  // Reset called by play again and also on init
+  const reset = (): void => {
+    state = { ...initialState };
+    //enemiesOnScreen = [];
+    timeSinceLastSpawn = 0;
+    const waveData = waves[state.currentWaveNum];
+    state = { ...state, currentWaveData: waveData, currentWaveEnemiesSlain: 0 };
+    updateWaveDisplay({
+      num: state.currentWaveNum,
+      name: state.currentWaveData?.name ?? 'The Void',
+      totalEnemies: state.currentWaveData?.totalEnemies ?? 0,
+      enemiesSlain: state.currentWaveEnemiesSlain,
+    });
+  };
+  reset();
+
   const container = new PIXI.Container();
   container.name = 'enemyManager';
 
@@ -55,7 +72,7 @@ export const enemyManager = (props: ManagerProps): ManagerReturnType => {
       num: state.currentWaveNum,
       name: state.currentWaveData.name,
       totalEnemies: state.currentWaveData.totalEnemies,
-      enemisSlain: state.currentWaveEnemiesSlain,
+      enemiesSlain: state.currentWaveEnemiesSlain,
     });
   };
 
@@ -93,6 +110,12 @@ export const enemyManager = (props: ManagerProps): ManagerReturnType => {
 
     // Track enemies slain
     state.currentWaveEnemiesSlain++;
+    updateWaveDisplay({
+      num: state.currentWaveNum,
+      name: state.currentWaveData.name,
+      totalEnemies: state.currentWaveData.totalEnemies,
+      enemiesSlain: state.currentWaveEnemiesSlain,
+    });
     checkWaveStatus();
   };
 
@@ -150,5 +173,5 @@ export const enemyManager = (props: ManagerProps): ManagerReturnType => {
     });
   };
 
-  return { container, update, checkCollisions };
+  return { container, reset, update, checkCollisions };
 };

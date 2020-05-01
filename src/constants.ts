@@ -14,6 +14,9 @@ export const HERO_FRAMES = 4;
 export const ENEMY_DPH = 10;
 export const ENEMY_RESPAWN_COOLDOWN = 5000;
 export const ENEMY_FRAMES = 4;
+// Wave Display
+export const ENEMY_ICON_WRAP = 13;
+export const ENEMY_ICON_DIM = 16;
 // Shop
 
 // Environment
