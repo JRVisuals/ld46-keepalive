@@ -18,7 +18,7 @@
 
 • **pos**? : *object*
 
-*Defined in [components/waveDisplay/index.ts:24](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/components/waveDisplay/index.ts#L24)*
+*Defined in [components/waveDisplay/index.ts:24](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/waveDisplay/index.ts#L24)*
 
 #### Type declaration:
 

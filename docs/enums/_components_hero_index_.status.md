@@ -18,7 +18,7 @@
 
 • **DYING**:
 
-*Defined in [components/hero/index.ts:30](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/components/hero/index.ts#L30)*
+*Defined in [components/hero/index.ts:30](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/hero/index.ts#L30)*
 
 ___
 
@@ -26,7 +26,7 @@ ___
 
 • **OFF_SCREEN**:
 
-*Defined in [components/hero/index.ts:33](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/components/hero/index.ts#L33)*
+*Defined in [components/hero/index.ts:33](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/hero/index.ts#L33)*
 
 ___
 
@@ -34,7 +34,7 @@ ___
 
 • **ON_SCREEN**:
 
-*Defined in [components/hero/index.ts:32](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/components/hero/index.ts#L32)*
+*Defined in [components/hero/index.ts:32](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/hero/index.ts#L32)*
 
 ___
 
@@ -42,7 +42,7 @@ ___
 
 • **RECOVERING**:
 
-*Defined in [components/hero/index.ts:31](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/components/hero/index.ts#L31)*
+*Defined in [components/hero/index.ts:31](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/hero/index.ts#L31)*
 
 ___
 
@@ -50,4 +50,4 @@ ___
 
 • **SPAWNING**:
 
-*Defined in [components/hero/index.ts:29](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/components/hero/index.ts#L29)*
+*Defined in [components/hero/index.ts:29](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/hero/index.ts#L29)*

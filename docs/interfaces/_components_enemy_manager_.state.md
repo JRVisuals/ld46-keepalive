@@ -20,7 +20,7 @@
 
 • **currentWaveData**: *[Wave](../modules/_components_enemy_waves_.md#wave)*
 
-*Defined in [components/enemy/manager.ts:28](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/components/enemy/manager.ts#L28)*
+*Defined in [components/enemy/manager.ts:28](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/enemy/manager.ts#L28)*
 
 ___
 
@@ -28,7 +28,7 @@ ___
 
 • **currentWaveEnemiesSlain**: *number*
 
-*Defined in [components/enemy/manager.ts:29](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/components/enemy/manager.ts#L29)*
+*Defined in [components/enemy/manager.ts:29](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/enemy/manager.ts#L29)*
 
 ___
 
@@ -36,4 +36,4 @@ ___
 
 • **currentWaveNum**: *number*
 
-*Defined in [components/enemy/manager.ts:27](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/components/enemy/manager.ts#L27)*
+*Defined in [components/enemy/manager.ts:27](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/enemy/manager.ts#L27)*

@@ -16,7 +16,7 @@
 
 • **HEAL**:
 
-*Defined in [components/shop/shopItems.ts:20](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/components/shop/shopItems.ts#L20)*
+*Defined in [components/shop/shopItems.ts:20](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/shop/shopItems.ts#L20)*
 
 ___
 
@@ -24,7 +24,7 @@ ___
 
 • **SHIELD**:
 
-*Defined in [components/shop/shopItems.ts:21](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/components/shop/shopItems.ts#L21)*
+*Defined in [components/shop/shopItems.ts:21](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/shop/shopItems.ts#L21)*
 
 ___
 
@@ -32,4 +32,4 @@ ___
 
 • **SPEED**:
 
-*Defined in [components/shop/shopItems.ts:22](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/components/shop/shopItems.ts#L22)*
+*Defined in [components/shop/shopItems.ts:22](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/shop/shopItems.ts#L22)*

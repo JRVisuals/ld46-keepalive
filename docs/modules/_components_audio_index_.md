@@ -19,7 +19,7 @@
 
 ▸ **audio**(`sounds`: [Sounds](../interfaces/_components_audio_index_.sounds.md)): *[ReturnType](../interfaces/_components_audio_index_.returntype.md)*
 
-*Defined in [components/audio/index.ts:17](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/components/audio/index.ts#L17)*
+*Defined in [components/audio/index.ts:17](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/audio/index.ts#L17)*
 
 Audio component which maps preloaded audio resources to the
 default PIXISOUND class and returns functions which handle

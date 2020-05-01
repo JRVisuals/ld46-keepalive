@@ -22,7 +22,7 @@
 
 • **addCoin**: *function*
 
-*Defined in [components/coin/index.ts:7](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/components/coin/index.ts#L7)*
+*Defined in [components/coin/index.ts:7](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/coin/index.ts#L7)*
 
 #### Type declaration:
 
@@ -40,7 +40,7 @@ ___
 
 • **container**: *Container*
 
-*Defined in [components/coin/index.ts:4](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/components/coin/index.ts#L4)*
+*Defined in [components/coin/index.ts:4](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/coin/index.ts#L4)*
 
 ___
 
@@ -48,7 +48,7 @@ ___
 
 • **reset**: *function*
 
-*Defined in [components/coin/index.ts:5](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/components/coin/index.ts#L5)*
+*Defined in [components/coin/index.ts:5](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/coin/index.ts#L5)*
 
 #### Type declaration:
 
@@ -60,7 +60,7 @@ ___
 
 • **subtractCoin**: *function*
 
-*Defined in [components/coin/index.ts:8](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/components/coin/index.ts#L8)*
+*Defined in [components/coin/index.ts:8](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/coin/index.ts#L8)*
 
 #### Type declaration:
 
@@ -82,7 +82,7 @@ ___
 
 • **update**: *function*
 
-*Defined in [components/coin/index.ts:6](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/components/coin/index.ts#L6)*
+*Defined in [components/coin/index.ts:6](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/coin/index.ts#L6)*
 
 #### Type declaration:
 

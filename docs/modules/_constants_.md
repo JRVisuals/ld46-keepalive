@@ -28,7 +28,7 @@
 
 • **APP_HEIGHT**: *200* = 200
 
-*Defined in [constants.ts:2](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/constants.ts#L2)*
+*Defined in [constants.ts:2](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/constants.ts#L2)*
 
 ___
 
@@ -36,7 +36,7 @@ ___
 
 • **APP_WIDTH**: *350* = 350
 
-*Defined in [constants.ts:3](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/constants.ts#L3)*
+*Defined in [constants.ts:3](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/constants.ts#L3)*
 
 ___
 
@@ -44,7 +44,7 @@ ___
 
 • **ENEMY_DPH**: *10* = 10
 
-*Defined in [constants.ts:14](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/constants.ts#L14)*
+*Defined in [constants.ts:14](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/constants.ts#L14)*
 
 ___
 
@@ -52,7 +52,7 @@ ___
 
 • **ENEMY_FRAMES**: *4* = 4
 
-*Defined in [constants.ts:16](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/constants.ts#L16)*
+*Defined in [constants.ts:16](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/constants.ts#L16)*
 
 ___
 
@@ -60,7 +60,7 @@ ___
 
 • **ENEMY_ICON_DIM**: *16* = 16
 
-*Defined in [constants.ts:19](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/constants.ts#L19)*
+*Defined in [constants.ts:19](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/constants.ts#L19)*
 
 ___
 
@@ -68,7 +68,7 @@ ___
 
 • **ENEMY_ICON_WRAP**: *13* = 13
 
-*Defined in [constants.ts:18](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/constants.ts#L18)*
+*Defined in [constants.ts:18](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/constants.ts#L18)*
 
 ___
 
@@ -76,7 +76,7 @@ ___
 
 • **ENEMY_RESPAWN_COOLDOWN**: *5000* = 5000
 
-*Defined in [constants.ts:15](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/constants.ts#L15)*
+*Defined in [constants.ts:15](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/constants.ts#L15)*
 
 ___
 
@@ -84,7 +84,7 @@ ___
 
 • **GRAVITY_Y**: *0.38* = 0.38
 
-*Defined in [constants.ts:23](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/constants.ts#L23)*
+*Defined in [constants.ts:23](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/constants.ts#L23)*
 
 ___
 
@@ -92,7 +92,7 @@ ___
 
 • **GROUND_MOVE_SPEED**: *2* = 2
 
-*Defined in [constants.ts:7](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/constants.ts#L7)*
+*Defined in [constants.ts:7](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/constants.ts#L7)*
 
 ___
 
@@ -100,7 +100,7 @@ ___
 
 • **HERO_ATTACK_FRAME**: *3* = 3
 
-*Defined in [constants.ts:11](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/constants.ts#L11)*
+*Defined in [constants.ts:11](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/constants.ts#L11)*
 
 ___
 
@@ -108,7 +108,7 @@ ___
 
 • **HERO_COLLISION_BUFFER**: *20* = 20
 
-*Defined in [constants.ts:10](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/constants.ts#L10)*
+*Defined in [constants.ts:10](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/constants.ts#L10)*
 
 ___
 
@@ -116,7 +116,7 @@ ___
 
 • **HERO_FRAMES**: *4* = 4
 
-*Defined in [constants.ts:12](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/constants.ts#L12)*
+*Defined in [constants.ts:12](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/constants.ts#L12)*
 
 ___
 
@@ -124,7 +124,7 @@ ___
 
 • **HERO_HEIGHT**: *64* = 64
 
-*Defined in [constants.ts:9](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/constants.ts#L9)*
+*Defined in [constants.ts:9](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/constants.ts#L9)*
 
 ___
 
@@ -132,7 +132,7 @@ ___
 
 • **TILE_HEIGHT**: *64* = 64
 
-*Defined in [constants.ts:5](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/constants.ts#L5)*
+*Defined in [constants.ts:5](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/constants.ts#L5)*
 
 ___
 
@@ -140,4 +140,4 @@ ___
 
 • **TILE_WIDTH**: *64* = 64
 
-*Defined in [constants.ts:6](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/constants.ts#L6)*
+*Defined in [constants.ts:6](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/constants.ts#L6)*

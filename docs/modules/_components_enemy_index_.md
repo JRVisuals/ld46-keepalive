@@ -19,7 +19,7 @@
 
 ▸ **enemy**(`props`: [Props](../interfaces/_components_background_index_.props.md)): *[Enemy](../interfaces/_components_enemy_index_.enemy.md)*
 
-*Defined in [components/enemy/index.ts:24](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/components/enemy/index.ts#L24)*
+*Defined in [components/enemy/index.ts:24](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/enemy/index.ts#L24)*
 
 **Parameters:**
 

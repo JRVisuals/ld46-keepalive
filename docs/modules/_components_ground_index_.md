@@ -19,7 +19,7 @@
 
 ▸ **ground**(`props`: [Props](../interfaces/_components_background_index_.props.md)): *[ReturnType](../interfaces/_components_audio_index_.returntype.md)*
 
-*Defined in [components/ground/index.ts:15](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/components/ground/index.ts#L15)*
+*Defined in [components/ground/index.ts:15](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/ground/index.ts#L15)*
 
 **Parameters:**
 

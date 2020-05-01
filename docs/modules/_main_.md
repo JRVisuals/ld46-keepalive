@@ -34,7 +34,7 @@
 
 Ƭ **Animations**: *object*
 
-*Defined in [main.ts:33](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/main.ts#L33)*
+*Defined in [main.ts:33](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/main.ts#L33)*
 
 #### Type declaration:
 
@@ -46,7 +46,7 @@
 
 • **hostDiv**: *HTMLElement* = document.getElementById('canvas')
 
-*Defined in [main.ts:20](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/main.ts#L20)*
+*Defined in [main.ts:20](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/main.ts#L20)*
 
 ___
 
@@ -54,7 +54,7 @@ ___
 
 • **hostHeight**: *number* = APP_WIDTH * (APP_HEIGHT / APP_WIDTH)
 
-*Defined in [main.ts:22](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/main.ts#L22)*
+*Defined in [main.ts:22](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/main.ts#L22)*
 
 ___
 
@@ -62,7 +62,7 @@ ___
 
 • **hostWidth**: *350* = APP_WIDTH
 
-*Defined in [main.ts:21](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/main.ts#L21)*
+*Defined in [main.ts:21](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/main.ts#L21)*
 
 ___
 
@@ -70,7 +70,7 @@ ___
 
 • **preloader**: *Loader‹›* = PIXI.Loader.shared
 
-*Defined in [main.ts:60](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/main.ts#L60)*
+*Defined in [main.ts:60](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/main.ts#L60)*
 
 ## Functions
 
@@ -78,7 +78,7 @@ ___
 
 ▸ **bootstrapApp**(`props`: object): *[BootstrapApp](../interfaces/_main_.bootstrapapp.md)*
 
-*Defined in [main.ts:71](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/main.ts#L71)*
+*Defined in [main.ts:71](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/main.ts#L71)*
 
 **Parameters:**
 
@@ -97,7 +97,7 @@ ___
 
 ▸ **onAssetsLoaded**(): *void*
 
-*Defined in [main.ts:40](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/main.ts#L40)*
+*Defined in [main.ts:40](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/main.ts#L40)*
 
 **Returns:** *void*
 
@@ -107,34 +107,34 @@ ___
 
 ### ▪ **pixiConfig**: *object*
 
-*Defined in [main.ts:23](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/main.ts#L23)*
+*Defined in [main.ts:23](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/main.ts#L23)*
 
 ###  antialias
 
 • **antialias**: *false* = false
 
-*Defined in [main.ts:27](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/main.ts#L27)*
+*Defined in [main.ts:27](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/main.ts#L27)*
 
 ###  backgroundColor
 
 • **backgroundColor**: *number* = 2632756
 
-*Defined in [main.ts:26](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/main.ts#L26)*
+*Defined in [main.ts:26](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/main.ts#L26)*
 
 ###  height
 
 • **height**: *number* = hostHeight
 
-*Defined in [main.ts:25](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/main.ts#L25)*
+*Defined in [main.ts:25](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/main.ts#L25)*
 
 ###  resolution
 
 • **resolution**: *number* = 3
 
-*Defined in [main.ts:28](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/main.ts#L28)*
+*Defined in [main.ts:28](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/main.ts#L28)*
 
 ###  width
 
 • **width**: *number* = hostWidth
 
-*Defined in [main.ts:24](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/main.ts#L24)*
+*Defined in [main.ts:24](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/main.ts#L24)*

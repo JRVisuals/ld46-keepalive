@@ -19,7 +19,7 @@
 
 • **pos**? : *object*
 
-*Defined in [components/enemy/manager.ts:22](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/components/enemy/manager.ts#L22)*
+*Defined in [components/enemy/manager.ts:22](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/enemy/manager.ts#L22)*
 
 #### Type declaration:
 
@@ -33,7 +33,7 @@ ___
 
 • **updateWaveDisplay**: *function*
 
-*Defined in [components/enemy/manager.ts:23](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/components/enemy/manager.ts#L23)*
+*Defined in [components/enemy/manager.ts:23](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/enemy/manager.ts#L23)*
 
 #### Type declaration:
 

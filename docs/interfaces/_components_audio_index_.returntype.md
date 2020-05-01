@@ -18,7 +18,7 @@
 
 • **music**: *object*
 
-*Defined in [components/audio/index.ts:8](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/components/audio/index.ts#L8)*
+*Defined in [components/audio/index.ts:8](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/audio/index.ts#L8)*
 
 #### Type declaration:
 

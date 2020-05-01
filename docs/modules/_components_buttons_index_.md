@@ -19,7 +19,7 @@
 
 ▸ **btnAgain**(`props`: [Props](../interfaces/_components_background_index_.props.md)): *[Button](../interfaces/_components_buttons_index_.button.md)*
 
-*Defined in [components/buttons/index.ts:14](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/components/buttons/index.ts#L14)*
+*Defined in [components/buttons/index.ts:14](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/buttons/index.ts#L14)*
 
 **Parameters:**
 

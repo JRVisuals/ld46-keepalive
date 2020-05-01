@@ -21,7 +21,7 @@
 
 • **checkCollisions**: *function*
 
-*Defined in [components/enemy/manager.ts:18](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/components/enemy/manager.ts#L18)*
+*Defined in [components/enemy/manager.ts:18](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/enemy/manager.ts#L18)*
 
 #### Type declaration:
 
@@ -39,7 +39,7 @@ ___
 
 • **container**: *Container*
 
-*Defined in [components/enemy/manager.ts:15](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/components/enemy/manager.ts#L15)*
+*Defined in [components/enemy/manager.ts:15](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/enemy/manager.ts#L15)*
 
 ___
 
@@ -47,7 +47,7 @@ ___
 
 • **reset**: *function*
 
-*Defined in [components/enemy/manager.ts:16](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/components/enemy/manager.ts#L16)*
+*Defined in [components/enemy/manager.ts:16](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/enemy/manager.ts#L16)*
 
 #### Type declaration:
 
@@ -59,7 +59,7 @@ ___
 
 • **update**: *function*
 
-*Defined in [components/enemy/manager.ts:17](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/components/enemy/manager.ts#L17)*
+*Defined in [components/enemy/manager.ts:17](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/enemy/manager.ts#L17)*
 
 #### Type declaration:
 

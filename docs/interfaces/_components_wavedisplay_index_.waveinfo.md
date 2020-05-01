@@ -21,7 +21,7 @@
 
 • **enemiesSlain**: *number*
 
-*Defined in [components/waveDisplay/index.ts:9](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/components/waveDisplay/index.ts#L9)*
+*Defined in [components/waveDisplay/index.ts:9](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/waveDisplay/index.ts#L9)*
 
 ___
 
@@ -29,7 +29,7 @@ ___
 
 • **name**: *string*
 
-*Defined in [components/waveDisplay/index.ts:7](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/components/waveDisplay/index.ts#L7)*
+*Defined in [components/waveDisplay/index.ts:7](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/waveDisplay/index.ts#L7)*
 
 ___
 
@@ -37,7 +37,7 @@ ___
 
 • **num**: *number*
 
-*Defined in [components/waveDisplay/index.ts:6](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/components/waveDisplay/index.ts#L6)*
+*Defined in [components/waveDisplay/index.ts:6](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/waveDisplay/index.ts#L6)*
 
 ___
 
@@ -45,4 +45,4 @@ ___
 
 • **totalEnemies**: *number*
 
-*Defined in [components/waveDisplay/index.ts:8](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/components/waveDisplay/index.ts#L8)*
+*Defined in [components/waveDisplay/index.ts:8](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/waveDisplay/index.ts#L8)*

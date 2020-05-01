@@ -19,7 +19,7 @@
 
 • **app**? : *Application*
 
-*Defined in [components/coin/index.ts:12](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/components/coin/index.ts#L12)*
+*Defined in [components/coin/index.ts:12](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/coin/index.ts#L12)*
 
 ___
 
@@ -27,7 +27,7 @@ ___
 
 • **pos**? : *object*
 
-*Defined in [components/coin/index.ts:13](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/components/coin/index.ts#L13)*
+*Defined in [components/coin/index.ts:13](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/coin/index.ts#L13)*
 
 #### Type declaration:
 

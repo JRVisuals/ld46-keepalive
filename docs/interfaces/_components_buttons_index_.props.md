@@ -19,7 +19,7 @@
 
 • **onPress**: *function*
 
-*Defined in [components/buttons/index.ts:10](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/components/buttons/index.ts#L10)*
+*Defined in [components/buttons/index.ts:10](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/buttons/index.ts#L10)*
 
 #### Type declaration:
 
@@ -31,7 +31,7 @@ ___
 
 • **pos**? : *object*
 
-*Defined in [components/buttons/index.ts:11](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/components/buttons/index.ts#L11)*
+*Defined in [components/buttons/index.ts:11](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/buttons/index.ts#L11)*
 
 #### Type declaration:
 

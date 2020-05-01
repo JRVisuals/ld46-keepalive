@@ -21,7 +21,7 @@
 
 ▸ **waveDisplay**(`props`: [Props](../interfaces/_components_background_index_.props.md)): *[WavedDisplay](../interfaces/_components_wavedisplay_index_.waveddisplay.md)*
 
-*Defined in [components/waveDisplay/index.ts:27](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/components/waveDisplay/index.ts#L27)*
+*Defined in [components/waveDisplay/index.ts:27](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/waveDisplay/index.ts#L27)*
 
 **Parameters:**
 

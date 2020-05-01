@@ -21,7 +21,7 @@
 
 • **container**: *Container*
 
-*Defined in [components/enemy/index.ts:12](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/components/enemy/index.ts#L12)*
+*Defined in [components/enemy/index.ts:12](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/enemy/index.ts#L12)*
 
 ___
 
@@ -29,7 +29,7 @@ ___
 
 • **getStatus**: *function*
 
-*Defined in [components/enemy/index.ts:15](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/components/enemy/index.ts#L15)*
+*Defined in [components/enemy/index.ts:15](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/enemy/index.ts#L15)*
 
 #### Type declaration:
 
@@ -41,7 +41,7 @@ ___
 
 • **gotKilled**: *function*
 
-*Defined in [components/enemy/index.ts:14](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/components/enemy/index.ts#L14)*
+*Defined in [components/enemy/index.ts:14](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/enemy/index.ts#L14)*
 
 #### Type declaration:
 
@@ -53,7 +53,7 @@ ___
 
 • **update**: *function*
 
-*Defined in [components/enemy/index.ts:13](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/components/enemy/index.ts#L13)*
+*Defined in [components/enemy/index.ts:13](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/enemy/index.ts#L13)*
 
 #### Type declaration:
 

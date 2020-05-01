@@ -18,7 +18,7 @@
 
 • **pos**? : *object*
 
-*Defined in [components/hearts/index.ts:15](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/components/hearts/index.ts#L15)*
+*Defined in [components/hearts/index.ts:15](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/hearts/index.ts#L15)*
 
 #### Type declaration:
 

@@ -20,7 +20,7 @@
 
 ▸ **enemyManager**(`props`: [ManagerProps](../interfaces/_components_enemy_manager_.managerprops.md)): *[ManagerReturnType](../interfaces/_components_enemy_manager_.managerreturntype.md)*
 
-*Defined in [components/enemy/manager.ts:31](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/components/enemy/manager.ts#L31)*
+*Defined in [components/enemy/manager.ts:31](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/enemy/manager.ts#L31)*
 
 **Parameters:**
 

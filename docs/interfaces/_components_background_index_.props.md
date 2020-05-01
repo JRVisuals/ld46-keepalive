@@ -18,7 +18,7 @@
 
 • **pos**? : *object*
 
-*Defined in [components/background/index.ts:10](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/components/background/index.ts#L10)*
+*Defined in [components/background/index.ts:10](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/background/index.ts#L10)*
 
 #### Type declaration:
 

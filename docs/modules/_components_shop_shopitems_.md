@@ -23,7 +23,7 @@
 
 Ƭ **ItemData**: *object*
 
-*Defined in [components/shop/shopItems.ts:1](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/components/shop/shopItems.ts#L1)*
+*Defined in [components/shop/shopItems.ts:1](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/shop/shopItems.ts#L1)*
 
 #### Type declaration:
 
@@ -114,4 +114,4 @@
   },
 ]
 
-*Defined in [components/shop/shopItems.ts:25](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/components/shop/shopItems.ts#L25)*
+*Defined in [components/shop/shopItems.ts:25](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/shop/shopItems.ts#L25)*

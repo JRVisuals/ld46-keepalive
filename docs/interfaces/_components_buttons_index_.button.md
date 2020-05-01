@@ -19,7 +19,7 @@
 
 • **container**: *Container*
 
-*Defined in [components/buttons/index.ts:5](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/components/buttons/index.ts#L5)*
+*Defined in [components/buttons/index.ts:5](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/buttons/index.ts#L5)*
 
 ___
 
@@ -27,7 +27,7 @@ ___
 
 • **setEnabled**: *function*
 
-*Defined in [components/buttons/index.ts:6](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/components/buttons/index.ts#L6)*
+*Defined in [components/buttons/index.ts:6](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/buttons/index.ts#L6)*
 
 #### Type declaration:
 

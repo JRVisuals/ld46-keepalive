@@ -19,7 +19,7 @@
 
 • **container**: *Container*
 
-*Defined in [components/shop/index.ts:12](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/components/shop/index.ts#L12)*
+*Defined in [components/shop/index.ts:12](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/shop/index.ts#L12)*
 
 ___
 
@@ -27,7 +27,7 @@ ___
 
 • **update**: *function*
 
-*Defined in [components/shop/index.ts:13](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/components/shop/index.ts#L13)*
+*Defined in [components/shop/index.ts:13](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/shop/index.ts#L13)*
 
 #### Type declaration:
 

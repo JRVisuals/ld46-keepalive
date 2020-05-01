@@ -14,7 +14,7 @@
 
 ▸ **mapToRange**(`value`: number, `x1`: number, `y1`: number, `x2`: number, `y2`: number): *number*
 
-*Defined in [util/mapToRange.ts:1](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/util/mapToRange.ts#L1)*
+*Defined in [util/mapToRange.ts:1](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/util/mapToRange.ts#L1)*
 
 **Parameters:**
 

@@ -19,7 +19,7 @@
 
 • **MainTheme**: *LoaderResource*
 
-*Defined in [components/audio/index.ts:4](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/components/audio/index.ts#L4)*
+*Defined in [components/audio/index.ts:4](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/audio/index.ts#L4)*
 
 ___
 
@@ -27,4 +27,4 @@ ___
 
 • **Somber**: *LoaderResource*
 
-*Defined in [components/audio/index.ts:5](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/components/audio/index.ts#L5)*
+*Defined in [components/audio/index.ts:5](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/audio/index.ts#L5)*

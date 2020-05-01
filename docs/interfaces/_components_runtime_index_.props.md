@@ -19,7 +19,7 @@
 
 • **hero**: *[Hero](_components_hero_index_.hero.md)*
 
-*Defined in [components/runtime/index.ts:12](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/components/runtime/index.ts#L12)*
+*Defined in [components/runtime/index.ts:12](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/runtime/index.ts#L12)*
 
 ___
 
@@ -27,7 +27,7 @@ ___
 
 • **pos**? : *object*
 
-*Defined in [components/runtime/index.ts:11](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/components/runtime/index.ts#L11)*
+*Defined in [components/runtime/index.ts:11](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/runtime/index.ts#L11)*
 
 #### Type declaration:
 

@@ -18,7 +18,7 @@
 
 ▸ **initPIXI**(`pixiConfig`: [PixiConfig](../interfaces/_pixi_index_.pixiconfig.md), `baseElement`: HTMLElement): *object*
 
-*Defined in [pixi/index.ts:11](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/pixi/index.ts#L11)*
+*Defined in [pixi/index.ts:11](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/pixi/index.ts#L11)*
 
 **Parameters:**
 

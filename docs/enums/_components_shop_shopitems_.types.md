@@ -14,4 +14,4 @@
 
 • **POTION**:
 
-*Defined in [components/shop/shopItems.ts:17](https://github.com/jrod-disco/ld46-keepalive/blob/0d14d56/src/components/shop/shopItems.ts#L17)*
+*Defined in [components/shop/shopItems.ts:17](https://github.com/jrod-disco/ld46-keepalive/blob/5db6013/src/components/shop/shopItems.ts#L17)*
