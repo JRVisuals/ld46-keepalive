@@ -29,11 +29,13 @@
     "rollup-plugin-typescript2": "^0.26.0",
     "sass": "^1.26.3",
     "typedoc": "^0.17.6",
+    "typedoc-plugin-markdown": "^2.2.17",
     "typescript": "^3.8.3"
   },
   "scripts": {
     "start": "rollup -c -w --environment BUILD:dev",
     "clean": "rimraf dist",
-    "build": "rimraf dist && rollup -c --environment BUILD:prod"
+    "build": "rimraf dist && rollup -c --environment BUILD:prod",
+    "docs": "rimraf docs && npx typedoc"
   }
 }
