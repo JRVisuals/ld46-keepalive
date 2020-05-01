@@ -47,6 +47,7 @@ const bootstrapApp = (props: { animations: any }): BootstrapApp => {
   // Declare component variables in advance when needed
   let hero: HERO.Hero = null;
   let runtime = null;
+  let enemyManager = null;
 
   // Add music as a component
   const audioLayer = COMP.audio();
@@ -82,8 +83,8 @@ const bootstrapApp = (props: { animations: any }): BootstrapApp => {
       hero.reset();
       coin.reset();
       runtime.reset();
+      enemyManager.reset();
       // shop.reset();
-      // enemyManager.reset();
       btnAgain.setEnabled(false);
       audioLayer.music.mainTheme();
     }
@@ -140,7 +141,7 @@ const bootstrapApp = (props: { animations: any }): BootstrapApp => {
   mainContainer.addChild(shop.container);
 
   // Enemy Manager
-  const enemyManager = COMP.enemyManager({
+  enemyManager = COMP.enemyManager({
     pos: {
       x: APP_WIDTH - TILE_WIDTH,
       y: APP_HEIGHT - TILE_HEIGHT - HERO_HEIGHT * 0.5 + 12,
