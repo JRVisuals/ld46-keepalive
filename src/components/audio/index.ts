@@ -1,14 +1,23 @@
 import * as PIXISOUND from 'pixi-sound';
 
+export interface Sounds {
+  MainTheme: PIXI.LoaderResource;
+  Somber: PIXI.LoaderResource;
+}
 interface ReturnType {
   music: { mainTheme: () => void; somber: () => void };
 }
-export const audio = (): ReturnType => {
+/**
+ * Audio component which maps preloaded audio resources to the
+ * default PIXISOUND class and returns functions which handle
+ * various aspects of the audio for the game.
+ *
+ * @param sounds - an object containing a number of loader resources
+ */
+export const audio = (sounds: Sounds): ReturnType => {
   const musicBed = PIXISOUND.default;
-
-  // Load these up on startup...
-  musicBed.add('MainTheme', './assets/KeepYeAlive_MainRiff.mp3');
-  musicBed.add('Somber', './assets/KeepYeAlive_Somber.mp3');
+  musicBed.add('MainTheme', sounds.MainTheme);
+  musicBed.add('Somber', sounds.Somber);
   // Called when we've got all the things...
   const mainTheme = (): void => {
     musicBed.stop('Somber');

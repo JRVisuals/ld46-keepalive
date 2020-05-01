@@ -37,7 +37,7 @@ export const shop = (props: Props): Shop => {
   sprite.anchor.set(0);
   container.addChild(sprite);
 
-  console.log('anims', anims);
+  //console.log('anims', anims);
 
   // Text
   const style = {
@@ -94,12 +94,12 @@ export const shop = (props: Props): Shop => {
         break;
       case Actions.SHIELD:
         purchaseSuccess = hero.buyPotion(itemData);
-        console.log('purchaseSuccess', purchaseSuccess);
+        //console.log('purchaseSuccess', purchaseSuccess);
         break;
       case Actions.SPEED:
         break;
     }
-    console.log('purchaseItem', itemData);
+    //console.log('purchaseItem', itemData);
     // Animate bottle depending on success
     const currentX = itemData.spriteRef.x;
     if (purchaseSuccess) {

@@ -15,6 +15,7 @@ import './index.scss';
 
 import * as COMP from './components';
 import * as HERO from './components/hero';
+import { Sounds } from './components/audio';
 
 const hostDiv = document.getElementById('canvas');
 const hostWidth = APP_WIDTH;
@@ -29,11 +30,48 @@ const pixiConfig: PixiConfig = {
 // No anti-alias
 PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
 
+type Animations = {
+  hourglass: PIXI.Spritesheet | null;
+};
 interface BootstrapApp {
   app: PIXI.Application;
 }
 
-const bootstrapApp = (props: { animations: any }): BootstrapApp => {
+const onAssetsLoaded = (): void => {
+  console.log('onAssetsLoaded');
+
+  // Hold all animations in an array
+  const animations = { hourglass: null };
+
+  // Create animations from loaded sheets and assets
+  const sheet = PIXI.Loader.shared.resources['mainSprites'].spritesheet;
+  animations['hourglass'] = sheet;
+
+  const sounds: Sounds = {
+    MainTheme: PIXI.Loader.shared.resources['MainTheme'],
+    Somber: PIXI.Loader.shared.resources['Somber'],
+  };
+
+  // Boostrap the app once assets are loaded
+  // TODO add proper preloader
+  bootstrapApp({ animations, sounds });
+};
+
+const preloader = PIXI.Loader.shared;
+preloader
+  .add('mainSprites', './assets/ld46sprites.json')
+  .add('MainTheme', './assets/KeepYeAlive_MainRiff.mp3')
+  .add('Somber', './assets/KeepYeAlive_Somber.mp3');
+
+preloader.load(onAssetsLoaded);
+preloader.onProgress.add((e, f) =>
+  console.log(`Progress ${Math.floor(e.progress)} (${f.name}.${f.extension})`)
+);
+
+const bootstrapApp = (props: {
+  animations: Animations;
+  sounds: Sounds;
+}): BootstrapApp => {
   jrvascii();
 
   // Instantiate PIXI
@@ -42,7 +80,7 @@ const bootstrapApp = (props: { animations: any }): BootstrapApp => {
   const { pixiApp, mainContainer } = initPIXI(pixiConfig, hostDiv);
   pixiApp.renderer.autoDensity = true;
 
-  const { animations } = props;
+  const { animations, sounds } = props;
 
   // Declare component variables in advance when needed
   let hero: HERO.Hero = null;
@@ -50,7 +88,7 @@ const bootstrapApp = (props: { animations: any }): BootstrapApp => {
   let enemyManager = null;
 
   // Add music as a component
-  const audioLayer = COMP.audio();
+  const audioLayer = COMP.audio(sounds);
   audioLayer.music.mainTheme();
 
   // Background
@@ -166,23 +204,3 @@ const bootstrapApp = (props: { animations: any }): BootstrapApp => {
 
   return { app: pixiApp };
 };
-
-const onAssetsLoaded = (): void => {
-  console.log('onAssetsLoaded');
-
-  // Hold all animations in an array
-  const animations = {};
-
-  // Create animations from loaded sheets and assets
-  const animName = 'hourglass';
-  const sheet =
-    PIXI.Loader.shared.resources['./assets/ld46sprites.json'].spritesheet;
-  animations[animName] = sheet;
-  console.log('sheet', sheet, animations);
-
-  // Boostrap the app once assets are loaded
-  // TODO add proper preloader
-  bootstrapApp({ animations });
-};
-
-PIXI.Loader.shared.add('./assets/ld46sprites.json').load(onAssetsLoaded);
