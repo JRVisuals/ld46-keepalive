@@ -3,8 +3,8 @@ import gsap, { Power0 } from 'gsap';
 import {
   GROUND_MOVE_SPEED,
   APP_HEIGHT,
-  TILE_WIDTH,
-  TILE_HEIGHT,
+  GROUND_TILE_WIDTH,
+  GROUND_TILE_HEIGHT,
   ENEMY_FRAMES,
 } from '../../constants';
 
@@ -84,7 +84,7 @@ export const enemy = (props: Props): Enemy => {
         ? GROUND_MOVE_SPEED
         : GROUND_MOVE_SPEED * 1.1;
     const nextX = container.x - movementSpeed;
-    if (nextX < -TILE_WIDTH) exitedScreen();
+    if (nextX < -GROUND_TILE_WIDTH) exitedScreen();
     container.x = nextX;
   };
 
@@ -107,7 +107,7 @@ export const enemy = (props: Props): Enemy => {
         : enemyState.yVel + yGrav;
 
     const nextY = container.y + enemyState.yVel;
-    if (nextY > APP_HEIGHT + TILE_HEIGHT) exitedScreen();
+    if (nextY > APP_HEIGHT + GROUND_TILE_HEIGHT) exitedScreen();
     container.y = nextY;
     container.rotation += 0.1;
   };

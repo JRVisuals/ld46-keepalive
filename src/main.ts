@@ -7,8 +7,8 @@ import initPIXI, { PixiConfig } from './pixi';
 import {
   APP_HEIGHT,
   APP_WIDTH,
-  TILE_HEIGHT,
-  TILE_WIDTH,
+  GROUND_TILE_HEIGHT,
+  GROUND_TILE_WIDTH,
   HERO_HEIGHT,
 } from './constants';
 import './index.scss';
@@ -101,8 +101,8 @@ const bootstrapApp = (props: {
   // Ground
   const ground = COMP.ground({
     pos: {
-      x: TILE_WIDTH * -1,
-      y: APP_HEIGHT - TILE_HEIGHT * 0.5,
+      x: GROUND_TILE_WIDTH * -1,
+      y: APP_HEIGHT - GROUND_TILE_HEIGHT * 0.5,
     },
     groundTiles: spriteSheets.main.animations['ground'],
   });
@@ -148,13 +148,13 @@ const bootstrapApp = (props: {
   const heroNubmers = COMP.heroNumbers({
     pos: {
       x: APP_WIDTH * 0.25,
-      y: APP_HEIGHT - TILE_HEIGHT - HERO_HEIGHT * 0.5 + 5,
+      y: APP_HEIGHT - GROUND_TILE_HEIGHT - HERO_HEIGHT * 0.5 + 5,
     },
   });
   hero = COMP.hero({
     pos: {
       x: APP_WIDTH * 0.25,
-      y: APP_HEIGHT - TILE_HEIGHT - HERO_HEIGHT * 0.5 + 5,
+      y: APP_HEIGHT - GROUND_TILE_HEIGHT - HERO_HEIGHT * 0.5 + 5,
     },
     heroNubmers: heroNubmers,
     hpDisplay: hearts.updateDisplay,
@@ -185,8 +185,8 @@ const bootstrapApp = (props: {
   // Enemy Manager
   enemyManager = COMP.enemyManager({
     pos: {
-      x: APP_WIDTH - TILE_WIDTH,
-      y: APP_HEIGHT - TILE_HEIGHT - HERO_HEIGHT * 0.5 + 12,
+      x: APP_WIDTH - GROUND_TILE_WIDTH,
+      y: APP_HEIGHT - GROUND_TILE_HEIGHT - HERO_HEIGHT * 0.5 + 12,
     },
     updateWaveDisplay: waveDisplay.updateDisplay,
   });

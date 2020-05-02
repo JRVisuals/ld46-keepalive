@@ -5,9 +5,10 @@ export const APP_WIDTH = 350;
 export const MUSIC_VOL_MULT = 0.05;
 export const SFX_VOL_MULT = 0.05;
 // Ground
-export const TILE_HEIGHT = 64;
-export const TILE_WIDTH = 64;
+export const GROUND_TILE_HEIGHT = 64;
+export const GROUND_TILE_WIDTH = 64;
 export const GROUND_MOVE_SPEED = 2;
+export const GROUND_NO_DUPE_TILE = 4;
 // Hero
 export const HERO_HEIGHT = 64;
 export const HERO_COLLISION_BUFFER = 20;

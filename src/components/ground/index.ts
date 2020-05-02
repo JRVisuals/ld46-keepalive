@@ -1,7 +1,11 @@
 import * as PIXI from 'pixi.js';
 //import gsap from 'gsap';
 
-import { TILE_WIDTH, GROUND_MOVE_SPEED } from '../../constants';
+import {
+  GROUND_TILE_WIDTH,
+  GROUND_MOVE_SPEED,
+  GROUND_NO_DUPE_TILE,
+} from '../../constants';
 import { random } from 'gsap';
 
 interface ReturnType {
@@ -31,25 +35,23 @@ export const ground = (props: Props): ReturnType => {
 
   container.name = 'ground';
 
-  //new PIXI.Sprite(sheet.textures["image.png"]);
-  // sprite.scale.set(0.5);
-  // sprite.blendMode = PIXI.BLEND_MODES.SCREEN;
-  // sprite.scale.x *= -1;
-
   const maxTile = 16;
   const tiles = [];
 
-  let shownSkull = false;
+  let shownNoDupeTile = false;
+
   for (let i = 0; i < maxTile; i++) {
     let randomTile = Math.ceil(Math.random() * groundTiles.length - 1);
-    if (randomTile === 4 && shownSkull) randomTile = 0;
-    if (randomTile === 4) shownSkull = true;
-    console.log(randomTile);
+
+    // Make sure we only have one skeleton tile
+    if (randomTile === GROUND_NO_DUPE_TILE && shownNoDupeTile) randomTile = 0;
+    if (randomTile === GROUND_NO_DUPE_TILE) shownNoDupeTile = true;
+
     const sprite = new PIXI.Sprite(groundTiles[randomTile]);
     sprite.anchor.set(0.5);
     const xScale = Math.random() > 0.75 ? -1 : 1;
     sprite.scale.x = xScale;
-    sprite.x = TILE_WIDTH * i;
+    sprite.x = GROUND_TILE_WIDTH * i;
     container.addChild(sprite);
     tiles.push(sprite);
   }
@@ -57,7 +59,7 @@ export const ground = (props: Props): ReturnType => {
   const moveTiles = (): void => {
     tiles.forEach((tile) => {
       let newX = tile.x - GROUND_MOVE_SPEED;
-      if (newX <= 0) newX = maxTile * TILE_WIDTH - GROUND_MOVE_SPEED;
+      if (newX <= 0) newX = maxTile * GROUND_TILE_WIDTH - GROUND_MOVE_SPEED;
       tile.x = newX;
     });
   };

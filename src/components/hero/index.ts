@@ -6,8 +6,8 @@ import {
   GROUND_MOVE_SPEED,
   GRAVITY_Y,
   APP_HEIGHT,
-  TILE_HEIGHT,
-  TILE_WIDTH,
+  GROUND_TILE_HEIGHT,
+  GROUND_TILE_WIDTH,
   HERO_FRAMES,
   SFX_VOL_MULT,
 } from '../../constants';
@@ -72,7 +72,7 @@ export const hero = (props: Props): Hero => {
 
   let state = {
     hp: 100,
-    xOrrig: 0 - TILE_WIDTH,
+    xOrrig: 0 - GROUND_TILE_WIDTH,
     yOrrig: pos.y,
     yVel: 0,
     xVel: GROUND_MOVE_SPEED * 0.5,
@@ -274,7 +274,7 @@ export const hero = (props: Props): Hero => {
         : state.yVel + GRAVITY_Y;
 
     const nextY = container.y + state.yVel;
-    if (nextY > APP_HEIGHT + TILE_HEIGHT) exitedScreen();
+    if (nextY > APP_HEIGHT + GROUND_TILE_HEIGHT) exitedScreen();
     container.y = nextY;
     container.rotation -= 0.1;
   };

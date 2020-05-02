@@ -1,7 +1,7 @@
 import * as PIXI from 'pixi.js';
 import {
   APP_WIDTH,
-  TILE_WIDTH,
+  GROUND_TILE_WIDTH,
   HERO_ATTACK_FRAME,
   HERO_COLLISION_BUFFER,
 } from '../../constants';
@@ -154,7 +154,7 @@ export const enemyManager = (props: ManagerProps): ManagerReturnType => {
   const spawnEnemy = (): void => {
     if (lastHeroStatus === HERO.STATUS.SPAWNING) return;
     // Enemy
-    const newPos = { ...pos, x: APP_WIDTH + TILE_WIDTH };
+    const newPos = { ...pos, x: APP_WIDTH + GROUND_TILE_WIDTH };
     const newEnemy = enemy({
       pos: newPos,
       destroyManagerInstance: destroyEnemy,
