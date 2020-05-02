@@ -2,7 +2,6 @@ import * as PIXI from 'pixi.js';
 import * as PIXISOUND from 'pixi-sound';
 import * as SHOP from '../shop/shopItems';
 import {
-  ENEMY_DPH,
   GROUND_MOVE_SPEED,
   GRAVITY_Y,
   APP_HEIGHT,
@@ -19,7 +18,7 @@ export interface Hero {
   reset: () => void;
   update: (delta: number) => void;
   getCurrentFrame: () => number;
-  gotHit: () => void;
+  gotHit: (enemyDps: number) => void;
   getCoin: () => void;
   doAttack: () => void;
   getStatus: () => STATUS;
@@ -190,7 +189,7 @@ export const hero = (props: Props): Hero => {
     coinDisplay.addCoin();
   };
 
-  const gotHit = (): void => {
+  const gotHit = (enemyDps): void => {
     if (state.status !== STATUS.ON_SCREEN) return;
 
     state.status = STATUS.RECOVERING;
@@ -199,7 +198,7 @@ export const hero = (props: Props): Hero => {
 
     // Buffs
     const damageReduction = 0;
-    const damageTaken = ENEMY_DPH - damageReduction;
+    const damageTaken = enemyDps - damageReduction;
     const damageDone = damageTaken > 0 ? damageTaken : 0;
     let newHp;
     let newShield;

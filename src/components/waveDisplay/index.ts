@@ -49,7 +49,8 @@ export const waveDisplay = (props: Props): WavedDisplay => {
   };
   const initialState: State = { ...state };
 
-  const waveString = (): string => `${state.waveInfo.name}`;
+  const waveString = (): string =>
+    `Wave #${state.waveInfo.num + 1} : ${state.waveInfo.name}`;
 
   // const texture = PIXI.Texture.from('./assets/coin.png');
   // const sprite = new PIXI.Sprite(texture);
@@ -59,8 +60,7 @@ export const waveDisplay = (props: Props): WavedDisplay => {
   // Text
   const textStyle = new PIXI.TextStyle({
     fontFamily: 'Impact, Charcoal, sans-serif',
-    fontSize: 14,
-    fontWeight: 'bold',
+    fontSize: 12,
     fill: ['#fff'],
     fillGradientType: 1,
     fillGradientStops: [0.35],

@@ -145,7 +145,7 @@ export const enemyManager = (props: ManagerProps): ManagerReturnType => {
           heroAttacks({ enemy, hero });
         } else {
           // Hero is hit
-          hero.gotHit();
+          hero.gotHit(state.currentWaveData.enemyDps);
         }
       }
     });

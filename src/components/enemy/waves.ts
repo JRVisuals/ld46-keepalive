@@ -4,6 +4,7 @@ export type Wave = {
   name: string;
   totalEnemies: number;
   respawnCooldown: number;
+  enemyDps: number;
 };
 
 /**
@@ -14,6 +15,7 @@ export const waves: Array<Wave> = [
     name: 'So it begins...',
     totalEnemies: 3,
     respawnCooldown: 3000,
+    enemyDps: 10,
     // enemies: [
     //   {
     //     spriteTexture: '',
@@ -26,11 +28,13 @@ export const waves: Array<Wave> = [
     name: "Wait. There's more?!",
     totalEnemies: 10,
     respawnCooldown: 3000,
+    enemyDps: 15,
   },
 
   {
     name: 'Cubes... take me now!',
     totalEnemies: 20,
     respawnCooldown: 1500,
+    enemyDps: 20,
   },
 ];

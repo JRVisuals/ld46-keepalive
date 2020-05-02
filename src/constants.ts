@@ -15,8 +15,6 @@ export const HERO_COLLISION_BUFFER = 20;
 export const HERO_ATTACK_FRAME = 3;
 export const HERO_FRAMES = 4;
 // Enemy
-export const ENEMY_DPH = 10;
-export const ENEMY_RESPAWN_COOLDOWN = 5000;
 export const ENEMY_FRAMES = 4;
 // Wave Display
 export const ENEMY_ICON_WRAP = 13;
