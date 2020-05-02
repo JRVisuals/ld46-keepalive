@@ -1,4 +1,5 @@
 import * as PIXISOUND from 'pixi-sound';
+import { MUSIC_VOL_MULT } from '../../constants';
 
 export interface Sounds {
   MainTheme: PIXI.LoaderResource;
@@ -23,12 +24,12 @@ export const audio = (sounds: Sounds): ReturnType => {
   // Called when we've got all the things...
   const mainTheme = (): void => {
     musicBed.stop('Somber');
-    musicBed.play('MainTheme', { loop: true, volume: 0.5 });
+    musicBed.play('MainTheme', { loop: true, volume: 0.5 * MUSIC_VOL_MULT });
   };
 
   const somber = (): void => {
     musicBed.stop('MainTheme');
-    musicBed.play('Somber', { loop: true, volume: 0.65 });
+    musicBed.play('Somber', { loop: true, volume: 0.65 * MUSIC_VOL_MULT });
   };
 
   return {

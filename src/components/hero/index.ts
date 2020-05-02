@@ -9,6 +9,7 @@ import {
   TILE_HEIGHT,
   TILE_WIDTH,
   HERO_FRAMES,
+  SFX_VOL_MULT,
 } from '../../constants';
 import { Coin } from '../coin';
 import { HeroNumbers } from '../heroNumbers';
@@ -133,14 +134,14 @@ export const hero = (props: Props): Hero => {
   };
 
   const doAttack = (): void => {
-    pixiSound.play('attack', { loop: false, volume: 1 });
+    pixiSound.play('attack', { loop: false, volume: 1 * SFX_VOL_MULT });
   };
   const getDead = (): void => {
     if (state.status === STATUS.DYING) return;
     anim.gotoAndStop(1);
     state.status = STATUS.DYING;
     state.yVel = -6;
-    pixiSound.play('scream', { loop: false, volume: 0.4 });
+    pixiSound.play('scream', { loop: false, volume: 0.4 * SFX_VOL_MULT });
     onHeroDied();
   };
 
@@ -157,8 +158,8 @@ export const hero = (props: Props): Hero => {
     pixiSound.stop('quaf');
     pixiSound.stop('quafquick');
     Math.random() > 0.75
-      ? pixiSound.play('quaf', { loop: false, volume: 1 })
-      : pixiSound.play('quafquick', { loop: false, volume: 1 });
+      ? pixiSound.play('quaf', { loop: false, volume: 1 * SFX_VOL_MULT })
+      : pixiSound.play('quafquick', { loop: false, volume: 1 * SFX_VOL_MULT });
 
     switch (itemData.action) {
       case SHOP.Actions.HEAL:
@@ -203,7 +204,7 @@ export const hero = (props: Props): Hero => {
     let newHp;
     let newShield;
     if (state.effects.shield > 0) {
-      pixiSound.play('block', { loop: false, volume: 0.45 });
+      pixiSound.play('block', { loop: false, volume: 0.45 * SFX_VOL_MULT });
       newShield =
         state.effects.shield - damageDone >= 0
           ? state.effects.shield - damageDone
@@ -212,7 +213,7 @@ export const hero = (props: Props): Hero => {
       heroNubmers.animateNumbers({ damageDone: 0, isHealing: false });
       updateHpDisplay();
     } else {
-      pixiSound.play('gotHit', { loop: false, volume: 0.65 });
+      pixiSound.play('gotHit', { loop: false, volume: 0.65 * SFX_VOL_MULT });
       newHp = state.hp - damageDone >= 0 ? state.hp - damageDone : 0;
       state.hp = newHp;
       heroNubmers.animateNumbers({ damageDone, isHealing: false });
