@@ -186,10 +186,15 @@ const bootstrapApp = (props: {
   enemyManager = COMP.enemyManager({
     pos: {
       x: APP_WIDTH - GROUND_TILE_WIDTH,
-      y: APP_HEIGHT - GROUND_TILE_HEIGHT - HERO_HEIGHT * 0.5 + 12,
+      y: APP_HEIGHT - GROUND_TILE_HEIGHT - HERO_HEIGHT * 0.5 + 8,
+    },
+    anims: {
+      enemyCubeGreenWalk: spriteSheets.main.animations['enemy_cubeGreen_walk'],
+      enemyCubeGreenDie: spriteSheets.main.animations['enemy_cubeGreen_die'],
     },
     updateWaveDisplay: waveDisplay.updateDisplay,
   });
+
   mainContainer.addChild(enemyManager.container);
 
   mainContainer.addChild(btnAgain.container);

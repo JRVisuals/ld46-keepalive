@@ -5,6 +5,7 @@ export type Wave = {
   totalEnemies: number;
   respawnCooldown: number;
   enemyDps: number;
+  enemyTextureKey: string;
 };
 
 /**
@@ -16,6 +17,7 @@ export const waves: Array<Wave> = [
     totalEnemies: 3,
     respawnCooldown: 3000,
     enemyDps: 10,
+    enemyTextureKey: 'CubeGreen',
     // enemies: [
     //   {
     //     spriteTexture: '',
@@ -29,6 +31,7 @@ export const waves: Array<Wave> = [
     totalEnemies: 10,
     respawnCooldown: 3000,
     enemyDps: 15,
+    enemyTextureKey: 'CubeGreen',
   },
 
   {
@@ -36,5 +39,6 @@ export const waves: Array<Wave> = [
     totalEnemies: 20,
     respawnCooldown: 1500,
     enemyDps: 20,
+    enemyTextureKey: 'CubeGreen',
   },
 ];

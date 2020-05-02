@@ -20,6 +20,7 @@ interface ManagerReturnType {
 
 interface ManagerProps {
   pos?: { x: number; y: number };
+  anims: { [key: string]: Array<PIXI.Texture> };
   updateWaveDisplay: (waveInfo: WaveInfo) => void;
 }
 
@@ -38,7 +39,7 @@ interface State {
  */
 export const enemyManager = (props: ManagerProps): ManagerReturnType => {
   const pos = props.pos ?? { x: 0, y: 0 };
-  const { updateWaveDisplay } = props;
+  const { anims, updateWaveDisplay } = props;
 
   const initialState: State = {
     currentWaveNum: 0,
@@ -157,6 +158,8 @@ export const enemyManager = (props: ManagerProps): ManagerReturnType => {
     const newPos = { ...pos, x: APP_WIDTH + GROUND_TILE_WIDTH };
     const newEnemy = enemy({
       pos: newPos,
+      anims,
+      enemyTextureKey: state.currentWaveData.enemyTextureKey,
       destroyManagerInstance: destroyEnemy,
     });
     enemiesOnScreen.push({ self: newEnemy, container: newEnemy.container });

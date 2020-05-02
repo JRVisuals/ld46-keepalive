@@ -5,7 +5,6 @@ import {
   APP_HEIGHT,
   GROUND_TILE_WIDTH,
   GROUND_TILE_HEIGHT,
-  ENEMY_FRAMES,
 } from '../../constants';
 
 export interface Enemy {
@@ -18,6 +17,8 @@ export interface Enemy {
 interface Props {
   app?: PIXI.Application;
   pos?: { x: number; y: number };
+  anims: { [key: string]: Array<PIXI.Texture> };
+  enemyTextureKey: string;
   destroyManagerInstance: (enemy: PIXI.Sprite | PIXI.Container) => void;
 }
 
@@ -36,6 +37,8 @@ export const enemy = (props: Props): Enemy => {
 
   container.name = 'enemy';
 
+  const { anims, enemyTextureKey, destroyManagerInstance } = props;
+
   const yGrav = 0.3;
 
   const enemyState = {
@@ -43,24 +46,17 @@ export const enemy = (props: Props): Enemy => {
     yVel: 0,
   };
 
-  const { destroyManagerInstance } = props;
-
-  // Old school spritesheet
-  const liveFrames = [];
-  for (let i = 1; i <= ENEMY_FRAMES; i++) {
-    liveFrames.push(PIXI.Texture.from(`./assets/enemy_cube${i}.png`));
-  }
-  const liveAnim = new PIXI.AnimatedSprite(liveFrames);
+  const liveAnim = new PIXI.AnimatedSprite(
+    anims[`enemy${enemyTextureKey}Walk`]
+  );
   liveAnim.animationSpeed = 0.09;
   liveAnim.anchor.set(0.5);
   container.addChild(liveAnim);
   liveAnim.gotoAndPlay(0);
 
-  const deathFrames = [];
-  for (let i = 5; i <= 9; i++) {
-    deathFrames.push(PIXI.Texture.from(`./assets/enemy_cube${i}.png`));
-  }
-  const deathAnim = new PIXI.AnimatedSprite(deathFrames);
+  const deathAnim = new PIXI.AnimatedSprite(
+    anims[`enemy${enemyTextureKey}Die`]
+  );
   deathAnim.animationSpeed = 0.17;
   deathAnim.anchor.set(0.5);
 
