@@ -30,8 +30,8 @@ const pixiConfig: PixiConfig = {
 // No anti-alias
 PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
 
-type Animations = {
-  hourglass: PIXI.Spritesheet | null;
+type SpriteSheets = {
+  main: PIXI.Spritesheet | null;
 };
 interface BootstrapApp {
   app: PIXI.Application;
@@ -40,13 +40,10 @@ interface BootstrapApp {
 const onAssetsLoaded = (): void => {
   console.log('onAssetsLoaded');
 
-  // Hold all animations in an array
-  const animations = { hourglass: null };
-
-  // Create animations from loaded sheets and assets
-  const sheet = PIXI.Loader.shared.resources['mainSprites'].spritesheet;
-  animations['hourglass'] = sheet;
-
+  // Store preloade spritesheets
+  const spriteSheets = {
+    main: PIXI.Loader.shared.resources['mainSprites'].spritesheet,
+  };
   const sounds: Sounds = {
     MainTheme: PIXI.Loader.shared.resources['MainTheme'],
     Somber: PIXI.Loader.shared.resources['Somber'],
@@ -54,7 +51,7 @@ const onAssetsLoaded = (): void => {
 
   // Boostrap the app once assets are loaded
   // TODO add proper preloader
-  bootstrapApp({ animations, sounds });
+  bootstrapApp({ spriteSheets, sounds });
 };
 
 const preloader = PIXI.Loader.shared;
@@ -71,11 +68,11 @@ preloader.onProgress.add((e, f) =>
 /**
  * Kicks off the application proper by instantiating the various components and wiring up their update methods to the update loop of the main application.
  *
- * @param props - Preloaded assets ({@link Animations)}, {@link Sounds}) are passed in via props
+ * @param props - Preloaded assets ({@link Spritesheets)}, {@link Sounds}) are passed in via props
  *
  */
 const bootstrapApp = (props: {
-  animations: Animations;
+  spriteSheets: SpriteSheets;
   sounds: Sounds;
 }): BootstrapApp => {
   jrvascii();
@@ -86,7 +83,7 @@ const bootstrapApp = (props: {
   const { pixiApp, mainContainer } = initPIXI(pixiConfig, hostDiv);
   pixiApp.renderer.autoDensity = true;
 
-  const { animations, sounds } = props;
+  const { spriteSheets, sounds } = props;
 
   // Declare component variables in advance when needed
   let hero: HERO.Hero = null;
@@ -107,6 +104,7 @@ const bootstrapApp = (props: {
       x: TILE_WIDTH * -1,
       y: APP_HEIGHT - TILE_HEIGHT * 0.5,
     },
+    groundTiles: spriteSheets.main.animations['ground'],
   });
   mainContainer.addChild(ground.container);
 
@@ -180,7 +178,7 @@ const bootstrapApp = (props: {
   const shop = COMP.shop({
     pos: { x: APP_WIDTH - 217, y: 5 },
     hero,
-    anims: { hourglass: animations.hourglass },
+    anims: { hourglass: spriteSheets.main.animations['hourglass'] },
   });
   mainContainer.addChild(shop.container);
 

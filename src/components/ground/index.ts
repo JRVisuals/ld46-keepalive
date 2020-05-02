@@ -2,6 +2,7 @@ import * as PIXI from 'pixi.js';
 //import gsap from 'gsap';
 
 import { TILE_WIDTH, GROUND_MOVE_SPEED } from '../../constants';
+import { random } from 'gsap';
 
 interface ReturnType {
   container: PIXI.Container;
@@ -10,6 +11,7 @@ interface ReturnType {
 
 interface Props {
   pos?: { x: number; y: number };
+  groundTiles: Array<PIXI.Texture>;
 }
 
 /**
@@ -25,20 +27,28 @@ export const ground = (props: Props): ReturnType => {
   container.x = pos.x;
   container.y = pos.y;
 
+  const { groundTiles } = props;
+
   container.name = 'ground';
 
-  const texture = PIXI.Texture.from('./assets/groundTile.png');
-
+  //new PIXI.Sprite(sheet.textures["image.png"]);
   // sprite.scale.set(0.5);
   // sprite.blendMode = PIXI.BLEND_MODES.SCREEN;
   // sprite.scale.x *= -1;
 
-  const maxTile = 8;
+  const maxTile = 16;
   const tiles = [];
 
+  let shownSkull = false;
   for (let i = 0; i < maxTile; i++) {
-    const sprite = new PIXI.Sprite(texture);
+    let randomTile = Math.ceil(Math.random() * groundTiles.length - 1);
+    if (randomTile === 4 && shownSkull) randomTile = 0;
+    if (randomTile === 4) shownSkull = true;
+    console.log(randomTile);
+    const sprite = new PIXI.Sprite(groundTiles[randomTile]);
     sprite.anchor.set(0.5);
+    const xScale = Math.random() > 0.75 ? -1 : 1;
+    sprite.scale.x = xScale;
     sprite.x = TILE_WIDTH * i;
     container.addChild(sprite);
     tiles.push(sprite);

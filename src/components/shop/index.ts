@@ -17,7 +17,7 @@ interface Props {
   app?: PIXI.Application;
   pos?: { x: number; y: number };
   hero: Hero;
-  anims: { hourglass: PIXI.Spritesheet };
+  anims: { [key: string]: Array<PIXI.Texture> };
 }
 
 /**
@@ -43,8 +43,6 @@ export const shop = (props: Props): Shop => {
   const sprite = new PIXI.Sprite(texture);
   sprite.anchor.set(0);
   container.addChild(sprite);
-
-  //console.log('anims', anims);
 
   // Text
   const style = {
@@ -161,9 +159,7 @@ export const shop = (props: Props): Shop => {
 
     // The cooldown hourglass
 
-    const hourglassAnim = new PIXI.AnimatedSprite(
-      anims.hourglass.animations['hourglass']
-    );
+    const hourglassAnim = new PIXI.AnimatedSprite(anims.hourglass);
     item.cooldownSpriteRef = hourglassAnim;
     hourglassAnim.x = item.posX + 1;
     hourglassAnim.y = potionY + 7;
