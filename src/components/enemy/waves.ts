@@ -13,10 +13,10 @@ export type Wave = {
  */
 export const waves: Array<Wave> = [
   {
-    name: 'So it begins...',
-    totalEnemies: 3,
-    respawnCooldown: 3000,
-    enemyDps: 10,
+    name: 'Green means go!',
+    totalEnemies: 7,
+    respawnCooldown: 4000,
+    enemyDps: 8,
     enemyTextureKey: 'CubeGreen',
     // enemies: [
     //   {
@@ -31,14 +31,14 @@ export const waves: Array<Wave> = [
     totalEnemies: 10,
     respawnCooldown: 3000,
     enemyDps: 15,
-    enemyTextureKey: 'CubeGreen',
+    enemyTextureKey: 'CubeOrange',
   },
 
   {
-    name: 'Cubes... take me now!',
-    totalEnemies: 20,
+    name: 'How can you have any pudding?!',
+    totalEnemies: 24,
     respawnCooldown: 1500,
     enemyDps: 20,
-    enemyTextureKey: 'CubeGreen',
+    enemyTextureKey: 'CubeBlack',
   },
 ];

@@ -1,46 +1,46 @@
 {"frames": {
 
-"enemy_cubeGreen_die1.png":
+"enemy_cubeBlack_die1.png":
 {
 	"frame": {"x":199,"y":67,"w":62,"h":59},
-	"rotated": true,
+	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":5,"w":62,"h":59},
 	"sourceSize": {"w":64,"h":64}
 },
-"enemy_cubeGreen_die2.png":
+"enemy_cubeBlack_die2.png":
 {
-	"frame": {"x":199,"y":131,"w":57,"h":49},
-	"rotated": true,
+	"frame": {"x":394,"y":111,"w":57,"h":49},
+	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":5,"y":15,"w":57,"h":49},
 	"sourceSize": {"w":64,"h":64}
 },
-"enemy_cubeGreen_die3.png":
+"enemy_cubeBlack_die3.png":
 {
-	"frame": {"x":250,"y":131,"w":57,"h":43},
+	"frame": {"x":458,"y":1,"w":57,"h":43},
 	"rotated": true,
 	"trimmed": true,
 	"spriteSourceSize": {"x":5,"y":21,"w":57,"h":43},
 	"sourceSize": {"w":64,"h":64}
 },
-"enemy_cubeGreen_die4.png":
+"enemy_cubeBlack_die4.png":
 {
-	"frame": {"x":260,"y":67,"w":54,"h":23},
-	"rotated": true,
+	"frame": {"x":309,"y":215,"w":54,"h":23},
+	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":7,"y":41,"w":54,"h":23},
 	"sourceSize": {"w":64,"h":64}
 },
-"enemy_cubeGreen_die5.png":
+"enemy_cubeBlack_die5.png":
 {
-	"frame": {"x":265,"y":1,"w":54,"h":12},
-	"rotated": true,
+	"frame": {"x":263,"y":171,"w":54,"h":12},
+	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":8,"y":52,"w":54,"h":12},
 	"sourceSize": {"w":64,"h":64}
 },
-"enemy_cubeGreen_walk1.png":
+"enemy_cubeBlack_walk1.png":
 {
 	"frame": {"x":1,"y":199,"w":64,"h":53},
 	"rotated": false,
@@ -48,17 +48,89 @@
 	"spriteSourceSize": {"x":0,"y":11,"w":64,"h":53},
 	"sourceSize": {"w":64,"h":64}
 },
+"enemy_cubeBlack_walk2.png":
+{
+	"frame": {"x":199,"y":189,"w":63,"h":53},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":11,"w":63,"h":53},
+	"sourceSize": {"w":64,"h":64}
+},
+"enemy_cubeBlack_walk3.png":
+{
+	"frame": {"x":394,"y":1,"w":62,"h":53},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":11,"w":62,"h":53},
+	"sourceSize": {"w":64,"h":64}
+},
+"enemy_cubeBlack_walk4.png":
+{
+	"frame": {"x":329,"y":56,"w":63,"h":52},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":12,"w":63,"h":52},
+	"sourceSize": {"w":64,"h":64}
+},
+"enemy_cubeGreen_die1.png":
+{
+	"frame": {"x":265,"y":1,"w":62,"h":59},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":5,"w":62,"h":59},
+	"sourceSize": {"w":64,"h":64}
+},
+"enemy_cubeGreen_die2.png":
+{
+	"frame": {"x":394,"y":162,"w":57,"h":49},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":5,"y":15,"w":57,"h":49},
+	"sourceSize": {"w":64,"h":64}
+},
+"enemy_cubeGreen_die3.png":
+{
+	"frame": {"x":458,"y":60,"w":57,"h":43},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":5,"y":21,"w":57,"h":43},
+	"sourceSize": {"w":64,"h":64}
+},
+"enemy_cubeGreen_die4.png":
+{
+	"frame": {"x":453,"y":178,"w":54,"h":23},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":7,"y":41,"w":54,"h":23},
+	"sourceSize": {"w":64,"h":64}
+},
+"enemy_cubeGreen_die5.png":
+{
+	"frame": {"x":309,"y":240,"w":54,"h":12},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":8,"y":52,"w":54,"h":12},
+	"sourceSize": {"w":64,"h":64}
+},
+"enemy_cubeGreen_walk1.png":
+{
+	"frame": {"x":67,"y":199,"w":64,"h":53},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":11,"w":64,"h":53},
+	"sourceSize": {"w":64,"h":64}
+},
 "enemy_cubeGreen_walk2.png":
 {
-	"frame": {"x":67,"y":199,"w":63,"h":53},
-	"rotated": false,
+	"frame": {"x":254,"y":189,"w":63,"h":53},
+	"rotated": true,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":11,"w":63,"h":53},
 	"sourceSize": {"w":64,"h":64}
 },
 "enemy_cubeGreen_walk3.png":
 {
-	"frame": {"x":132,"y":199,"w":62,"h":53},
+	"frame": {"x":394,"y":56,"w":62,"h":53},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":11,"w":62,"h":53},
@@ -66,7 +138,79 @@
 },
 "enemy_cubeGreen_walk4.png":
 {
-	"frame": {"x":196,"y":199,"w":63,"h":52},
+	"frame": {"x":263,"y":117,"w":63,"h":52},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":12,"w":63,"h":52},
+	"sourceSize": {"w":64,"h":64}
+},
+"enemy_cubeOrange_die1.png":
+{
+	"frame": {"x":199,"y":128,"w":62,"h":59},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":5,"w":62,"h":59},
+	"sourceSize": {"w":64,"h":64}
+},
+"enemy_cubeOrange_die2.png":
+{
+	"frame": {"x":328,"y":164,"w":57,"h":49},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":5,"y":15,"w":57,"h":49},
+	"sourceSize": {"w":64,"h":64}
+},
+"enemy_cubeOrange_die3.png":
+{
+	"frame": {"x":453,"y":119,"w":57,"h":43},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":5,"y":21,"w":57,"h":43},
+	"sourceSize": {"w":64,"h":64}
+},
+"enemy_cubeOrange_die4.png":
+{
+	"frame": {"x":478,"y":178,"w":54,"h":23},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":7,"y":41,"w":54,"h":23},
+	"sourceSize": {"w":64,"h":64}
+},
+"enemy_cubeOrange_die5.png":
+{
+	"frame": {"x":387,"y":213,"w":54,"h":12},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":8,"y":52,"w":54,"h":12},
+	"sourceSize": {"w":64,"h":64}
+},
+"enemy_cubeOrange_walk1.png":
+{
+	"frame": {"x":133,"y":199,"w":64,"h":53},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":11,"w":64,"h":53},
+	"sourceSize": {"w":64,"h":64}
+},
+"enemy_cubeOrange_walk2.png":
+{
+	"frame": {"x":329,"y":1,"w":63,"h":53},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":11,"w":63,"h":53},
+	"sourceSize": {"w":64,"h":64}
+},
+"enemy_cubeOrange_walk3.png":
+{
+	"frame": {"x":265,"y":62,"w":62,"h":53},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":11,"w":62,"h":53},
+	"sourceSize": {"w":64,"h":64}
+},
+"enemy_cubeOrange_walk4.png":
+{
+	"frame": {"x":329,"y":110,"w":63,"h":52},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":12,"w":63,"h":52},
@@ -82,7 +226,7 @@
 },
 "ground2.png":
 {
-	"frame": {"x":1,"y":133,"w":64,"h":64},
+	"frame": {"x":67,"y":1,"w":64,"h":64},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":64},
@@ -90,7 +234,7 @@
 },
 "ground3.png":
 {
-	"frame": {"x":67,"y":1,"w":64,"h":64},
+	"frame": {"x":1,"y":133,"w":64,"h":64},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":64},
@@ -106,7 +250,7 @@
 },
 "ground5.png":
 {
-	"frame": {"x":67,"y":133,"w":64,"h":64},
+	"frame": {"x":133,"y":1,"w":64,"h":64},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":64},
@@ -114,7 +258,7 @@
 },
 "ground6.png":
 {
-	"frame": {"x":133,"y":1,"w":64,"h":64},
+	"frame": {"x":67,"y":133,"w":64,"h":64},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":64},
@@ -130,7 +274,7 @@
 },
 "ground8.png":
 {
-	"frame": {"x":133,"y":133,"w":64,"h":64},
+	"frame": {"x":199,"y":1,"w":64,"h":64},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":64},
@@ -138,7 +282,7 @@
 },
 "ground9.png":
 {
-	"frame": {"x":199,"y":1,"w":64,"h":64},
+	"frame": {"x":133,"y":133,"w":64,"h":64},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":64},
@@ -154,7 +298,7 @@
 },
 "hourglass1.png":
 {
-	"frame": {"x":279,"y":37,"w":15,"h":16},
+	"frame": {"x":383,"y":227,"w":15,"h":16},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":0,"w":15,"h":16},
@@ -162,7 +306,7 @@
 },
 "hourglass2.png":
 {
-	"frame": {"x":261,"y":190,"w":15,"h":16},
+	"frame": {"x":400,"y":227,"w":15,"h":16},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":0,"w":15,"h":16},
@@ -170,7 +314,7 @@
 },
 "hourglass3.png":
 {
-	"frame": {"x":261,"y":208,"w":15,"h":16},
+	"frame": {"x":417,"y":227,"w":15,"h":16},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":0,"w":15,"h":16},
@@ -178,7 +322,7 @@
 },
 "hourglass4.png":
 {
-	"frame": {"x":261,"y":226,"w":15,"h":16},
+	"frame": {"x":434,"y":227,"w":15,"h":16},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":0,"w":15,"h":16},
@@ -186,7 +330,7 @@
 },
 "hourglass5.png":
 {
-	"frame": {"x":279,"y":1,"w":16,"h":16},
+	"frame": {"x":365,"y":215,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -194,23 +338,27 @@
 },
 "hourglass6.png":
 {
-	"frame": {"x":278,"y":190,"w":16,"h":15},
-	"rotated": true,
+	"frame": {"x":451,"y":234,"w":16,"h":15},
+	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":15},
 	"sourceSize": {"w":16,"h":16}
 },
 "hourglass7.png":
 {
-	"frame": {"x":279,"y":19,"w":16,"h":16},
+	"frame": {"x":365,"y":233,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
 	"sourceSize": {"w":16,"h":16}
 }},
 "animations": {
+	"enemy_cubeBlack_die": ["enemy_cubeBlack_die1.png","enemy_cubeBlack_die2.png","enemy_cubeBlack_die3.png","enemy_cubeBlack_die4.png","enemy_cubeBlack_die5.png"],
+	"enemy_cubeBlack_walk": ["enemy_cubeBlack_walk1.png","enemy_cubeBlack_walk2.png","enemy_cubeBlack_walk3.png","enemy_cubeBlack_walk4.png"],
 	"enemy_cubeGreen_die": ["enemy_cubeGreen_die1.png","enemy_cubeGreen_die2.png","enemy_cubeGreen_die3.png","enemy_cubeGreen_die4.png","enemy_cubeGreen_die5.png"],
 	"enemy_cubeGreen_walk": ["enemy_cubeGreen_walk1.png","enemy_cubeGreen_walk2.png","enemy_cubeGreen_walk3.png","enemy_cubeGreen_walk4.png"],
+	"enemy_cubeOrange_die": ["enemy_cubeOrange_die1.png","enemy_cubeOrange_die2.png","enemy_cubeOrange_die3.png","enemy_cubeOrange_die4.png","enemy_cubeOrange_die5.png"],
+	"enemy_cubeOrange_walk": ["enemy_cubeOrange_walk1.png","enemy_cubeOrange_walk2.png","enemy_cubeOrange_walk3.png","enemy_cubeOrange_walk4.png"],
 	"ground": ["ground1.png","ground2.png","ground3.png","ground4.png","ground5.png","ground6.png","ground7.png","ground8.png","ground9.png","ground10.png"],
 	"hourglass": ["hourglass1.png","hourglass2.png","hourglass3.png","hourglass4.png","hourglass5.png","hourglass6.png","hourglass7.png"]
 },
@@ -219,8 +367,8 @@
 	"version": "1.0",
 	"image": "ld46sprites.png",
 	"format": "RGBA8888",
-	"size": {"w":296,"h":253},
+	"size": {"w":502,"h":253},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:bd4e980b991ae8f17ad5a0e5c9dce507:d6d51407c590bb055c8d05bc4429e574:66b9ca235882602baa21d573f2bef1dc$"
+	"smartupdate": "$TexturePacker:SmartUpdate:4f617a4db6b28e2fc4c8275e221572be:dc4ecd6d21ac41e06d5da4273c51a5ba:66b9ca235882602baa21d573f2bef1dc$"
 }
 }

@@ -190,7 +190,12 @@ const bootstrapApp = (props: {
     },
     anims: {
       enemyCubeGreenWalk: spriteSheets.main.animations['enemy_cubeGreen_walk'],
+      enemyCubeOrangeWalk:
+        spriteSheets.main.animations['enemy_cubeOrange_walk'],
+      enemyCubeBlackWalk: spriteSheets.main.animations['enemy_cubeBlack_walk'],
       enemyCubeGreenDie: spriteSheets.main.animations['enemy_cubeGreen_die'],
+      enemyCubeOrangeDie: spriteSheets.main.animations['enemy_cubeOrange_die'],
+      enemyCubeBlackDie: spriteSheets.main.animations['enemy_cubeBlack_die'],
     },
     updateWaveDisplay: waveDisplay.updateDisplay,
   });
