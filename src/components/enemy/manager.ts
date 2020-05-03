@@ -154,13 +154,12 @@ export const enemyManager = (props: ManagerProps): ManagerReturnType => {
 
   /**
    * Pick random enemy using weighted values (0-1)
-   * @returns random wave enemy (weighted)
+   * @returns random wave enemy (weighted) or `false` if not found
    * */
   const getWeightedEnemy = (): WaveEnemy | false => {
     const enemies = state.currentWaveData.enemies;
     let cumulativeWeight = 1;
     const random = Math.random() * 1;
-    console.log(random);
     for (let i = 0; i < enemies.length; i++) {
       const item = enemies[i];
       cumulativeWeight -= item?.weight ?? 0;
