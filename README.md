@@ -30,7 +30,11 @@ Given the opportunity I'll keep working on this on and off until the next LD in 
 - Refactor Component Type definitions to use a base type and extend as needed
 - ~~A time survived clock~~
 - Title and instructions along with a ~real game loop~ lol
-- More music and sound (~~main theme~~, ~~menu theme~~, longer main theme w/ melody)
+- More music and sound (
+  - [x] main theme
+  - [x] menu theme
+  - [ ] longer main theme w/ melody
+  - [ ] fanfare for wave complete
 - Post effects like glows and sparks
 - Additional animation frames for all the things
 - Ground block variety
@@ -41,22 +45,22 @@ Given the opportunity I'll keep working on this on and off until the next LD in 
 ### Next Up : Getting Enemy Waves Working
 
 - A wave system and increasing difficulty over time
-  - Wave manager
-  - Wave timer
-  - Data structure to define waves
-  - Refactor existing enemy manager to work with wave system
+  - [x] Wave manager
+  - [x] Wave display
+  - [ ] Data structure to define waves
+  - [ ] Refactor existing enemy manager to work with wave system
 
-### (Pause) : Getting the Shop Working
+### (Paused) : Getting the Shop Working
 
-- Get haste potion working
-- Tooltips for potions
-- ~~Get armor potion workin~~
-- ~~Have the heart be mask based rather than frames based to show 0-100 HP~~
-- ~~Tweak potions so they can't be purchased until they respawn~~
-- ~~Get spritesheets working~~
-- ~~Add cooldown to potions~~
-- ~~Add cooldown visual~~
-- ~~Further refactoring of shop inventory to make it more dynamic~~
+- [ ] Get haste potion working
+- [ ] Tooltips for potions
+- [x] Get armor potion workin
+- [x] Have the heart be mask based rather than frames based to show 0-100 HP
+- [x] Tweak potions so they can't be purchased until they respawn
+- [x] Get spritesheets working
+- [x] Add cooldown to potions
+- [x] Add cooldown visual
+- [x] Further refactoring of shop inventory to make it more dynamic
 
 ## Tools Used
 
