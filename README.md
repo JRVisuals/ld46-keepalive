@@ -42,14 +42,6 @@ Given the opportunity I'll keep working on this on and off until the next LD in 
 - Finish a run (sorry the princes is in another castle), get bonus/buff, next level (?)
 - Custom bitmap fonts (big one for time and coins, small one for menus)
 
-### Next Up : Getting Enemy Waves Working
-
-- A wave system and increasing difficulty over time
-  - [x] Wave manager
-  - [x] Wave display
-  - [ ] Data structure to define waves
-  - [ ] Refactor existing enemy manager to work with wave system
-
 ### (Paused) : Getting the Shop Working
 
 - [ ] Get haste potion working
@@ -61,6 +53,17 @@ Given the opportunity I'll keep working on this on and off until the next LD in 
 - [x] Add cooldown to potions
 - [x] Add cooldown visual
 - [x] Further refactoring of shop inventory to make it more dynamic
+
+### Completed! : Getting Enemy Waves Working
+
+- A wave system and increasing difficulty over time
+  - [x] Wave manager
+  - [x] Wave display
+  - [x] Data structure to define waves
+    - [x] Allowing for variation in enemy speed
+    - [x] Allowing for multiple enemy types within a single wave
+    - [x] Wave enemies should be weighted
+  - [x] Refactor existing enemy manager to work with wave system
 
 ## Tools Used
 

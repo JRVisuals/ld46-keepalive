@@ -5,10 +5,10 @@ import {
   HERO_ATTACK_FRAME,
   HERO_COLLISION_BUFFER,
 } from '../../constants';
-import { enemy } from '.';
+import { enemy, Enemy } from '.';
 import * as HERO from '../hero';
 
-import { waves, Wave } from './waves';
+import { waves, Wave, WaveEnemy } from './waves';
 import { WaveInfo } from '../waveDisplay/';
 
 interface ManagerReturnType {
@@ -49,7 +49,7 @@ export const enemyManager = (props: ManagerProps): ManagerReturnType => {
 
   let state: State = { ...initialState };
 
-  const enemiesOnScreen = [];
+  const enemiesOnScreen: Array<Enemy> = [];
 
   let timeSinceLastSpawn = 0;
 
@@ -113,7 +113,7 @@ export const enemyManager = (props: ManagerProps): ManagerReturnType => {
 
   // Hero Attacks!
   const heroAttacks = ({ enemy, hero }): void => {
-    enemy.self.gotKilled();
+    enemy.gotKilled();
     hero.doAttack();
     hero.getCoin();
 
@@ -135,8 +135,8 @@ export const enemyManager = (props: ManagerProps): ManagerReturnType => {
         // In collision range, and enemy is not mid-death
         enemy.container.x <= hero.container.x + HERO_COLLISION_BUFFER &&
         enemy.container.x >= hero.container.x - HERO_COLLISION_BUFFER &&
-        enemy.self.getStatus() != 'DYING' &&
-        enemy.self.getStatus() != 'DEAD'
+        enemy.getStatus() != 'DYING' &&
+        enemy.getStatus() != 'DEAD'
       ) {
         if (
           // Hero is attacking and enemy is not dying
@@ -146,23 +146,67 @@ export const enemyManager = (props: ManagerProps): ManagerReturnType => {
           heroAttacks({ enemy, hero });
         } else {
           // Hero is hit
-          hero.gotHit(state.currentWaveData.enemyDps);
+          hero.gotHit(enemy.getDps());
         }
       }
     });
   };
 
+  /**
+   * Pick random enemy using weighted values (0-1)
+   * @returns random wave enemy (weighted)
+   * */
+  const getWeightedEnemy = (): WaveEnemy | false => {
+    const enemies = state.currentWaveData.enemies;
+    let cumulativeWeight = 1;
+    const random = Math.random() * 1;
+    console.log(random);
+    for (let i = 0; i < enemies.length; i++) {
+      const item = enemies[i];
+      cumulativeWeight -= item?.weight ?? 0;
+      if (random >= cumulativeWeight) {
+        return item;
+      }
+    }
+    return false;
+  };
+
+  /**
+   * Pick random enemy ignoring weights completely
+   * @returns random wave enemy
+   * */
+  const getRandomEnemy = (): WaveEnemy => {
+    const random = Math.round(
+      Math.random() * (state.currentWaveData.enemies.length - 1)
+    );
+    const waveEnemy = state.currentWaveData.enemies[random];
+    return waveEnemy;
+  };
+
+  /**
+   * Get random enemy from wave data
+   * @returns weighted random enemy if available, completely random enemy if not
+   * */
+  const getRandomWaveEnemy = (): WaveEnemy => {
+    const weighted = getWeightedEnemy();
+    const waveEnemy = weighted ? weighted : getRandomEnemy();
+    return waveEnemy;
+  };
+
   const spawnEnemy = (): void => {
     if (lastHeroStatus === HERO.STATUS.SPAWNING) return;
-    // Enemy
+
+    // Pick a random enemy from the current wave. Use weighting if available or strict randomness if not.
+    const enemyData = getRandomWaveEnemy();
+
     const newPos = { ...pos, x: APP_WIDTH + GROUND_TILE_WIDTH };
     const newEnemy = enemy({
       pos: newPos,
       anims,
-      enemyTextureKey: state.currentWaveData.enemyTextureKey,
+      data: enemyData,
       destroyManagerInstance: destroyEnemy,
     });
-    enemiesOnScreen.push({ self: newEnemy, container: newEnemy.container });
+    enemiesOnScreen.push(newEnemy);
     container.addChild(newEnemy.container);
   };
 
@@ -180,7 +224,7 @@ export const enemyManager = (props: ManagerProps): ManagerReturnType => {
     }
 
     enemiesOnScreen.forEach((enemy) => {
-      enemy.self.update();
+      enemy.update(delta);
     });
   };
 

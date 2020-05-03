@@ -1,11 +1,17 @@
 // Define wave data
 
+export type WaveEnemy = {
+  enemySpeed: number;
+  enemyDps: number;
+  enemyTextureKey: string;
+  weight?: number;
+};
+
 export type Wave = {
   name: string;
   totalEnemies: number;
   respawnCooldown: number;
-  enemyDps: number;
-  enemyTextureKey: string;
+  enemies: Array<WaveEnemy>;
 };
 
 /**
@@ -13,32 +19,67 @@ export type Wave = {
  */
 export const waves: Array<Wave> = [
   {
+    // Wave Based
     name: 'Green means go!',
-    totalEnemies: 7,
+    totalEnemies: 5,
     respawnCooldown: 4000,
-    enemyDps: 8,
-    enemyTextureKey: 'CubeGreen',
-    // enemies: [
-    //   {
-    //     spriteTexture: '',
-    //     speed: 1,
-    //     total: 10,
-    //   },
-    // ],
+    // Specific to Enemy
+    enemies: [{ enemySpeed: 1.25, enemyDps: 10, enemyTextureKey: 'CubeGreen' }],
   },
   {
     name: "Wait. There's more?!",
     totalEnemies: 10,
-    respawnCooldown: 3000,
-    enemyDps: 15,
-    enemyTextureKey: 'CubeOrange',
+    respawnCooldown: 1250,
+    enemies: [
+      {
+        enemySpeed: 1.25,
+        enemyDps: 10,
+        enemyTextureKey: 'CubeGreen',
+        weight: 0.75,
+      },
+      {
+        enemySpeed: 1.5,
+        enemyDps: 5,
+        enemyTextureKey: 'CubeOrange',
+        weight: 0.25,
+      },
+    ],
   },
-
+  {
+    name: 'An orange menace!',
+    totalEnemies: 10,
+    respawnCooldown: 1250,
+    enemies: [{ enemySpeed: 1.5, enemyDps: 5, enemyTextureKey: 'CubeOrange' }],
+  },
+  {
+    name: "If you don't eat your meant...",
+    totalEnemies: 15,
+    respawnCooldown: 2500,
+    enemies: [
+      {
+        enemySpeed: 1.25,
+        enemyDps: 10,
+        enemyTextureKey: 'CubeGreen',
+        weight: 0.25,
+      },
+      {
+        enemySpeed: 1.5,
+        enemyDps: 5,
+        enemyTextureKey: 'CubeOrange',
+        weight: 0.5,
+      },
+      {
+        enemySpeed: 1.1,
+        enemyDps: 25,
+        enemyTextureKey: 'CubeBlack',
+        weight: 0.25,
+      },
+    ],
+  },
   {
     name: 'How can you have any pudding?!',
     totalEnemies: 24,
-    respawnCooldown: 1500,
-    enemyDps: 20,
-    enemyTextureKey: 'CubeBlack',
+    respawnCooldown: 2000,
+    enemies: [{ enemySpeed: 1.2, enemyDps: 25, enemyTextureKey: 'CubeBlack' }],
   },
 ];

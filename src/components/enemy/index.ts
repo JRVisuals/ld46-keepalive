@@ -7,18 +7,21 @@ import {
   GROUND_TILE_HEIGHT,
 } from '../../constants';
 
+import { WaveEnemy } from './waves';
+
 export interface Enemy {
   container: PIXI.Container;
   update: (delta: number) => void;
   gotKilled: () => void;
   getStatus: () => string;
+  getDps: () => number;
 }
 
-interface Props {
+interface EnemyProps {
   app?: PIXI.Application;
   pos?: { x: number; y: number };
   anims: { [key: string]: Array<PIXI.Texture> };
-  enemyTextureKey: string;
+  data: WaveEnemy;
   destroyManagerInstance: (enemy: PIXI.Sprite | PIXI.Container) => void;
 }
 
@@ -29,7 +32,7 @@ interface Props {
  *
  * @returns Interface object containing methods that can be called on this module
  */
-export const enemy = (props: Props): Enemy => {
+export const enemy = (props: EnemyProps): Enemy => {
   const pos = props.pos ?? { x: 0, y: 0 };
   const container = new PIXI.Container();
   container.x = pos.x;
@@ -37,7 +40,13 @@ export const enemy = (props: Props): Enemy => {
 
   container.name = 'enemy';
 
-  const { anims, enemyTextureKey, destroyManagerInstance } = props;
+  const {
+    anims,
+    data: { enemyTextureKey },
+    data: { enemySpeed },
+    data: { enemyDps },
+    destroyManagerInstance,
+  } = props;
 
   const yGrav = 0.3;
 
@@ -46,19 +55,25 @@ export const enemy = (props: Props): Enemy => {
     yVel: 0,
   };
 
-  const liveAnim = new PIXI.AnimatedSprite(
+  /**
+   * Getter for enemy damage number
+   *
+   * @returns the amount of damage the enemy does per hit
+   *
+   */
+  const getDps = (): number => enemyDps;
+
+  const animWalk = new PIXI.AnimatedSprite(
     anims[`enemy${enemyTextureKey}Walk`]
   );
-  liveAnim.animationSpeed = 0.09;
-  liveAnim.anchor.set(0.5);
-  container.addChild(liveAnim);
-  liveAnim.gotoAndPlay(0);
+  animWalk.animationSpeed = 0.08 * enemySpeed;
+  animWalk.anchor.set(0.5);
+  container.addChild(animWalk);
+  animWalk.gotoAndPlay(0);
 
-  const deathAnim = new PIXI.AnimatedSprite(
-    anims[`enemy${enemyTextureKey}Die`]
-  );
-  deathAnim.animationSpeed = 0.17;
-  deathAnim.anchor.set(0.5);
+  const animDie = new PIXI.AnimatedSprite(anims[`enemy${enemyTextureKey}Die`]);
+  animDie.animationSpeed = 0.17;
+  animDie.anchor.set(0.5);
 
   const getStatus = (): string => {
     return enemyState.status;
@@ -78,7 +93,7 @@ export const enemy = (props: Props): Enemy => {
     const movementSpeed =
       enemyState.status === 'DYING' || enemyState.status === 'DEAD'
         ? GROUND_MOVE_SPEED
-        : GROUND_MOVE_SPEED * 1.1;
+        : GROUND_MOVE_SPEED * enemySpeed;
     const nextX = container.x - movementSpeed;
     if (nextX < -GROUND_TILE_WIDTH) exitedScreen();
     container.x = nextX;
@@ -90,9 +105,9 @@ export const enemy = (props: Props): Enemy => {
     enemyState.status = 'DYING';
     enemyState.yVel = -5;
 
-    container.removeChild(liveAnim);
-    container.addChild(deathAnim);
-    deathAnim.gotoAndPlay(0);
+    container.removeChild(animWalk);
+    container.addChild(animDie);
+    animDie.gotoAndPlay(0);
   };
 
   // Not used
@@ -109,8 +124,8 @@ export const enemy = (props: Props): Enemy => {
   };
 
   const checkDeathFrame = (): void => {
-    if (deathAnim.currentFrame === 4) {
-      deathAnim.stop();
+    if (animDie.currentFrame === 4) {
+      animDie.stop();
       enemyState.status = 'DEAD';
       // gsap.to(deathAnim, 0.2, {
       //   alpha: 0,
@@ -140,5 +155,5 @@ export const enemy = (props: Props): Enemy => {
     }
   };
 
-  return { container, update, gotKilled, getStatus };
+  return { container, update, gotKilled, getStatus, getDps };
 };
