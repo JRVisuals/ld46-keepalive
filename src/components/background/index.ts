@@ -9,6 +9,13 @@ interface ReturnType {
 interface Props {
   pos?: { x: number; y: number };
 }
+
+type MoveTiles = (props: {
+  tileArray: Array<PIXI.Sprite>;
+  parallaxMult: number;
+  tileWidth: number;
+}) => void;
+
 /**
  * The parallaxing background graphics and animation.
  *
@@ -24,77 +31,87 @@ export const background = (props: Props): ReturnType => {
 
   container.name = 'background';
 
-  // Way background
-  const bgTexture = PIXI.Texture.from('./assets/bg.png');
   const maxTile = 2;
-  const bgParallaxMult = 0.125;
   const tileWidth = 700;
-  const bgTiles = [];
 
-  for (let i = 0; i < maxTile; i++) {
-    const bgSprite = new PIXI.Sprite(bgTexture);
-    bgSprite.anchor.set(0);
-    bgSprite.x = tileWidth * i;
-    container.addChild(bgSprite);
-    bgTiles.push(bgSprite);
-  }
+  /**  Single function to build sprite arrays
+   *
+   * @returns an array of sprites based on the passed in params
+   *
+   * */
+  const buildSpriteArray = ({
+    maxTile,
+    tileWidth,
+    texturePath,
+  }): Array<PIXI.Sprite> => {
+    const tempArray = [];
+    for (let i = 0; i < maxTile; i++) {
+      const tempTexture = PIXI.Texture.from(texturePath);
+      const tempSprite = new PIXI.Sprite(tempTexture);
+      tempSprite.anchor.set(0);
+      tempSprite.x = tileWidth * i;
+      container.addChild(tempSprite);
+      tempArray.push(tempSprite);
+    }
+    return tempArray;
+  };
+
+  // Sky backdrop
+  const skyParallaxMult = 0.0625;
+  const skyTiles = buildSpriteArray({
+    maxTile,
+    tileWidth,
+    texturePath: './assets/bg.png',
+  });
+
+  // Way background
+  const bgParallaxMult = 0.125;
+  const bgTiles = buildSpriteArray({
+    maxTile,
+    tileWidth,
+    texturePath: './assets/bg_mountains.png',
+  });
 
   // Way background clouds
-  const cloudTexture = PIXI.Texture.from('./assets/bg_clouds.png');
-
   const cloudParallaxMult = 0.25;
-  const cloudTiles = [];
-
-  for (let i = 0; i < maxTile; i++) {
-    const cloudSprite = new PIXI.Sprite(cloudTexture);
-    cloudSprite.anchor.set(0);
-    cloudSprite.x = tileWidth * i;
-    container.addChild(cloudSprite);
-    cloudTiles.push(cloudSprite);
-  }
+  const cloudTiles = buildSpriteArray({
+    maxTile,
+    tileWidth,
+    texturePath: './assets/bg_clouds.png',
+  });
 
   // Midground rocks and stuffs
-  const bgRocksTexture = PIXI.Texture.from('./assets/bg_rocks.png');
-
   const mgParallaxMult = 0.5;
-  const mgTiles = [];
+  const mgTiles = buildSpriteArray({
+    maxTile,
+    tileWidth,
+    texturePath: './assets/bg_rocks.png',
+  });
 
-  for (let i = 0; i < maxTile; i++) {
-    const mgSprite = new PIXI.Sprite(bgRocksTexture);
-    mgSprite.anchor.set(0);
-    mgSprite.x = tileWidth * i;
-    container.addChild(mgSprite);
-    mgTiles.push(mgSprite);
-  }
-
-  const moveTiles = (): void => {
-    // Way background
-    bgTiles.forEach((tile) => {
-      let newX = tile.x - GROUND_MOVE_SPEED * bgParallaxMult;
+  const moveTiles: MoveTiles = (props) => {
+    const { tileArray, parallaxMult, tileWidth } = props;
+    tileArray.forEach((tile) => {
+      let newX = tile.x - GROUND_MOVE_SPEED * parallaxMult;
       if (newX < tileWidth * -1)
-        newX = tileWidth * (maxTile - 1) - GROUND_MOVE_SPEED * bgParallaxMult;
-      tile.x = newX;
-    });
-    // Clouds background
-    cloudTiles.forEach((tile) => {
-      let newX = tile.x - GROUND_MOVE_SPEED * cloudParallaxMult;
-      if (newX < tileWidth * -1)
-        newX =
-          tileWidth * (maxTile - 1) - GROUND_MOVE_SPEED * cloudParallaxMult;
-      tile.x = newX;
-    });
-    // Midground
-    mgTiles.forEach((tile) => {
-      let newX = tile.x - GROUND_MOVE_SPEED * mgParallaxMult;
-      if (newX < tileWidth * -1)
-        newX = tileWidth * (maxTile - 1) - GROUND_MOVE_SPEED * mgParallaxMult;
+        newX = tileWidth * (maxTile - 1) - GROUND_MOVE_SPEED * parallaxMult;
       tile.x = newX;
     });
   };
 
   const update = (delta): void => {
     // Update called by main
-    moveTiles();
+    moveTiles({
+      tileArray: skyTiles,
+      parallaxMult: skyParallaxMult,
+      tileWidth,
+    });
+    moveTiles({ tileArray: bgTiles, parallaxMult: bgParallaxMult, tileWidth });
+    moveTiles({
+      tileArray: cloudTiles,
+      parallaxMult: cloudParallaxMult,
+      tileWidth,
+    });
+    moveTiles({ tileArray: mgTiles, parallaxMult: mgParallaxMult, tileWidth });
   };
 
   return { container, update };
