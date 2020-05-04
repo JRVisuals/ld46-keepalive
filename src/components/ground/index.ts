@@ -5,6 +5,7 @@ import {
   GROUND_TILE_WIDTH,
   GROUND_MOVE_SPEED,
   GROUND_NO_DUPE_TILE,
+  GROUND_TOTAL_TILES,
 } from '../../constants';
 import { random } from 'gsap';
 
@@ -35,23 +36,31 @@ export const ground = (props: Props): ReturnType => {
 
   container.name = 'ground';
 
-  const maxTile = 16;
   const tiles = [];
 
   let shownNoDupeTile = false;
-
-  for (let i = 0; i < maxTile; i++) {
+  let prevTile = -1;
+  for (let i = 0; i < GROUND_TOTAL_TILES; i++) {
     let randomTile = Math.ceil(Math.random() * groundTiles.length - 1);
 
     // Make sure we only have one skeleton tile
     if (randomTile === GROUND_NO_DUPE_TILE && shownNoDupeTile) randomTile = 0;
     if (randomTile === GROUND_NO_DUPE_TILE) shownNoDupeTile = true;
+    // No twinsies
+    if (randomTile === prevTile)
+      randomTile =
+        randomTile + 1 < groundTiles.length - 1
+          ? randomTile + 1
+          : randomTile - 1;
+    prevTile = randomTile;
 
     const sprite = new PIXI.Sprite(groundTiles[randomTile]);
-    sprite.anchor.set(0.5);
-    const xScale = Math.random() > 0.75 ? -1 : 1;
-    sprite.scale.x = xScale;
+    sprite.name = `ground ${randomTile}`;
+    sprite.anchor.set(0);
+    // const xScale = Math.random() > 0.75 ? -1 : 1;
+    // sprite.scale.x = xScale;
     sprite.x = GROUND_TILE_WIDTH * i;
+    sprite.y = GROUND_TILE_WIDTH * -0.5;
     container.addChild(sprite);
     tiles.push(sprite);
   }
@@ -59,7 +68,8 @@ export const ground = (props: Props): ReturnType => {
   const moveTiles = (): void => {
     tiles.forEach((tile) => {
       let newX = tile.x - GROUND_MOVE_SPEED;
-      if (newX <= 0) newX = maxTile * GROUND_TILE_WIDTH - GROUND_MOVE_SPEED;
+      if (newX < 0)
+        newX = GROUND_TOTAL_TILES * GROUND_TILE_WIDTH - GROUND_MOVE_SPEED;
       tile.x = newX;
     });
   };

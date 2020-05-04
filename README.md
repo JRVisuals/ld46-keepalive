@@ -25,10 +25,13 @@ Given the opportunity I'll keep working on this on and off until the next LD in 
 - Additional shop items: other potions, weapons, armor, etc
   - Potion ideas:
     - Invisibility - enemies do not attack the hero
-- Real enemy artwork and enemy variety (~~slime~~, skeleton, giant head)
+- Real enemy artwork and enemy variety
+  - [x] slime
+  - [ ] skeleton
+  - [ ] giant head
 - Refactor enemy manamgement system to make it more dynamic
 - Refactor Component Type definitions to use a base type and extend as needed
-- ~~A time survived clock~~
+- [x] A time survived clock
 - Title and instructions along with a ~real game loop~ lol
 - More music and sound (
   - [x] main theme
@@ -37,24 +40,31 @@ Given the opportunity I'll keep working on this on and off until the next LD in 
   - [ ] fanfare for wave complete
 - Post effects like glows and sparks
 - Additional animation frames for all the things
-- Ground block variety
+- [x] Ground block variety
+  - [ ] Fix up tiling
 - Background parallax layer variety
 - Finish a run (sorry the princes is in another castle), get bonus/buff, next level (?)
 - Custom bitmap fonts (big one for time and coins, small one for menus)
+- Finish the first iteration of the shop
+  - [ ] Fix up shop panel graphics
+  - [ ] Get haste potion working
+  - [ ] Tooltips for potions
 
-### (Paused) : Getting the Shop Working
+### Up Next : Round of Polish / Odds and Ends
 
+- [x] Fix up ground tiling (more subtle variation, perfect tiling)
+- [x] Fix Background/Sky (perfect tiling)
+- [ ] Dynamic coin drops
+  - [ ] Enemies drop different number of coins
+  - [ ] Coin drop animation
+- [ ] Tint-friendly enemy sprites (can we use a single gray sprite set and tint it to make any color cubes?)
+- [ ] Make PIXI stop updating when window is unfocused
 - [ ] Get haste potion working
 - [ ] Tooltips for potions
-- [x] Get armor potion workin
-- [x] Have the heart be mask based rather than frames based to show 0-100 HP
-- [x] Tweak potions so they can't be purchased until they respawn
-- [x] Get spritesheets working
-- [x] Add cooldown to potions
-- [x] Add cooldown visual
-- [x] Further refactoring of shop inventory to make it more dynamic
 
-### Completed! : Getting Enemy Waves Working
+### Completed!
+
+#### Getting Enemy Waves Working
 
 - A wave system and increasing difficulty over time
   - [x] Wave manager
@@ -64,6 +74,16 @@ Given the opportunity I'll keep working on this on and off until the next LD in 
     - [x] Allowing for multiple enemy types within a single wave
     - [x] Wave enemies should be weighted
   - [x] Refactor existing enemy manager to work with wave system
+
+#### Getting the Shop Working
+
+- [x] Get armor potion workin
+- [x] Have the heart be mask based rather than frames based to show 0-100 HP
+- [x] Tweak potions so they can't be purchased until they respawn
+- [x] Get spritesheets working
+- [x] Add cooldown to potions
+- [x] Add cooldown visual
+- [x] Further refactoring of shop inventory to make it more dynamic
 
 ## Tools Used
 

@@ -52,7 +52,7 @@ export const waves: Array<Wave> = [
     enemies: [{ enemySpeed: 1.5, enemyDps: 5, enemyTextureKey: 'CubeOrange' }],
   },
   {
-    name: "If you don't eat your meant...",
+    name: "If you don't eat your meat...",
     totalEnemies: 15,
     respawnCooldown: 2500,
     enemies: [
