@@ -1,6 +1,7 @@
 import * as PIXI from 'pixi.js';
-import gsap from 'gsap';
+import gsap, { Bounce, Power0 } from 'gsap';
 import PixiPlugin from 'gsap/PixiPlugin';
+import { GodrayFilter, KawaseBlurFilter, TiltShiftFilter } from 'pixi-filters';
 
 import jrvascii from './util/jrvascii';
 import initPIXI, { PixiConfig } from './pixi';
@@ -83,6 +84,9 @@ const bootstrapApp = (props: {
   const { pixiApp, mainContainer } = initPIXI(pixiConfig, hostDiv);
   pixiApp.renderer.autoDensity = true;
 
+  const gameContainer = mainContainer.addChild(new PIXI.Container());
+  const uiContainer = mainContainer.addChild(new PIXI.Container());
+
   const { spriteSheets, sounds } = props;
 
   // Declare component variables in advance when needed
@@ -96,7 +100,7 @@ const bootstrapApp = (props: {
 
   // Background
   const bg = COMP.background({});
-  mainContainer.addChild(bg.container);
+  gameContainer.addChild(bg.container);
 
   // Ground
   const ground = COMP.ground({
@@ -106,21 +110,20 @@ const bootstrapApp = (props: {
     },
     groundTiles: spriteSheets.main.animations['ground'],
   });
-  mainContainer.addChild(ground.container);
+  gameContainer.addChild(ground.container);
 
   // Hearts
   const hearts = COMP.hearts({ pos: { x: 32, y: 32 } });
-  mainContainer.addChild(hearts.container);
+  uiContainer.addChild(hearts.container);
 
   // Coin
   const coin = COMP.coin({ pos: { x: 30, y: APP_HEIGHT - 30 } });
-  mainContainer.addChild(coin.container);
+  uiContainer.addChild(coin.container);
 
   // Play Again Button
   let btnAgain = null;
 
   const onPlayAgain = (): void => {
-    console.log('play again called');
     if (hero.getStatus() === HERO.STATUS.OFF_SCREEN) {
       hero.reset();
       coin.reset();
@@ -129,6 +132,18 @@ const bootstrapApp = (props: {
       shop.reset();
       btnAgain.setEnabled(false);
       audioLayer.music.mainTheme();
+      gsap.to(godRaysFilter, 1, {
+        gain: 0.25,
+        ease: Power0.easeOut,
+      });
+      blurFilter.alpha = 1;
+      gsap.to(blurFilter, 1, {
+        alpha: 0,
+        ease: Power0.easeOut,
+        onComplete: () => {
+          blurFilter.reset();
+        },
+      });
     }
   };
   btnAgain = COMP.btnAgain({
@@ -143,6 +158,20 @@ const bootstrapApp = (props: {
     audioLayer.music.somber();
     btnAgain.setEnabled(true);
     shop.animatePanel(false);
+
+    gsap.to(godRaysFilter, 3, {
+      delay: 1.5,
+      gain: 0.75,
+      ease: Power0.easeOut,
+    });
+    blurFilter.desaturate();
+    //blurFilter.saturate(0.05, true);
+    blurFilter.alpha = 0;
+    gsap.to(blurFilter, 3, {
+      delay: 0.5,
+      alpha: 0.9,
+      ease: Power0.easeOut,
+    });
   };
 
   // Hero
@@ -162,18 +191,18 @@ const bootstrapApp = (props: {
     coinDisplay: coin,
     onHeroDied,
   });
-  mainContainer.addChild(hero.container);
-  mainContainer.addChild(heroNubmers.container);
+  gameContainer.addChild(hero.container);
+  gameContainer.addChild(heroNubmers.container);
 
   // Run Time
   runtime = COMP.runtime({ hero, pos: { x: 55, y: 30 } });
-  mainContainer.addChild(runtime.container);
+  uiContainer.addChild(runtime.container);
 
   // Wave Display
   const waveDisplay = COMP.waveDisplay({
     pos: { x: APP_WIDTH - 10, y: APP_HEIGHT - 30 },
   });
-  mainContainer.addChild(waveDisplay.container);
+  uiContainer.addChild(waveDisplay.container);
 
   // Shoppe -----------------------------
   const shop = COMP.shop({
@@ -189,7 +218,7 @@ const bootstrapApp = (props: {
       shieldSmall: spriteSheets.main.textures['potion_shield_small.png'],
     },
   });
-  mainContainer.addChild(shop.container);
+  uiContainer.addChild(shop.container);
   shop.animatePanel(true);
 
   // Enemy Manager -----------------------------
@@ -210,14 +239,29 @@ const bootstrapApp = (props: {
     updateWaveDisplay: waveDisplay.updateDisplay,
   });
 
-  mainContainer.addChild(enemyManager.container);
+  gameContainer.addChild(enemyManager.container);
 
-  mainContainer.addChild(btnAgain.container);
+  uiContainer.addChild(btnAgain.container);
+
+  // Post Effects ---------------------------
+  const blurFilter = new PIXI.filters.ColorMatrixFilter();
+  blurFilter.reset();
+
+  //blurFilter.enabled = false;
+
+  const godRaysFilter = new GodrayFilter();
+  godRaysFilter.angle = -15;
+  godRaysFilter.gain = 0.25;
+  godRaysFilter.lacunarity = 1.75;
+  godRaysFilter.parallel = true;
+  godRaysFilter.center = new PIXI.Point(APP_WIDTH / 2, -50);
+  gameContainer.filters = [godRaysFilter, blurFilter];
 
   // Register component UPDATE routines
   // ------------------------------------
   pixiApp.ticker.add((delta) => {
     // Update All The Things
+    godRaysFilter.time += 0.01;
     ground.update(delta);
     bg.update(delta);
     enemyManager.update(delta);

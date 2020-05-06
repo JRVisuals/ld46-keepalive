@@ -39,10 +39,6 @@ export const background = (props: Props): ReturnType => {
    * @returns an array of sprites based on the passed in params
    *
    * */
-
-  const filter = new PIXI.filters.NoiseFilter();
-  container.filters = [filter];
-
   const buildSpriteArray = ({
     maxTile,
     tileWidth,

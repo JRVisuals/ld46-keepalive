@@ -9,6 +9,7 @@ import {
   GROUND_TILE_WIDTH,
   HERO_FRAMES,
   SFX_VOL_MULT,
+  HERO_START_HP,
 } from '../../constants';
 import { Coin } from '../coin';
 import { HeroNumbers } from '../heroNumbers';
@@ -70,7 +71,7 @@ export const hero = (props: Props): Hero => {
   const { heroNubmers, hpDisplay, coinDisplay, onHeroDied } = props;
 
   let state = {
-    hp: 100,
+    hp: HERO_START_HP,
     xOrrig: 0 - GROUND_TILE_WIDTH,
     yOrrig: pos.y,
     yVel: 0,
