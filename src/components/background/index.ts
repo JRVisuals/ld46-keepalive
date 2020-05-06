@@ -1,4 +1,5 @@
 import * as PIXI from 'pixi.js';
+
 import { APP_WIDTH, GROUND_MOVE_SPEED } from '../../constants';
 
 interface ReturnType {
@@ -30,7 +31,6 @@ export const background = (props: Props): ReturnType => {
   container.y = pos.y;
 
   container.name = 'background';
-
   const maxTile = 2;
   const tileWidth = 700;
 
@@ -39,6 +39,10 @@ export const background = (props: Props): ReturnType => {
    * @returns an array of sprites based on the passed in params
    *
    * */
+
+  const filter = new PIXI.filters.NoiseFilter();
+  container.filters = [filter];
+
   const buildSpriteArray = ({
     maxTile,
     tileWidth,

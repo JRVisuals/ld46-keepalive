@@ -126,14 +126,14 @@ const bootstrapApp = (props: {
       coin.reset();
       runtime.reset();
       enemyManager.reset();
-      // shop.reset();
+      shop.reset();
       btnAgain.setEnabled(false);
       audioLayer.music.mainTheme();
     }
   };
   btnAgain = COMP.btnAgain({
     onPress: onPlayAgain,
-    pos: { x: APP_WIDTH / 2, y: APP_HEIGHT / 2 + 50 },
+    pos: { x: APP_WIDTH / 2, y: APP_HEIGHT / 2 },
   });
   btnAgain.setEnabled(false);
 
@@ -142,6 +142,7 @@ const bootstrapApp = (props: {
     console.log('enabling button');
     audioLayer.music.somber();
     btnAgain.setEnabled(true);
+    shop.animatePanel(false);
   };
 
   // Hero
@@ -174,15 +175,24 @@ const bootstrapApp = (props: {
   });
   mainContainer.addChild(waveDisplay.container);
 
-  // Shoppe
+  // Shoppe -----------------------------
   const shop = COMP.shop({
-    pos: { x: APP_WIDTH - 217, y: 5 },
+    pos: { x: APP_WIDTH - 217, y: -8 },
     hero,
-    anims: { hourglass: spriteSheets.main.animations['hourglass'] },
+    anims: {
+      hourglass: spriteSheets.main.animations['hourglass'],
+    },
+    potionTextures: {
+      healthSmall: spriteSheets.main.textures['potion_health_small.png'],
+      healthLarge: spriteSheets.main.textures['potion_health_large.png'],
+      hasteLarge: spriteSheets.main.textures['potion_haste_large.png'],
+      shieldSmall: spriteSheets.main.textures['potion_shield_small.png'],
+    },
   });
   mainContainer.addChild(shop.container);
+  shop.animatePanel(true);
 
-  // Enemy Manager
+  // Enemy Manager -----------------------------
   enemyManager = COMP.enemyManager({
     pos: {
       x: APP_WIDTH - GROUND_TILE_WIDTH,

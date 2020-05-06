@@ -1,9 +1,11 @@
 import * as PIXI from 'pixi.js';
 import gsap, { Bounce, Power0 } from 'gsap';
-
+import * as PIXISOUND from 'pixi-sound';
 import { Hero } from '../hero';
 
-import { Actions, ItemData, itemList } from './shopItems';
+import { Actions, ItemData, PotionTextureId, itemList } from './shopItems';
+
+import { SFX_VOL_MULT } from '../../constants';
 
 export interface ShopState {
   items: ItemData[];
@@ -11,6 +13,8 @@ export interface ShopState {
 export interface Shop {
   container: PIXI.Container;
   update: (delta: number) => void;
+  animatePanel: (isAnimateIn: boolean) => void;
+  reset: () => void;
 }
 
 interface Props {
@@ -18,6 +22,7 @@ interface Props {
   pos?: { x: number; y: number };
   hero: Hero;
   anims: { [key: string]: Array<PIXI.Texture> };
+  potionTextures: { [TKey in PotionTextureId]: PIXI.Texture };
 }
 
 /**
@@ -33,11 +38,20 @@ export const shop = (props: Props): Shop => {
   container.x = pos.x;
   container.y = pos.y;
 
+  const targetY = pos.y;
+
   container.name = 'shop';
 
-  const { hero, anims } = props;
+  const { hero, anims, potionTextures } = props;
 
   const shopState: ShopState = { items: itemList };
+
+  // Sound bits
+  const pixiSound = PIXISOUND.default;
+  // Load these up on startup...
+  pixiSound.add('chainsHit', './assets/chains-hit.mp3');
+  pixiSound.add('chainsDown', './assets/chains.mp3');
+  pixiSound.add('chainsUp', './assets/chainsUp.mp3');
 
   const texture = PIXI.Texture.from('./assets/shopPanel.png');
   const sprite = new PIXI.Sprite(texture);
@@ -63,7 +77,7 @@ export const shop = (props: Props): Shop => {
   shopTextSmall.anchor.set(0);
   shopTextSmall.x = 98;
   shopTextSmall.y = 15;
-  container.addChild(shopTextSmall);
+  //  container.addChild(shopTextSmall);
 
   // Called after an item is purchased and its cooldonw timeout is called
   const coolDownOver = (itemData: ItemData): void => {
@@ -141,16 +155,12 @@ export const shop = (props: Props): Shop => {
   };
 
   // Display Potions in Shoppe
-  const potionY = 50;
+  const potionY = 58;
+  const coinOffsetY = 30;
   shopState.items.map((item) => {
     // The potion itself
 
-    const potionTexture =
-      typeof item.texture === 'string'
-        ? PIXI.Texture.from(item.texture)
-        : item.texture;
-
-    const potionSprite = new PIXI.Sprite(potionTexture);
+    const potionSprite = new PIXI.Sprite(potionTextures[item.textureId]);
     item.spriteRef = potionSprite;
     potionSprite.anchor.set(0.5);
     potionSprite.x = item.posX;
@@ -181,7 +191,7 @@ export const shop = (props: Props): Shop => {
       // The coins below
       const coinsContainer = new PIXI.Container();
       coinsContainer.x = item.posX;
-      coinsContainer.y = potionY + 35;
+      coinsContainer.y = potionY + coinOffsetY;
       container.addChild(coinsContainer);
       for (let i = 0; i < item.cost; i++) {
         const shopCoinTex = PIXI.Texture.from('./assets/shopCoin.png');
@@ -195,9 +205,49 @@ export const shop = (props: Props): Shop => {
     }
   });
 
+  // Initial appearance of shoppe
+  const animateIn = (): void => {
+    container.y = -150;
+    setTimeout(() => {
+      pixiSound.play('chainsDown', {
+        loop: false,
+        volume: 1 * SFX_VOL_MULT,
+      });
+    }, 750);
+    gsap.to(container, 1, {
+      delay: 0.85,
+      y: targetY,
+      ease: Bounce.easeOut,
+      onComplete: () => {
+        pixiSound.play('chainsHit', {
+          volume: 1 * SFX_VOL_MULT,
+        });
+      },
+    });
+  };
+
+  const animateOut = (): void => {
+    setTimeout(() => {
+      pixiSound.play('chainsUp', { loop: false, volume: 1 * SFX_VOL_MULT });
+    }, 1500);
+    gsap.to(container, 0.5, {
+      delay: 1.5,
+      y: -150,
+      ease: Power0.easeIn,
+    });
+  };
+
+  const animatePanel = (isAnimateIn): void => {
+    isAnimateIn ? animateIn() : animateOut();
+  };
+
+  const reset = (): void => {
+    animatePanel(true);
+  };
+
   const update = (delta): void => {
     // Update called by main
   };
 
-  return { container, update };
+  return { container, update, animatePanel, reset };
 };

@@ -26,8 +26,8 @@
 },
 "enemy_cubeBlack_die4.png":
 {
-	"frame": {"x":57,"y":843,"w":54,"h":23},
-	"rotated": false,
+	"frame": {"x":0,"y":883,"w":54,"h":23},
+	"rotated": true,
 	"trimmed": true,
 	"spriteSourceSize": {"x":7,"y":41,"w":54,"h":23},
 	"sourceSize": {"w":64,"h":64}
@@ -98,8 +98,8 @@
 },
 "enemy_cubeGreen_die4.png":
 {
-	"frame": {"x":57,"y":866,"w":54,"h":23},
-	"rotated": false,
+	"frame": {"x":23,"y":883,"w":54,"h":23},
+	"rotated": true,
 	"trimmed": true,
 	"spriteSourceSize": {"x":7,"y":41,"w":54,"h":23},
 	"sourceSize": {"w":64,"h":64}
@@ -170,16 +170,16 @@
 },
 "enemy_cubeOrange_die4.png":
 {
-	"frame": {"x":0,"y":883,"w":54,"h":23},
-	"rotated": false,
+	"frame": {"x":46,"y":883,"w":54,"h":23},
+	"rotated": true,
 	"trimmed": true,
 	"spriteSourceSize": {"x":7,"y":41,"w":54,"h":23},
 	"sourceSize": {"w":64,"h":64}
 },
 "enemy_cubeOrange_die5.png":
 {
-	"frame": {"x":54,"y":889,"w":54,"h":12},
-	"rotated": false,
+	"frame": {"x":69,"y":883,"w":54,"h":12},
+	"rotated": true,
 	"trimmed": true,
 	"spriteSourceSize": {"x":8,"y":52,"w":54,"h":12},
 	"sourceSize": {"w":64,"h":64}
@@ -298,7 +298,7 @@
 },
 "hourglass1.png":
 {
-	"frame": {"x":54,"y":901,"w":15,"h":16},
+	"frame": {"x":111,"y":874,"w":15,"h":16},
 	"rotated": true,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":0,"w":15,"h":16},
@@ -306,31 +306,31 @@
 },
 "hourglass2.png":
 {
-	"frame": {"x":70,"y":901,"w":15,"h":16},
-	"rotated": true,
+	"frame": {"x":81,"y":921,"w":15,"h":16},
+	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":0,"w":15,"h":16},
 	"sourceSize": {"w":16,"h":16}
 },
 "hourglass3.png":
 {
-	"frame": {"x":86,"y":901,"w":15,"h":16},
-	"rotated": true,
+	"frame": {"x":96,"y":921,"w":15,"h":16},
+	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":0,"w":15,"h":16},
 	"sourceSize": {"w":16,"h":16}
 },
 "hourglass4.png":
 {
-	"frame": {"x":102,"y":906,"w":15,"h":16},
-	"rotated": true,
+	"frame": {"x":111,"y":921,"w":15,"h":16},
+	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":0,"w":15,"h":16},
 	"sourceSize": {"w":16,"h":16}
 },
 "hourglass5.png":
 {
-	"frame": {"x":111,"y":859,"w":16,"h":16},
+	"frame": {"x":57,"y":843,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -338,7 +338,7 @@
 },
 "hourglass6.png":
 {
-	"frame": {"x":108,"y":891,"w":16,"h":15},
+	"frame": {"x":111,"y":859,"w":16,"h":15},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":15},
@@ -346,11 +346,43 @@
 },
 "hourglass7.png":
 {
-	"frame": {"x":111,"y":875,"w":16,"h":16},
+	"frame": {"x":73,"y":843,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
 	"sourceSize": {"w":16,"h":16}
+},
+"potion_haste_large.png":
+{
+	"frame": {"x":81,"y":883,"w":26,"h":32},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":0,"w":26,"h":32},
+	"sourceSize": {"w":32,"h":32}
+},
+"potion_health_large.png":
+{
+	"frame": {"x":57,"y":859,"w":24,"h":32},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":0,"w":24,"h":32},
+	"sourceSize": {"w":32,"h":32}
+},
+"potion_health_small.png":
+{
+	"frame": {"x":107,"y":889,"w":18,"h":32},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":7,"y":0,"w":18,"h":32},
+	"sourceSize": {"w":32,"h":32}
+},
+"potion_shield_small.png":
+{
+	"frame": {"x":89,"y":843,"w":22,"h":32},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":5,"y":0,"w":22,"h":32},
+	"sourceSize": {"w":32,"h":32}
 }},
 "animations": {
 	"enemy_cubeBlack_die": ["enemy_cubeBlack_die1.png","enemy_cubeBlack_die2.png","enemy_cubeBlack_die3.png","enemy_cubeBlack_die4.png","enemy_cubeBlack_die5.png"],
@@ -367,8 +399,8 @@
 	"version": "1.0",
 	"image": "ld46sprites.png",
 	"format": "RGBA8888",
-	"size": {"w":128,"h":921},
+	"size": {"w":128,"h":937},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:0d5fa3b158bf904564f4d8bf09f9bb75:5f66c2934bc86e77190da79e332c0f70:66b9ca235882602baa21d573f2bef1dc$"
+	"smartupdate": "$TexturePacker:SmartUpdate:1a3773c165240808518547690b6e1994:a6229985a61df350748c9249b7a81c80:66b9ca235882602baa21d573f2bef1dc$"
 }
 }

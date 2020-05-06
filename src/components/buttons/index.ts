@@ -41,7 +41,8 @@ export const btnAgain = (props: Props): Button => {
     if (isEnabled) {
       container.alpha = 0;
       container.y = pos.y + 10;
-      gsap.to(container, 0.3, {
+      gsap.to(container, 0.2, {
+        delay: 1.75,
         alpha: 1,
         y: pos.y,
         ease: Power0.easeOut,
@@ -50,12 +51,12 @@ export const btnAgain = (props: Props): Button => {
         },
       });
     } else {
-      container.alpha = 1;
+      //container.alpha = 1;
       container.y = pos.y;
-      gsap.to(container, 0.3, {
+      gsap.to(container, 0.2, {
         alpha: 0,
         y: pos.y + 10,
-        ease: Power0.easeOut,
+        ease: Power0.easeIn,
         onComplete: () => {
           sprite.interactive = false;
         },
