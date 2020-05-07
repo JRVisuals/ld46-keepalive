@@ -132,21 +132,7 @@ const bootstrapApp = (props: {
       shop.reset();
       btnAgain.setEnabled(false);
       audioLayer.music.mainTheme();
-      gsap.to(godRaysFilter, 1, {
-        gain: 0.0,
-        ease: Power0.easeOut,
-        onComplete: () => {
-          godRaysFilter.enabled = false;
-        },
-      });
-      desturationFilter.alpha = 1;
-      gsap.to(desturationFilter, 1, {
-        alpha: 0,
-        ease: Power0.easeOut,
-        onComplete: () => {
-          desturationFilter.reset();
-        },
-      });
+      filtersOut();
     }
   };
   btnAgain = COMP.btnAgain({
@@ -161,20 +147,7 @@ const bootstrapApp = (props: {
     audioLayer.music.somber();
     btnAgain.setEnabled(true);
     shop.animatePanel(false);
-    godRaysFilter.enabled = true;
-    gsap.to(godRaysFilter, 3, {
-      delay: 1.5,
-      gain: 0.75,
-      ease: Power0.easeOut,
-    });
-    desturationFilter.desaturate();
-    //blurFilter.saturate(0.05, true);
-    desturationFilter.alpha = 0;
-    gsap.to(desturationFilter, 3, {
-      delay: 0.5,
-      alpha: 0.9,
-      ease: Power0.easeOut,
-    });
+    filtersIn();
   };
 
   // Hero
@@ -250,16 +223,52 @@ const bootstrapApp = (props: {
   const desturationFilter = new PIXI.filters.ColorMatrixFilter();
   desturationFilter.reset();
 
-  //blurFilter.enabled = false;
-
   const godRaysFilter = new GodrayFilter();
   godRaysFilter.enabled = false;
+  godRaysFilter.alpha = 0.0;
   godRaysFilter.angle = -15;
-  godRaysFilter.gain = 0.0;
+  godRaysFilter.gain = 0.1;
   godRaysFilter.lacunarity = 2.0;
   godRaysFilter.parallel = false;
   godRaysFilter.center = new PIXI.Point(-25, -125);
   gameContainer.filters = [godRaysFilter, desturationFilter];
+
+  const filtersOut = (): void => {
+    gsap.to(godRaysFilter, 1.5, {
+      gain: 0.1,
+      alpha: 0.0,
+      ease: Power0.easeIn,
+      onComplete: () => {
+        godRaysFilter.enabled = false;
+      },
+    });
+    desturationFilter.alpha = 1;
+    gsap.to(desturationFilter, 1, {
+      alpha: 0,
+      ease: Power0.easeOut,
+      onComplete: () => {
+        desturationFilter.reset();
+      },
+    });
+  };
+
+  const filtersIn = (): void => {
+    godRaysFilter.enabled = true;
+    gsap.to(godRaysFilter, 3, {
+      delay: 0.5,
+      gain: 0.75,
+      alpha: 0.75,
+      ease: Power0.easeOut,
+    });
+    desturationFilter.desaturate();
+    //blurFilter.saturate(0.05, true);
+    desturationFilter.alpha = 0;
+    gsap.to(desturationFilter, 3, {
+      delay: 0.5,
+      alpha: 0.9,
+      ease: Power0.easeOut,
+    });
+  };
 
   // Register component UPDATE routines
   // ------------------------------------
