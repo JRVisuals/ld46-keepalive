@@ -133,15 +133,18 @@ const bootstrapApp = (props: {
       btnAgain.setEnabled(false);
       audioLayer.music.mainTheme();
       gsap.to(godRaysFilter, 1, {
-        gain: 0.25,
+        gain: 0.0,
         ease: Power0.easeOut,
+        onComplete: () => {
+          godRaysFilter.enabled = false;
+        },
       });
-      blurFilter.alpha = 1;
-      gsap.to(blurFilter, 1, {
+      desturationFilter.alpha = 1;
+      gsap.to(desturationFilter, 1, {
         alpha: 0,
         ease: Power0.easeOut,
         onComplete: () => {
-          blurFilter.reset();
+          desturationFilter.reset();
         },
       });
     }
@@ -158,16 +161,16 @@ const bootstrapApp = (props: {
     audioLayer.music.somber();
     btnAgain.setEnabled(true);
     shop.animatePanel(false);
-
+    godRaysFilter.enabled = true;
     gsap.to(godRaysFilter, 3, {
       delay: 1.5,
       gain: 0.75,
       ease: Power0.easeOut,
     });
-    blurFilter.desaturate();
+    desturationFilter.desaturate();
     //blurFilter.saturate(0.05, true);
-    blurFilter.alpha = 0;
-    gsap.to(blurFilter, 3, {
+    desturationFilter.alpha = 0;
+    gsap.to(desturationFilter, 3, {
       delay: 0.5,
       alpha: 0.9,
       ease: Power0.easeOut,
@@ -244,18 +247,19 @@ const bootstrapApp = (props: {
   uiContainer.addChild(btnAgain.container);
 
   // Post Effects ---------------------------
-  const blurFilter = new PIXI.filters.ColorMatrixFilter();
-  blurFilter.reset();
+  const desturationFilter = new PIXI.filters.ColorMatrixFilter();
+  desturationFilter.reset();
 
   //blurFilter.enabled = false;
 
   const godRaysFilter = new GodrayFilter();
+  godRaysFilter.enabled = false;
   godRaysFilter.angle = -15;
-  godRaysFilter.gain = 0.25;
-  godRaysFilter.lacunarity = 1.75;
-  godRaysFilter.parallel = true;
-  godRaysFilter.center = new PIXI.Point(APP_WIDTH / 2, -50);
-  gameContainer.filters = [godRaysFilter, blurFilter];
+  godRaysFilter.gain = 0.0;
+  godRaysFilter.lacunarity = 2.0;
+  godRaysFilter.parallel = false;
+  godRaysFilter.center = new PIXI.Point(-25, -125);
+  gameContainer.filters = [godRaysFilter, desturationFilter];
 
   // Register component UPDATE routines
   // ------------------------------------

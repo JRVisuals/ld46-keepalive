@@ -10,6 +10,7 @@
   "devDependencies": {
     "@microsoft/tsdoc": "^0.12.19",
     "@pixi/filter-glitch": "^3.1.1",
+    "pixi-filters": "^3.1.1",
     "@rollup/plugin-node-resolve": "^7.1.1",
     "@typescript-eslint/eslint-plugin": "^2.24.0",
     "@typescript-eslint/parser": "^2.24.0",
@@ -38,8 +39,5 @@
     "clean": "rimraf dist",
     "build": "rimraf dist && rollup -c --environment BUILD:prod",
     "docs": "rimraf docs && npx typedoc --excludeExternals --entryPoint 'main' --stripInternal --readme none"
-  },
-  "dependencies": {
-    "pixi-filters": "^3.1.1"
   }
 }
