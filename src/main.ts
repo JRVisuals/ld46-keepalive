@@ -162,6 +162,9 @@ const bootstrapApp = (props: {
       x: APP_WIDTH * 0.25,
       y: APP_HEIGHT - GROUND_TILE_HEIGHT - HERO_HEIGHT * 0.5 + 5,
     },
+    anims: {
+      effectSwirl: spriteSheets.main.animations['effect_swirl'],
+    },
     heroNubmers: heroNubmers,
     hpDisplay: hearts.updateDisplay,
     coinDisplay: coin,

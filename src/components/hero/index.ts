@@ -47,11 +47,12 @@ interface HeroState {
   };
 }
 
-interface Props {
+interface HeroProps {
   pos?: { x: number; y: number };
   heroNubmers: HeroNumbers;
-  hpDisplay: (props) => void;
   coinDisplay: Coin;
+  anims: { [key: string]: Array<PIXI.Texture> };
+  hpDisplay: (props) => void;
   onHeroDied: () => void;
 }
 
@@ -62,13 +63,13 @@ interface Props {
  *
  * @returns Interface object containing methods that can be called on this module
  */
-export const hero = (props: Props): Hero => {
+export const hero = (props: HeroProps): Hero => {
   const pos = props.pos ?? { x: 0, y: 0 };
   const container = new PIXI.Container();
 
   container.name = 'hero';
 
-  const { heroNubmers, hpDisplay, coinDisplay, onHeroDied } = props;
+  const { anims, heroNubmers, hpDisplay, coinDisplay, onHeroDied } = props;
 
   let state = {
     hp: HERO_START_HP,
@@ -86,7 +87,7 @@ export const hero = (props: Props): Hero => {
 
   const initialState = { ...state };
 
-  // Old school spritesheet
+  // Old school spritesheet ( for thew hero )
   const frames = [];
   for (let i = 1; i <= HERO_FRAMES; i++) {
     frames.push(PIXI.Texture.from(`./assets/hero${i}.png`));
@@ -96,6 +97,21 @@ export const hero = (props: Props): Hero => {
   anim.gotoAndPlay(0);
   anim.anchor.set(0.5);
   container.addChild(anim);
+
+  // Spritesheets for Effects
+  const effectSwirl = new PIXI.AnimatedSprite(anims['effectSwirl']);
+  effectSwirl.animationSpeed = 0.25;
+  effectSwirl.anchor.set(0.5);
+  effectSwirl.x = -5;
+  effectSwirl.y = -12;
+  effectSwirl.alpha = 0;
+  effectSwirl.loop = false;
+  effectSwirl.onComplete = (): void=>{
+    effectSwirl.alpha = 0;
+    effectSwirl.gotoAndStop(0);
+  }
+  
+  container.addChild(effectSwirl);
 
   // Sound bits
   const pixiSound = PIXISOUND.default;
@@ -172,12 +188,22 @@ export const hero = (props: Props): Hero => {
           damageDone: POTION_HEAL,
           isHealing: true,
         });
+        // update the heart's fill
         updateHpDisplay();
+        // play potion effect animation
+        effectSwirl.alpha = 0.8;
+        effectSwirl.tint = 0xc00f0f;
+        effectSwirl.play();
         break;
       case SHOP.Actions.SHIELD:
         // execute shield buff
         buffShield(itemData.amount, itemData.duration);
+        // update the heart's fill
         updateHpDisplay();
+        // play potion effect animation
+        effectSwirl.alpha = 0.8;
+        effectSwirl.tint = 0x89b3ff;
+        effectSwirl.play();
         break;
     }
 

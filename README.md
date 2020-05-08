@@ -33,7 +33,7 @@ Given the opportunity I'll keep working on this on and off until the next LD in 
 - Refactor Component Type definitions to use a base type and extend as needed
 - [x] A time survived clock
 - Title and instructions along with a ~real game loop~ lol
-- More music and sound (
+- More music and sound 
   - [x] main theme
   - [x] menu theme
   - [ ] longer main theme w/ melody
@@ -41,12 +41,12 @@ Given the opportunity I'll keep working on this on and off until the next LD in 
 - Post effects like glows and sparks
 - Additional animation frames for all the things
 - [x] Ground block variety
-  - [ ] Fix up tiling
+  - [x] Fix up tiling
 - Background parallax layer variety
 - Finish a run (sorry the princes is in another castle), get bonus/buff, next level (?)
 - Custom bitmap fonts (big one for time and coins, small one for menus)
 - Finish the first iteration of the shop
-  - [ ] Fix up shop panel graphics
+  - [x] Fix up shop panel graphics
   - [ ] Get haste potion working
   - [ ] Tooltips for potions
 
