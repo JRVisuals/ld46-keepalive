@@ -42,7 +42,11 @@ Given the opportunity I'll keep working on this on and off until the next LD in 
 - Additional animation frames for all the things
 - [x] Ground block variety
   - [x] Fix up tiling
-- Background parallax layer variety
+- [ ] Background parallax layer variety
+  - [x] updated backgrounds with perfect tiling
+  - [x] first biome backgrounds
+  - [ ] second biome backgrounds
+  - [ ] third biome backgrounds
 - Finish a run (sorry the princes is in another castle), get bonus/buff, next level (?)
 - Custom bitmap fonts (big one for time and coins, small one for menus)
 - Finish the first iteration of the shop
@@ -54,6 +58,11 @@ Given the opportunity I'll keep working on this on and off until the next LD in 
 
 - [x] Fix up ground tiling (more subtle variation, perfect tiling)
 - [x] Fix Background/Sky (perfect tiling)
+- [x] Faded effect when hero is dead (now w/ godrays)
+- [ ] Potion effects on hero
+  - [x] Hand animated effect layer / tintable swirl animation
+  - [ ] Particle effect layer
+  - [ ] Filters or post effects
 - [ ] Dynamic coin drops
   - [ ] Enemies drop different number of coins
   - [ ] Coin drop animation
@@ -61,6 +70,8 @@ Given the opportunity I'll keep working on this on and off until the next LD in 
 - [ ] Make PIXI stop updating when window is unfocused
 - [ ] Get haste potion working
 - [ ] Tooltips for potions
+- [ ] Get all "oldschool" sprite sheets into main sprite sheet
+  - [ ] Hero
 
 ### Completed!
 
@@ -84,6 +95,11 @@ Given the opportunity I'll keep working on this on and off until the next LD in 
 - [x] Add cooldown to potions
 - [x] Add cooldown visual
 - [x] Further refactoring of shop inventory to make it more dynamic
+
+## Libraries Used
+- PIXIJS - WebGL renderer with Canvas fallback and so much more [https://github.com/pixijs/pixi.js](https://github.com/pixijs/pixi.js)
+- pixi-filters - Collection of community-authored custom display filters for PixiJS [https://github.com/pixijs/pixi-filters](https://github.com/pixijs/pixi-filters) Currently yarn linked to a local version of the repo in order to use the as of yet un-merged changes to the godray filter which add alpha functionality.
+- GSAP - tween animation library [https://greensock.com/docs/v2/Plugins/PixiPlugin](https://greensock.com/docs/v2/Plugins/PixiPlugin)
 
 ## Tools Used
 
