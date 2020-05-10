@@ -87,31 +87,55 @@ export const hero = (props: HeroProps): Hero => {
 
   const initialState = { ...state };
 
-  // Old school spritesheet ( for thew hero )
-  const frames = [];
-  for (let i = 1; i <= HERO_FRAMES; i++) {
-    frames.push(PIXI.Texture.from(`./assets/hero${i}.png`));
-  }
-  const anim = new PIXI.AnimatedSprite(frames);
+  // Spritesheet ( The Hero )
+  const anim = new PIXI.AnimatedSprite(anims['heroRun']);
   anim.animationSpeed = 0.12;
   anim.gotoAndPlay(0);
   anim.anchor.set(0.5);
   container.addChild(anim);
 
-  // Spritesheets for Effects
-  const effectSwirl = new PIXI.AnimatedSprite(anims['effectSwirl']);
-  effectSwirl.animationSpeed = 0.25;
-  effectSwirl.anchor.set(0.5);
-  effectSwirl.x = -5;
-  effectSwirl.y = -12;
-  effectSwirl.alpha = 0;
-  effectSwirl.loop = false;
-  effectSwirl.onComplete = (): void=>{
-    effectSwirl.alpha = 0;
-    effectSwirl.gotoAndStop(0);
-  }
-  
-  container.addChild(effectSwirl);
+  /**
+   * Factory for creating animated sprites specifically to be used in Hero
+   * potion quaffing animation. Sets up default values which may be overriden
+   * after the fact.
+   *
+   * @param props - an object defining `textureKey` to be used in creating this animation sprite
+   *
+   * @returns PIXI.AnimatedSprite which can then be added to the container or modified
+   */
+  const createEffectAnimation = (props: {
+    textureKey: string;
+  }): PIXI.AnimatedSprite => {
+    const { textureKey } = props;
+    const animSprite = new PIXI.AnimatedSprite(anims[textureKey]);
+    animSprite.animationSpeed = 0.25;
+    animSprite.anchor.set(0.5);
+    animSprite.x = -5;
+    animSprite.y = -12;
+    animSprite.alpha = 0;
+    animSprite.loop = false;
+    animSprite.onComplete = (): void => {
+      animSprite.alpha = 0;
+      animSprite.gotoAndStop(0);
+    };
+    return animSprite;
+  };
+  // Swirl effect for potion quaf
+  const effectSwirl = container.addChild(
+    createEffectAnimation({ textureKey: 'effectSwirl' })
+  );
+  // Blurred Swirl effect for potion quaf
+  const effectSwirlBlur = container.addChild(
+    createEffectAnimation({ textureKey: 'effectSwirlBlur' })
+  );
+  effectSwirlBlur.blendMode = PIXI.BLEND_MODES.SCREEN;
+  // Pixi dust effect for potion quaf
+  const effectPixidust = container.addChild(
+    createEffectAnimation({ textureKey: 'effectPixidust' })
+  );
+  effectPixidust.animationSpeed = 0.15;
+  effectPixidust.y = -20;
+  effectPixidust.blendMode = PIXI.BLEND_MODES.ADD;
 
   // Sound bits
   const pixiSound = PIXISOUND.default;
@@ -194,6 +218,12 @@ export const hero = (props: HeroProps): Hero => {
         effectSwirl.alpha = 0.8;
         effectSwirl.tint = 0xc00f0f;
         effectSwirl.play();
+        effectSwirlBlur.alpha = 1;
+        effectSwirlBlur.tint = 0xcc0000;
+        effectSwirlBlur.play();
+        effectPixidust.alpha = 1;
+        effectPixidust.tint = 0xc00f0f;
+        effectPixidust.play();
         break;
       case SHOP.Actions.SHIELD:
         // execute shield buff
@@ -201,9 +231,15 @@ export const hero = (props: HeroProps): Hero => {
         // update the heart's fill
         updateHpDisplay();
         // play potion effect animation
-        effectSwirl.alpha = 0.8;
+        effectSwirl.alpha = 1;
         effectSwirl.tint = 0x89b3ff;
         effectSwirl.play();
+        effectSwirlBlur.alpha = 1;
+        effectSwirlBlur.tint = 0x89b3ff;
+        effectSwirlBlur.play();
+        effectPixidust.alpha = 1;
+        effectPixidust.tint = 0x89b3ff;
+        effectPixidust.play();
         break;
     }
 

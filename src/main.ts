@@ -51,7 +51,6 @@ const onAssetsLoaded = (): void => {
   };
 
   // Boostrap the app once assets are loaded
-  // TODO add proper preloader
   bootstrapApp({ spriteSheets, sounds });
 };
 
@@ -163,7 +162,10 @@ const bootstrapApp = (props: {
       y: APP_HEIGHT - GROUND_TILE_HEIGHT - HERO_HEIGHT * 0.5 + 5,
     },
     anims: {
+      heroRun: spriteSheets.main.animations['hero'],
       effectSwirl: spriteSheets.main.animations['effect_swirl'],
+      effectSwirlBlur: spriteSheets.main.animations['effect_swirl_blur'],
+      effectPixidust: spriteSheets.main.animations['effect_pixi'],
     },
     heroNubmers: heroNubmers,
     hpDisplay: hearts.updateDisplay,

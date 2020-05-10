@@ -22,24 +22,24 @@ The initial build only had a single red potion which cost one coin and a single 
 
 Given the opportunity I'll keep working on this on and off until the next LD in October of 2020. These are some things I would like to add:
 
-- Additional shop items: other potions, weapons, armor, etc
+- [ ] Additional shop items: other potions, weapons, armor, etc
   - Potion ideas:
     - Invisibility - enemies do not attack the hero
 - Real enemy artwork and enemy variety
   - [x] slime
   - [ ] skeleton
   - [ ] giant head
-- Refactor enemy manamgement system to make it more dynamic
-- Refactor Component Type definitions to use a base type and extend as needed
+- [ ] Refactor enemy manamgement system to make it more dynamic
+- [ ] Refactor Component Type definitions to use a base type and extend as needed
 - [x] A time survived clock
-- Title and instructions along with a ~real game loop~ lol
-- More music and sound 
+- [ ] Title and instructions
+- [ ]More music and sound
   - [x] main theme
   - [x] menu theme
   - [ ] longer main theme w/ melody
   - [ ] fanfare for wave complete
-- Post effects like glows and sparks
-- Additional animation frames for all the things
+- [ ] Post effects like glows and sparks
+- [ ] Additional animation frames for all the things
 - [x] Ground block variety
   - [x] Fix up tiling
 - [ ] Background parallax layer variety
@@ -47,18 +47,18 @@ Given the opportunity I'll keep working on this on and off until the next LD in 
   - [x] first biome backgrounds
   - [ ] second biome backgrounds
   - [ ] third biome backgrounds
-- Finish a run (sorry the princes is in another castle), get bonus/buff, next level (?)
-- Custom bitmap fonts (big one for time and coins, small one for menus)
-- Finish the first iteration of the shop
+- [ ] Finish a run (sorry the princes is in another castle), get bonus/buff, next level (?)
+- [ ] Custom bitmap fonts
+  - [ ] Small font (for menus and tool tips)
+  - [ ] Large font (big one for time and coins)
+- [ ] Finish the first iteration of the shop
   - [x] Fix up shop panel graphics
   - [ ] Get haste potion working
   - [ ] Tooltips for potions
+- [ ] Add a proper preloader
 
 ### Up Next : Round of Polish / Odds and Ends
 
-- [x] Fix up ground tiling (more subtle variation, perfect tiling)
-- [x] Fix Background/Sky (perfect tiling)
-- [x] Faded effect when hero is dead (now w/ godrays)
 - [ ] Potion effects on hero
   - [x] Hand animated effect layer / tintable swirl animation
   - [ ] Particle effect layer
@@ -74,6 +74,12 @@ Given the opportunity I'll keep working on this on and off until the next LD in 
   - [ ] Hero
 
 ### Completed!
+
+#### General Polish
+
+- [x] Fix up ground tiling (more subtle variation, perfect tiling)
+- [x] Fix Background/Sky (perfect tiling)
+- [x] Faded effect when hero is dead (now w/ godrays)
 
 #### Getting Enemy Waves Working
 
@@ -97,6 +103,7 @@ Given the opportunity I'll keep working on this on and off until the next LD in 
 - [x] Further refactoring of shop inventory to make it more dynamic
 
 ## Libraries Used
+
 - PIXIJS - WebGL renderer with Canvas fallback and so much more [https://github.com/pixijs/pixi.js](https://github.com/pixijs/pixi.js)
 - pixi-filters - Collection of community-authored custom display filters for PixiJS [https://github.com/pixijs/pixi-filters](https://github.com/pixijs/pixi-filters) Currently yarn linked to a local version of the repo in order to use the as of yet un-merged changes to the godray filter which add alpha functionality.
 - GSAP - tween animation library [https://greensock.com/docs/v2/Plugins/PixiPlugin](https://greensock.com/docs/v2/Plugins/PixiPlugin)

@@ -14,6 +14,7 @@ export const GROUND_MOVE_SPEED = 2;
 export const GROUND_NO_DUPE_TILE = 4;
 
 // Hero
+export const HERO_START_GOLD = 0;
 export const HERO_START_HP = 100;
 export const HERO_HEIGHT = 64;
 export const HERO_COLLISION_BUFFER = 20;

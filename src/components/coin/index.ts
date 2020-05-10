@@ -1,4 +1,5 @@
 import * as PIXI from 'pixi.js';
+import { HERO_START_GOLD } from '../../constants';
 
 export interface Coin {
   container: PIXI.Container;
@@ -28,7 +29,7 @@ export const coin = (props: Props): Coin => {
   container.name = 'coin';
 
   let state = {
-    total: 0,
+    total: HERO_START_GOLD,
   };
 
   const initialState = { ...state };
