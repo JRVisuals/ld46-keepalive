@@ -59,10 +59,12 @@ Given the opportunity I'll keep working on this on and off until the next LD in 
 
 ### Up Next : Round of Polish / Odds and Ends
 
-- [ ] Potion effects on hero
+- [x] Potion effects on hero
   - [x] Hand animated effect layer / tintable swirl animation
-  - [ ] Particle effect layer
-  - [ ] Filters or post effects
+  - [x] Particle effect layer
+  - [x] Filters or post effects
+  - [ ] Bonus: Try something with PIXI particle container
+  - [ ] Bonus: Magic sound for potion(?)
 - [ ] Dynamic coin drops
   - [ ] Enemies drop different number of coins
   - [ ] Coin drop animation

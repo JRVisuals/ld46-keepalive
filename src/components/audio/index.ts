@@ -1,12 +1,18 @@
 import * as PIXISOUND from 'pixi-sound';
+import gsap, { Power0 } from 'gsap';
 import { MUSIC_VOL_MULT } from '../../constants';
 
 export interface Sounds {
   MainTheme: PIXI.LoaderResource;
   Somber: PIXI.LoaderResource;
+  Fanfare: PIXI.LoaderResource;
 }
-interface ReturnType {
-  music: { mainTheme: () => void; somber: () => void };
+export interface AudioLayer {
+  music: {
+    mainTheme: () => void;
+    somber: () => void;
+    fanfare: () => void;
+  };
 }
 /**
  * Audio component which maps preloaded audio resources to the
@@ -17,22 +23,64 @@ interface ReturnType {
  *
  * @returns Interface object containing methods that can be called on this module
  */
-export const audio = (sounds: Sounds): ReturnType => {
-  const musicBed = PIXISOUND.default;
-  musicBed.add('MainTheme', sounds.MainTheme);
-  musicBed.add('Somber', sounds.Somber);
+export const audio = (sounds: Sounds): AudioLayer => {
+  // Main Music Track
+  const audio = PIXISOUND.default;
+  audio.add('MainTheme', sounds.MainTheme);
+  audio.add('Somber', sounds.Somber);
+
+  // Incidental Music Track
+  audio.add('Fanfare', sounds.Fanfare);
+
+  // Utility Functions
+  const fadeSound = ({ sound, time, callback, vol }): void => {
+    console.log('fade sound', sound);
+    gsap.to(sound, time, {
+      volume: vol,
+      ease: Power0.easeOut,
+      onComplete: () => {
+        callback();
+      },
+    });
+  };
+
+  const mainVolume = (): number => 0.5 * MUSIC_VOL_MULT;
+  const menuVolume = (): number => 0.65 * MUSIC_VOL_MULT;
+
   // Called when we've got all the things...
   const mainTheme = (): void => {
-    musicBed.stop('Somber');
-    musicBed.play('MainTheme', { loop: true, volume: 0.5 * MUSIC_VOL_MULT });
+    audio.stop('Somber');
+    audio.play('MainTheme', { loop: true, volume: mainVolume() });
   };
 
   const somber = (): void => {
-    musicBed.stop('MainTheme');
-    musicBed.play('Somber', { loop: true, volume: 0.65 * MUSIC_VOL_MULT });
+    audio.stop('MainTheme');
+    audio.play('Somber', { loop: true, volume: menuVolume() });
+  };
+
+  const fanfare = (): void => {
+    fadeSound({
+      sound: audio.find('MainTheme'),
+      time: 0.5,
+      vol: 0.5 * mainVolume(),
+      callback: () => {
+        audio.play('Fanfare', {
+          loop: false,
+          volume: mainVolume(),
+          complete: () => {
+            fadeSound({
+              sound: audio.find('MainTheme'),
+              time: 0.5,
+              vol: mainVolume(),
+              callback: null,
+            });
+          },
+        });
+      },
+    });
   };
 
   return {
-    music: { mainTheme, somber },
+    music: { mainTheme, somber, fanfare },
   };
 };

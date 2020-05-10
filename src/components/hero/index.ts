@@ -25,7 +25,6 @@ export interface Hero {
   getStatus: () => STATUS;
   buyPotion: (itemData: SHOP.ItemData) => boolean;
 }
-
 export enum STATUS {
   SPAWNING,
   DYING,

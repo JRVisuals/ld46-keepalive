@@ -48,6 +48,7 @@ const onAssetsLoaded = (): void => {
   const sounds: Sounds = {
     MainTheme: PIXI.Loader.shared.resources['MainTheme'],
     Somber: PIXI.Loader.shared.resources['Somber'],
+    Fanfare: PIXI.Loader.shared.resources['Fanfare'],
   };
 
   // Boostrap the app once assets are loaded
@@ -58,7 +59,8 @@ const preloader = PIXI.Loader.shared;
 preloader
   .add('mainSprites', './assets/ld46sprites.json')
   .add('MainTheme', './assets/KeepYeAlive_MainRiff.mp3')
-  .add('Somber', './assets/KeepYeAlive_Somber.mp3');
+  .add('Somber', './assets/KeepYeAlive_Somber.mp3')
+  .add('Fanfare', './assets/KeepYeAlive_LevelFanfare.mp3');
 
 preloader.load(onAssetsLoaded);
 preloader.onProgress.add((e, f) =>
@@ -218,6 +220,7 @@ const bootstrapApp = (props: {
       enemyCubeBlackDie: spriteSheets.main.animations['enemy_cubeBlack_die'],
     },
     updateWaveDisplay: waveDisplay.updateDisplay,
+    audioLayer,
   });
 
   gameContainer.addChild(enemyManager.container);

@@ -6,6 +6,7 @@ import {
   HERO_COLLISION_BUFFER,
 } from '../../constants';
 import { enemy, Enemy } from '.';
+import { AudioLayer } from '../audio/';
 import * as HERO from '../hero';
 
 import { waves, Wave, WaveEnemy } from './waves';
@@ -22,6 +23,7 @@ interface ManagerProps {
   pos?: { x: number; y: number };
   anims: { [key: string]: Array<PIXI.Texture> };
   updateWaveDisplay: (waveInfo: WaveInfo) => void;
+  audioLayer: AudioLayer;
 }
 
 interface State {
@@ -39,7 +41,7 @@ interface State {
  */
 export const enemyManager = (props: ManagerProps): ManagerReturnType => {
   const pos = props.pos ?? { x: 0, y: 0 };
-  const { anims, updateWaveDisplay } = props;
+  const { anims, updateWaveDisplay, audioLayer } = props;
 
   const initialState: State = {
     currentWaveNum: 0,
@@ -74,11 +76,13 @@ export const enemyManager = (props: ManagerProps): ManagerReturnType => {
 
   // Waves -------------------------------
   const startWave = (): void => {
-    const waveData = waves[state.currentWaveNum];
+    const waveNum = state.currentWaveNum;
+    const waveData = waves[waveNum];
     state = { ...state, currentWaveData: waveData, currentWaveEnemiesSlain: 0 };
     console.log(`Starting Wave: ${state.currentWaveData.name}`);
+    waveNum != 0 && audioLayer.music.fanfare();
     updateWaveDisplay({
-      num: state.currentWaveNum,
+      num: waveNum,
       name: state.currentWaveData.name,
       totalEnemies: state.currentWaveData.totalEnemies,
       enemiesSlain: state.currentWaveEnemiesSlain,
