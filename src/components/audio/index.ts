@@ -39,7 +39,7 @@ export const audio = (sounds: Sounds): AudioLayer => {
       volume: vol,
       ease: Power0.easeOut,
       onComplete: () => {
-        callback();
+        callback && callback();
       },
     });
   };

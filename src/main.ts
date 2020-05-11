@@ -151,13 +151,15 @@ const bootstrapApp = (props: {
     filtersIn();
   };
 
-  // Hero
+  // Hero and related components
+  // Healing and damage numbers
   const heroNubmers = COMP.heroNumbers({
     pos: {
       x: APP_WIDTH * 0.25,
       y: APP_HEIGHT - GROUND_TILE_HEIGHT - HERO_HEIGHT * 0.5 + 5,
     },
   });
+  // The Hero itself
   hero = COMP.hero({
     pos: {
       x: APP_WIDTH * 0.25,
@@ -174,6 +176,11 @@ const bootstrapApp = (props: {
     coinDisplay: coin,
     onHeroDied,
   });
+
+  // Hero status/particle effects
+  const heroParticles = COMP.heroParticles({ pos: { x: 55, y: 30 } });
+
+  // Add the hero items to the game container
   gameContainer.addChild(hero.container);
   gameContainer.addChild(heroNubmers.container);
 

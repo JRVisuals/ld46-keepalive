@@ -65,6 +65,8 @@ Given the opportunity I'll keep working on this on and off until the next LD in 
   - [x] Filters or post effects
   - [ ] Bonus: Try something with PIXI particle container
   - [ ] Bonus: Magic sound for potion(?)
+- [ ] TEMPFIX: Reset wave counter when on final wave
+- [ ] TEMPFIX: When on final wave, reduce spawn time by 250 each time you clear the final wave
 - [ ] Dynamic coin drops
   - [ ] Enemies drop different number of coins
   - [ ] Coin drop animation

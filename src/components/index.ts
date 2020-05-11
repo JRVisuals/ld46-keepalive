@@ -14,3 +14,4 @@ export { heroNumbers } from './heroNumbers';
 export { shop } from './shop';
 export { waveDisplay } from './waveDisplay';
 export { runtime } from './runtime';
+export { heroParticles } from './heroParticles';
