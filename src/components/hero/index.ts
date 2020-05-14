@@ -11,7 +11,7 @@ import {
   SFX_VOL_MULT,
   HERO_START_HP,
 } from '../../constants';
-import { Coin } from '../coin';
+import { UiCoin } from '../uiCoin';
 import { HeroNumbers } from '../heroNumbers';
 
 export interface Hero {
@@ -49,7 +49,7 @@ interface HeroState {
 interface HeroProps {
   pos?: { x: number; y: number };
   heroNubmers: HeroNumbers;
-  coinDisplay: Coin;
+  coinDisplay: UiCoin;
   anims: { [key: string]: Array<PIXI.Texture> };
   hpDisplay: (props) => void;
   onHeroDied: () => void;

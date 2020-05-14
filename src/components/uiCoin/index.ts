@@ -1,7 +1,7 @@
 import * as PIXI from 'pixi.js';
 import { HERO_START_GOLD } from '../../constants';
 
-export interface Coin {
+export interface UiCoin {
   container: PIXI.Container;
   reset: () => void;
   update: (delta: number) => void;
@@ -20,7 +20,7 @@ interface Props {
  *
  * @returns Interface object containing methods that can be called on this module
  */
-export const coin = (props: Props): Coin => {
+export const uiCoin = (props: Props): UiCoin => {
   const pos = props.pos ?? { x: 0, y: 0 };
   const container = new PIXI.Container();
   container.x = pos.x;

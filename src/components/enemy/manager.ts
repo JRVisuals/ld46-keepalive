@@ -11,6 +11,7 @@ import * as HERO from '../hero';
 
 import { waves, Wave, WaveEnemy } from './waves';
 import { WaveInfo } from '../waveDisplay/';
+import { DropCoin } from '../dropCoin/';
 
 interface ManagerReturnType {
   container: PIXI.Container;
@@ -24,6 +25,7 @@ interface ManagerProps {
   anims: { [key: string]: Array<PIXI.Texture> };
   updateWaveDisplay: (waveInfo: WaveInfo) => void;
   audioLayer: AudioLayer;
+  dropCoin: DropCoin;
 }
 
 interface State {
@@ -41,7 +43,7 @@ interface State {
  */
 export const enemyManager = (props: ManagerProps): ManagerReturnType => {
   const pos = props.pos ?? { x: 0, y: 0 };
-  const { anims, updateWaveDisplay, audioLayer } = props;
+  const { anims, updateWaveDisplay, audioLayer, dropCoin } = props;
 
   const initialState: State = {
     currentWaveNum: 0,
@@ -116,10 +118,15 @@ export const enemyManager = (props: ManagerProps): ManagerReturnType => {
   let lastHeroStatus: HERO.STATUS = null;
 
   // Hero Attacks!
-  const heroAttacks = ({ enemy, hero }): void => {
+
+  type HeroAttacks = (props: { enemy: Enemy; hero: HERO.Hero }) => void;
+
+  const heroAttacks: HeroAttacks = (props): void => {
+    const { enemy, hero } = props;
     enemy.gotKilled();
     hero.doAttack();
-    hero.getCoin();
+    //hero.getCoin();
+    dropCoin.spawnDrop({ targetSprite: enemy.container });
 
     // Track enemies slain
     state.currentWaveEnemiesSlain++;

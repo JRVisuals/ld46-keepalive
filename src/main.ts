@@ -118,8 +118,8 @@ const bootstrapApp = (props: {
   uiContainer.addChild(hearts.container);
 
   // Coin
-  const coin = COMP.coin({ pos: { x: 30, y: APP_HEIGHT - 30 } });
-  uiContainer.addChild(coin.container);
+  const uiCoin = COMP.uiCoin({ pos: { x: 30, y: APP_HEIGHT - 30 } });
+  uiContainer.addChild(uiCoin.container);
 
   // Play Again Button
   let btnAgain = null;
@@ -127,7 +127,7 @@ const bootstrapApp = (props: {
   const onPlayAgain = (): void => {
     if (hero.getStatus() === HERO.STATUS.OFF_SCREEN) {
       hero.reset();
-      coin.reset();
+      uiCoin.reset();
       runtime.reset();
       enemyManager.reset();
       shop.reset();
@@ -173,7 +173,7 @@ const bootstrapApp = (props: {
     },
     heroNubmers: heroNubmers,
     hpDisplay: hearts.updateDisplay,
-    coinDisplay: coin,
+    coinDisplay: uiCoin,
     onHeroDied,
   });
 
@@ -211,6 +211,9 @@ const bootstrapApp = (props: {
   uiContainer.addChild(shop.container);
   shop.animatePanel(true);
 
+  const dropCoin = COMP.dropCoin({ pos: { x: 0, y: 0 }, hero, uiCoin });
+  gameContainer.addChild(dropCoin.container);
+
   // Enemy Manager -----------------------------
   enemyManager = COMP.enemyManager({
     pos: {
@@ -228,6 +231,7 @@ const bootstrapApp = (props: {
     },
     updateWaveDisplay: waveDisplay.updateDisplay,
     audioLayer,
+    dropCoin,
   });
 
   gameContainer.addChild(enemyManager.container);
@@ -295,6 +299,7 @@ const bootstrapApp = (props: {
     enemyManager.update(delta);
     enemyManager.checkCollisions(hero);
     hero.update(delta);
+    dropCoin.update(delta);
     runtime.update(delta);
   });
 
