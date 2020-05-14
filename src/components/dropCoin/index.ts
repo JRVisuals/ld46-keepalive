@@ -1,5 +1,5 @@
 import * as PIXI from 'pixi.js';
-import gsap, { Power0, Bounce } from 'gsap';
+import gsap, { Power0, Bounce, Back } from 'gsap';
 import {
   GROUND_MOVE_SPEED,
   APP_HEIGHT,
@@ -71,7 +71,7 @@ export const dropCoin = (props: ComponentProps): DropCoin => {
     // Make the coin clickable!
     coinSprite.interactive = true;
     coinSprite
-      .on('mousedown', () => {
+      .on('mouseover', () => {
         coinClicked(coin);
       })
       .on('touchstart', () => {
@@ -82,7 +82,7 @@ export const dropCoin = (props: ComponentProps): DropCoin => {
     state.activeCoins.push(coin);
 
     // Cheap bounce animation
-    gsap.to(coinSprite, 0.75, {
+    gsap.to(coinSprite, 0.6, {
       y: APP_HEIGHT - GROUND_TILE_HEIGHT - 15,
       ease: Bounce.easeOut,
     });
@@ -131,17 +131,20 @@ export const dropCoin = (props: ComponentProps): DropCoin => {
     if (coin.state.status != 'ON_SCREEN') return;
     coin.state.status = 'ANIMATING_OUT';
 
-    const targetY = coin.sprite.y - 64;
-    gsap.to(coin.sprite, 0.25, {
+    gsap.to(coin.sprite, 0.5, {
       x: uiCoin.container.x,
       y: uiCoin.container.y,
-      alpha: 0,
-      ease: Power0.easeOut,
+      ease: Back.easeIn,
       onComplete: () => {
         coin.state.status = 'OFF_SCREEN';
         hero.getCoin();
         removeCoin(coin);
       },
+    });
+
+    gsap.to(coin.sprite, 0.75, {
+      alpha: 0,
+      ease: Power0.easeOut,
     });
   };
 

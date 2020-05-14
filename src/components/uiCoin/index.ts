@@ -1,5 +1,6 @@
 import * as PIXI from 'pixi.js';
 import { HERO_START_GOLD } from '../../constants';
+import gsap, { Bounce } from 'gsap';
 
 export interface UiCoin {
   container: PIXI.Container;
@@ -73,12 +74,22 @@ export const uiCoin = (props: Props): UiCoin => {
   };
   reset();
 
+  const animateCoin = (): void => {
+    sprite.scale.set(0.75);
+    gsap.to(sprite, 0.45, {
+      pixi: { scale: 1 },
+      ease: Bounce.easeOut,
+    });
+  };
+
   const addCoin = (num = 1): number => {
     const newTotal = state.total + num;
     state = { ...state, total: newTotal };
     updateCoinText();
+    animateCoin();
     return newTotal;
   };
+
   const subtractCoin = (
     num = -1
   ): { newTotal: number; goodPurchase: boolean } => {
