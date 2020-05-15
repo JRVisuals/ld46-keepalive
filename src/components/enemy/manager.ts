@@ -125,8 +125,13 @@ export const enemyManager = (props: ManagerProps): ManagerReturnType => {
     const { enemy, hero } = props;
     enemy.gotKilled();
     hero.doAttack();
-    //hero.getCoin();
-    dropCoin.spawnDrop({ targetSprite: enemy.container });
+
+    // Drop as many coins as needed...
+    for (let i = 0; i < enemy.getCoinsDropped(); i++) {
+      setTimeout(() => {
+        dropCoin.spawnDrop({ targetSprite: enemy.container });
+      }, 150);
+    }
 
     // Track enemies slain
     state.currentWaveEnemiesSlain++;

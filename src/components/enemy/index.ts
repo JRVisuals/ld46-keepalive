@@ -15,6 +15,7 @@ export interface Enemy {
   gotKilled: () => void;
   getStatus: () => string;
   getDps: () => number;
+  getCoinsDropped: () => number;
 }
 
 interface EnemyProps {
@@ -45,6 +46,7 @@ export const enemy = (props: EnemyProps): Enemy => {
     data: { enemyTextureKey },
     data: { enemySpeed },
     data: { enemyDps },
+    data: { coinsDropped },
     destroyManagerInstance,
   } = props;
 
@@ -54,6 +56,14 @@ export const enemy = (props: EnemyProps): Enemy => {
     status: 'ON_SCREEN',
     yVel: 0,
   };
+
+  /**
+   * Getter for number of coins dropped by the enemy
+   *
+   * @returns coins dropped
+   *
+   */
+  const getCoinsDropped = (): number => coinsDropped;
 
   /**
    * Getter for enemy damage number
@@ -155,5 +165,5 @@ export const enemy = (props: EnemyProps): Enemy => {
     }
   };
 
-  return { container, update, gotKilled, getStatus, getDps };
+  return { container, update, gotKilled, getStatus, getDps, getCoinsDropped };
 };

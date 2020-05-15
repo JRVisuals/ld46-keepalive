@@ -67,21 +67,25 @@ Given the opportunity I'll keep working on this on and off until the next LD in 
   - [ ] Bonus: Magic sound for potion(?)
 - [ ] TEMPFIX: Reset wave counter when on final wave
 - [ ] TEMPFIX: When on final wave, reduce spawn time by 250 each time you clear the final wave
-- [ ] Dynamic coin drops
-  - [ ] Enemies drop different number of coins
-  - [x] Coin drop functionality
-  - [x] Coun drop animation
 - [ ] Tint-friendly enemy sprites (can we use a single gray sprite set and tint it to make any color cubes?)
 - [ ] Make PIXI stop updating when window is unfocused
 - [ ] Get haste potion working
 - [ ] Tooltips for potions
 - [ ] Get all "oldschool" sprite sheets into main sprite sheet
-  - [ ] Hero
+  - [x] Hero
+  - [ ] Others?
 
 ### Completed!
 
 #### General Polish
 
+- [x] Tweak Hero attack animation
+  - [x] Add a glint/shine to the sword to indicate "kill frame"
+- [x] Dynamic coin drops
+  - [x] Enemies drop different number of coins
+  - [x] Coin drop functionality
+  - [x] Coin drop animation
+  - [x] Spinning coin animation
 - [x] Fix up ground tiling (more subtle variation, perfect tiling)
 - [x] Fix Background/Sky (perfect tiling)
 - [x] Faded effect when hero is dead (now w/ godrays)

@@ -21,6 +21,7 @@ interface ComponentProps {
   pos?: { x: number; y: number };
   hero: HERO.Hero;
   uiCoin: UiCoin;
+  anims: { [key: string]: Array<PIXI.Texture> };
 }
 
 /**
@@ -39,7 +40,8 @@ export const dropCoin = (props: ComponentProps): DropCoin => {
 
   container.name = 'dropCoin container';
 
-  const { hero, uiCoin } = props;
+  // Destructure incoming props
+  const { hero, uiCoin, anims } = props;
 
   let state = {
     activeCoins: [],
@@ -48,15 +50,16 @@ export const dropCoin = (props: ComponentProps): DropCoin => {
   };
   const initialState = { ...state };
 
-  const texture = PIXI.Texture.from('./assets/dropCoin.png');
-
   // Called by the enemyManager
   const spawnDrop = ({ targetSprite }): void => {
     // Create a new coin sprite
-    const coinSprite = new PIXI.Sprite(texture);
+    const coinSprite = new PIXI.AnimatedSprite(anims[`coinSpin`]);
     coinSprite.anchor.set(0);
     coinSprite.x = Math.floor(targetSprite.x);
-    coinSprite.y = Math.floor(targetSprite.y - 32);
+    coinSprite.y = Math.floor(targetSprite.y + 5);
+    coinSprite.animationSpeed = 0.35;
+    const randomFrame = Math.round(Math.random() * coinSprite.totalFrames) + 1;
+    coinSprite.gotoAndPlay(randomFrame);
 
     // Give it some random horizontal movement so all coins don't wind up in the same place
     const ranXVel = Math.random() * 10 + 5;
@@ -82,9 +85,16 @@ export const dropCoin = (props: ComponentProps): DropCoin => {
     state.activeCoins.push(coin);
 
     // Cheap bounce animation
-    gsap.to(coinSprite, 0.6, {
-      y: APP_HEIGHT - GROUND_TILE_HEIGHT - 15,
-      ease: Bounce.easeOut,
+    gsap.to(coinSprite, 0.15, {
+      y: APP_HEIGHT - GROUND_TILE_HEIGHT * 2,
+      ease: Power0.easeOut,
+      onComplete: () => {
+        // Cheap bounce animation
+        gsap.to(coinSprite, 0.6, {
+          y: APP_HEIGHT - GROUND_TILE_HEIGHT - 12,
+          ease: Bounce.easeOut,
+        });
+      },
     });
   };
 

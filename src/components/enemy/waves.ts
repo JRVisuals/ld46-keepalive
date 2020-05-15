@@ -5,6 +5,7 @@ export type WaveEnemy = {
   enemyDps: number;
   enemyTextureKey: string;
   weight?: number;
+  coinsDropped: number;
 };
 
 export type Wave = {
@@ -24,7 +25,14 @@ export const waves: Array<Wave> = [
     totalEnemies: 5,
     respawnCooldown: 4000,
     // Specific to Enemy
-    enemies: [{ enemySpeed: 1.25, enemyDps: 10, enemyTextureKey: 'CubeGreen' }],
+    enemies: [
+      {
+        enemySpeed: 1.25,
+        enemyDps: 10,
+        enemyTextureKey: 'CubeGreen',
+        coinsDropped: 1,
+      },
+    ],
   },
   {
     name: "Wait. There's more?!",
@@ -36,12 +44,14 @@ export const waves: Array<Wave> = [
         enemyDps: 10,
         enemyTextureKey: 'CubeGreen',
         weight: 0.75,
+        coinsDropped: 1,
       },
       {
         enemySpeed: 1.5,
         enemyDps: 5,
         enemyTextureKey: 'CubeOrange',
         weight: 0.25,
+        coinsDropped: 2,
       },
     ],
   },
@@ -49,7 +59,14 @@ export const waves: Array<Wave> = [
     name: 'An orange menace!',
     totalEnemies: 10,
     respawnCooldown: 1250,
-    enemies: [{ enemySpeed: 1.5, enemyDps: 5, enemyTextureKey: 'CubeOrange' }],
+    enemies: [
+      {
+        enemySpeed: 1.5,
+        enemyDps: 5,
+        enemyTextureKey: 'CubeOrange',
+        coinsDropped: 2,
+      },
+    ],
   },
   {
     name: "If you don't eat your meat...",
@@ -61,18 +78,21 @@ export const waves: Array<Wave> = [
         enemyDps: 10,
         enemyTextureKey: 'CubeGreen',
         weight: 0.25,
+        coinsDropped: 1,
       },
       {
         enemySpeed: 1.5,
         enemyDps: 5,
         enemyTextureKey: 'CubeOrange',
         weight: 0.5,
+        coinsDropped: 2,
       },
       {
         enemySpeed: 1.1,
         enemyDps: 25,
         enemyTextureKey: 'CubeBlack',
         weight: 0.25,
+        coinsDropped: 3,
       },
     ],
   },
@@ -80,6 +100,13 @@ export const waves: Array<Wave> = [
     name: 'How can you have any pudding?!',
     totalEnemies: 24,
     respawnCooldown: 2000,
-    enemies: [{ enemySpeed: 1.2, enemyDps: 25, enemyTextureKey: 'CubeBlack' }],
+    enemies: [
+      {
+        enemySpeed: 1.2,
+        enemyDps: 25,
+        enemyTextureKey: 'CubeBlack',
+        coinsDropped: 3,
+      },
+    ],
   },
 ];

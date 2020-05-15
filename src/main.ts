@@ -211,7 +211,12 @@ const bootstrapApp = (props: {
   uiContainer.addChild(shop.container);
   shop.animatePanel(true);
 
-  const dropCoin = COMP.dropCoin({ pos: { x: 0, y: 0 }, hero, uiCoin });
+  const dropCoin = COMP.dropCoin({
+    pos: { x: 0, y: 0 },
+    hero,
+    uiCoin,
+    anims: { coinSpin: spriteSheets.main.animations['dropCoin'] },
+  });
   gameContainer.addChild(dropCoin.container);
 
   // Enemy Manager -----------------------------
