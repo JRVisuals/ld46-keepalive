@@ -130,7 +130,7 @@ export const enemyManager = (props: ManagerProps): ManagerReturnType => {
     for (let i = 0; i < enemy.getCoinsDropped(); i++) {
       setTimeout(() => {
         dropCoin.spawnDrop({ targetSprite: enemy.container });
-      }, 150);
+      }, 150 + i * 50);
     }
 
     // Track enemies slain
