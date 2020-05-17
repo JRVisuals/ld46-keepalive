@@ -56,15 +56,15 @@ Given the opportunity I'll keep working on this on and off until the next LD in 
   - [ ] Get haste potion working
   - [ ] Tooltips for potions
 - [ ] Add a proper preloader
+- [ ] Options Panel
+  - [ ] Adjust Music Volume
+  - [ ] Adjust SFX Volume
+  - [ ] Pause button or keyboard command
+  - [ ] Other game options...
+- [ ] Balance Audio - some sounds effects are much louder than others
 
 ### Up Next : Round of Polish / Odds and Ends
 
-- [x] Potion effects on hero
-  - [x] Hand animated effect layer / tintable swirl animation
-  - [x] Particle effect layer
-  - [x] Filters or post effects
-  - [ ] Bonus: Try something with PIXI particle container
-  - [ ] Bonus: Magic sound for potion(?)
 - [ ] TEMPFIX: Reset wave counter when on final wave
 - [ ] TEMPFIX: When on final wave, reduce spawn time by 250 each time you clear the final wave
 - [ ] Tint-friendly enemy sprites (can we use a single gray sprite set and tint it to make any color cubes?)
@@ -74,6 +74,9 @@ Given the opportunity I'll keep working on this on and off until the next LD in 
 - [ ] Get all "oldschool" sprite sheets into main sprite sheet
   - [x] Hero
   - [ ] Others?
+- [ ] High scores
+  - [ ] Store personal best
+  - [ ] Online leaderboard w/ database (later)
 
 ### Completed!
 
@@ -86,9 +89,17 @@ Given the opportunity I'll keep working on this on and off until the next LD in 
   - [x] Coin drop functionality
   - [x] Coin drop animation
   - [x] Spinning coin animation
+  - [x] Design and add SFX for coins
 - [x] Fix up ground tiling (more subtle variation, perfect tiling)
 - [x] Fix Background/Sky (perfect tiling)
 - [x] Faded effect when hero is dead (now w/ godrays)
+
+- [x] Potion effects on hero
+  - [x] Hand animated effect layer / tintable swirl animation
+  - [x] Particle effect layer
+  - [x] Filters or post effects
+  - [x] Bonus: Try something with PIXI particle container
+  - [x] Bonus: Magic sound for potion
 
 #### Getting Enemy Waves Working
 

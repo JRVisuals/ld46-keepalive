@@ -1,4 +1,5 @@
 import * as PIXI from 'pixi.js';
+import * as PIXISOUND from 'pixi-sound';
 import gsap, { Power0, Bounce, Back } from 'gsap';
 import {
   GROUND_MOVE_SPEED,
@@ -6,6 +7,7 @@ import {
   GROUND_TILE_WIDTH,
   GROUND_TILE_HEIGHT,
   GRAVITY_Y,
+  SFX_VOL_MULT,
 } from '../../constants';
 import * as HERO from '../hero';
 import { UiCoin } from '../uiCoin';
@@ -50,8 +52,18 @@ export const dropCoin = (props: ComponentProps): DropCoin => {
   };
   const initialState = { ...state };
 
+  // Sound bits
+  const pixiSound = PIXISOUND.default;
+  // Load these up on startup...
+  pixiSound.add('coinSpawn', './assets/coinSpawn.mp3');
+  pixiSound.add('coinPickup', './assets/coinPickup.mp3');
+  pixiSound.add('coinGet', './assets/coinGet.mp3');
+
   // Called by the enemyManager
   const spawnDrop = ({ targetSprite }): void => {
+    // Play Sound
+    pixiSound.play('coinSpawn', { loop: false, volume: 1 * SFX_VOL_MULT });
+
     // Create a new coin sprite
     const coinSprite = new PIXI.AnimatedSprite(anims[`coinSpin`]);
     coinSprite.anchor.set(0);
@@ -67,7 +79,6 @@ export const dropCoin = (props: ComponentProps): DropCoin => {
     // The coin object will maintain the coin's state as well as a reference to the sprite
     const coin = {
       state: { xVel: ranXVel, status: 'ON_SCREEN' },
-
       sprite: container.addChild(coinSprite),
     };
 
@@ -75,10 +86,10 @@ export const dropCoin = (props: ComponentProps): DropCoin => {
     coinSprite.interactive = true;
     coinSprite
       .on('mouseover', () => {
-        coinClicked(coin);
+        coinGet(coin);
       })
       .on('touchstart', () => {
-        coinClicked(coin);
+        coinGet(coin);
       });
 
     // Keep track of all active coins
@@ -136,10 +147,12 @@ export const dropCoin = (props: ComponentProps): DropCoin => {
     });
   };
 
-  const coinClicked = (coin): void => {
-    console.log('clicked', coin);
+  const coinGet = (coin): void => {
     if (coin.state.status != 'ON_SCREEN') return;
     coin.state.status = 'ANIMATING_OUT';
+
+    // Play Sound
+    pixiSound.play('coinPickup', { loop: false, volume: 1 * SFX_VOL_MULT });
 
     gsap.to(coin.sprite, 0.5, {
       x: uiCoin.container.x,
@@ -148,6 +161,8 @@ export const dropCoin = (props: ComponentProps): DropCoin => {
       onComplete: () => {
         coin.state.status = 'OFF_SCREEN';
         hero.getCoin();
+        // Play Sound
+        pixiSound.play('coinGet', { loop: false, volume: 1 * SFX_VOL_MULT });
         removeCoin(coin);
       },
     });

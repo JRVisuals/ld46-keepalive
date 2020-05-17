@@ -145,6 +145,7 @@ export const hero = (props: HeroProps): Hero => {
   pixiSound.add('block', './assets/block1.mp3');
   pixiSound.add('quaf', './assets/quaf.mp3');
   pixiSound.add('quafquick', './assets/quaf-short.mp3');
+  pixiSound.add('potionMagic', './assets/potionMagic.mp3');
 
   const updateHpDisplay = (): void => {
     console.log(`now hero has ${state.hp}HP and ${state.effects.shield}SHIELD`);
@@ -199,6 +200,11 @@ export const hero = (props: HeroProps): Hero => {
     Math.random() > 0.75
       ? pixiSound.play('quaf', { loop: false, volume: 1 * SFX_VOL_MULT })
       : pixiSound.play('quafquick', { loop: false, volume: 1 * SFX_VOL_MULT });
+
+    setTimeout(() => {
+      pixiSound.stop('potionMagic');
+      pixiSound.play('potionMagic', { loop: false, volume: 1 * SFX_VOL_MULT });
+    }, 150);
 
     switch (itemData.action) {
       case SHOP.Actions.HEAL:
