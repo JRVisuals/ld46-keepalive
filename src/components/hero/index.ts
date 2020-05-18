@@ -24,6 +24,7 @@ export interface Hero {
   doAttack: () => void;
   getStatus: () => STATUS;
   buyPotion: (itemData: SHOP.ItemData) => boolean;
+  setParticles: (p: any) => void;
 }
 export enum STATUS {
   SPAWNING,
@@ -82,6 +83,7 @@ export const hero = (props: HeroProps): Hero => {
       shieldExpire: 0,
       cooldownSpeed: 0,
     },
+    particles: null,
   };
 
   const initialState = { ...state };
@@ -92,6 +94,35 @@ export const hero = (props: HeroProps): Hero => {
   anim.gotoAndPlay(0);
   anim.anchor.set(0.5);
   container.addChild(anim);
+
+  /**
+   * Hero particle reference and control functions
+   *
+   * @param p - instance of the heroParticle component
+   */
+  const setParticles = (p): void => {
+    state.particles = p;
+    Object.keys(p).forEach((key) => {
+      p[key].toggleEmitter(false);
+    });
+  };
+
+  // Toggle emitter
+  const emitterOn = (pk: string): void =>
+    state.particles[pk].toggleEmitter(true);
+  const emitterOff = (pk: string): void =>
+    state.particles[pk].toggleEmitter(false);
+
+  // Update particle position based on hero container position
+  const updateParticles = (delta): void => {
+    Object.keys(state.particles).forEach((key) => {
+      state.particles[key]?.setPos({
+        x: container.x - 16,
+        y: container.y - 38,
+      });
+      state.particles[key]?.update(delta);
+    });
+  };
 
   /**
    * Factory for creating animated sprites specifically to be used in Hero
@@ -169,8 +200,12 @@ export const hero = (props: HeroProps): Hero => {
     state.effects.shield += amount;
     state.effects.shield < 0 ? (state.effects.shield = 0) : null;
     updateHpDisplay();
+
     // If we have a duration, set the timeout to nullify the effects
     if (duration > 0) state.effects.shieldExpire = Date.now() + duration;
+
+    // Display particles for shield buff
+    emitterOn('shieldParticles');
   };
 
   const doAttack = (): void => {
@@ -229,6 +264,11 @@ export const hero = (props: HeroProps): Hero => {
         effectPixidust.alpha = 1;
         effectPixidust.tint = 0xc00f0f;
         effectPixidust.play();
+        // Briefly show health particles
+        emitterOn('healthParticles');
+        setTimeout(() => {
+          emitterOff('healthParticles');
+        }, 2000);
         break;
       case SHOP.Actions.SHIELD:
         // execute shield buff
@@ -243,7 +283,7 @@ export const hero = (props: HeroProps): Hero => {
         effectSwirlBlur.tint = 0x89b3ff;
         effectSwirlBlur.play();
         effectPixidust.alpha = 1;
-        effectPixidust.tint = 0x89b3ff;
+        effectPixidust.tint = 0x89b3ff; //0x717fbc;
         effectPixidust.play();
         break;
     }
@@ -279,6 +319,11 @@ export const hero = (props: HeroProps): Hero => {
       state.effects.shield = newShield;
       heroNubmers.animateNumbers({ damageDone: 0, isHealing: false });
       updateHpDisplay();
+
+      // Turn off particle emitter if we used up our shield
+      if (state.effects.shield === 0) {
+        emitterOff('shieldParticles');
+      }
     } else {
       pixiSound.play('gotHit', { loop: false, volume: 0.65 * SFX_VOL_MULT });
       newHp = state.hp - damageDone >= 0 ? state.hp - damageDone : 0;
@@ -352,6 +397,8 @@ export const hero = (props: HeroProps): Hero => {
     if (state.effects.shield && state.effects.shieldExpire <= Date.now()) {
       state.effects.shield = 0;
       updateHpDisplay();
+      // Turn off particle emitter
+      emitterOff('shieldParticles');
     }
     // Shield is almost out
     const shieldTimeRemaining = state.effects.shieldExpire - Date.now();
@@ -362,6 +409,8 @@ export const hero = (props: HeroProps): Hero => {
 
   const update = (delta): void => {
     // Update called by main
+
+    updateParticles(delta);
 
     // Updates Based on State
     switch (state.status) {
@@ -394,5 +443,6 @@ export const hero = (props: HeroProps): Hero => {
     doAttack,
     getStatus,
     buyPotion,
+    setParticles,
   };
 };

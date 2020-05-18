@@ -159,6 +159,7 @@ const bootstrapApp = (props: {
       y: APP_HEIGHT - GROUND_TILE_HEIGHT - HERO_HEIGHT * 0.5 + 5,
     },
   });
+
   // The Hero itself
   hero = COMP.hero({
     pos: {
@@ -178,11 +179,25 @@ const bootstrapApp = (props: {
   });
 
   // Hero status/particle effects
-  const heroParticles = COMP.heroParticles({ pos: { x: 55, y: 30 } });
+  const shieldParticles = COMP.heroParticles({
+    colors: {
+      start: '89b3ff',
+      end: '717fbc',
+    },
+  });
+  const healthParticles = COMP.heroParticles({
+    colors: {
+      start: 'c00f0f',
+      end: 'cc0000',
+    },
+  });
+  hero.setParticles({ shieldParticles, healthParticles });
 
   // Add the hero items to the game container
   gameContainer.addChild(hero.container);
   gameContainer.addChild(heroNubmers.container);
+  gameContainer.addChild(shieldParticles.container);
+  gameContainer.addChild(healthParticles.container);
 
   // Run Time
   runtime = COMP.runtime({ hero, pos: { x: 55, y: 30 } });

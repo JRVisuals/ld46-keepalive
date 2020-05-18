@@ -71,6 +71,7 @@ Given the opportunity I'll keep working on this on and off until the next LD in 
 - [ ] Make PIXI stop updating when window is unfocused
 - [ ] Get haste potion working
 - [ ] Tooltips for potions
+- [ ] REFACTOR: Use enums for particle keys (heroParticles)
 - [ ] Get all "oldschool" sprite sheets into main sprite sheet
   - [x] Hero
   - [ ] Others?
@@ -100,6 +101,7 @@ Given the opportunity I'll keep working on this on and off until the next LD in 
   - [x] Filters or post effects
   - [x] Bonus: Try something with PIXI particle container
   - [x] Bonus: Magic sound for potion
+  - [x] Bonus 2X: Get particles working for potion effects
 
 #### Getting Enemy Waves Working
 

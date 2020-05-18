@@ -1,13 +1,17 @@
 import * as PIXI from 'pixi.js';
+import * as PIXIPARTICLES from 'pixi-particles';
 
 export interface HeroParticles {
   container: PIXI.Container;
   reset: () => void;
+  toggleEmitter: (forceTo?: boolean) => void;
   update: (delta: number) => void;
+  setPos: (pos: { x: number; y: number }) => void;
 }
 
-interface ComponentProps {
+interface ParticleProps {
   pos?: { x: number; y: number };
+  colors?: { start: string; end: string };
 }
 
 /**
@@ -17,7 +21,7 @@ interface ComponentProps {
  *
  * @returns Interface object containing methods that can be called on this module
  */
-export const heroParticles = (props: ComponentProps): HeroParticles => {
+export const heroParticles = (props: ParticleProps): HeroParticles => {
   const pos = props.pos ?? { x: 0, y: 0 };
   const container = new PIXI.Container();
   container.x = pos.x;
@@ -28,13 +32,70 @@ export const heroParticles = (props: ComponentProps): HeroParticles => {
   let state = {};
   const initialState = { ...state };
 
-  const particles = new PIXI.ParticleContainer();
-  const totalParticles = 20;
+  const { colors } = props;
+
   const texture = PIXI.Texture.from('./assets/particle_3x3.png');
-  for (let i = 0; i < totalParticles; i++) {
-    const sprite = new PIXI.Sprite(texture);
-    particles.addChild(particles);
-  }
+
+  const colorObject = colors ? { color: colors } : {};
+
+  const emitterConfigBase = {
+    alpha: {
+      start: 1,
+      end: 0,
+    },
+    scale: {
+      start: 1,
+      end: 1,
+      minimumScaleMultiplier: 1,
+    },
+    speed: {
+      start: 0,
+      end: 0,
+      minimumSpeedMultiplier: 1,
+    },
+    acceleration: {
+      x: 0,
+      y: -64,
+    },
+    maxSpeed: 256,
+    // startRotation: {
+    //   min: 0,
+    //   max: 360,
+    // },
+    noRotation: true,
+    // rotationSpeed: {
+    //   min: 0,
+    //   max: 32,
+    // },
+    lifetime: {
+      min: 0.35,
+      max: 1,
+    },
+    blendMode: 'add',
+    frequency: 0.04,
+    emitterLifetime: 500,
+    maxParticles: 128,
+    pos: {
+      x: 0,
+      y: 0,
+    },
+    addAtBack: false,
+    spawnType: 'rect',
+    spawnRect: {
+      x: 0,
+      y: 0,
+      w: 32,
+      h: 64,
+    },
+  };
+
+  const emitterConfig = { ...emitterConfigBase, ...colorObject };
+
+  const emitter = new PIXIPARTICLES.Emitter(
+    container,
+    [texture],
+    emitterConfig
+  );
 
   // Reset called by play again and also on init
   const reset = (): void => {
@@ -42,9 +103,26 @@ export const heroParticles = (props: ComponentProps): HeroParticles => {
   };
   reset();
 
-  const update = (delta): void => {
-    // Update called by main
+  const toggleEmitter = (forceTo?: boolean): void => {
+    console.log(
+      `toggle emitter (forceTo: ${forceTo}) currently: ${emitter.emit}`
+    );
+    if (forceTo != undefined) {
+      emitter.emit = forceTo;
+    } else {
+      emitter.emit = !emitter.emit;
+      console.table(emitter);
+    }
   };
 
-  return { container, reset, update };
+  const setPos = (pos): void => {
+    emitter.updateSpawnPos(pos.x, pos.y);
+  };
+
+  const update = (delta): void => {
+    // Update called by main
+    emitter.update(delta * 0.025); //((now - elapsed) * 0.001);
+  };
+
+  return { container, reset, update, toggleEmitter, setPos };
 };

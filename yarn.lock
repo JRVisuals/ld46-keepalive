@@ -3015,6 +3015,11 @@ pixi-filters@^3.1.1:
     "@pixi/filter-twist" "3.1.1"
     "@pixi/filter-zoom-blur" "3.1.1"
 
+pixi-particles@^4.2.1:
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/pixi-particles/-/pixi-particles-4.2.1.tgz#b7858fc2f9d1f4fb754cf827dfc1c79c7df86048"
+  integrity sha512-8Hp7HZU+hYFHVOAigLf4gzimDusDK1ecDGjnOsg5JhnBT9p7V1aNr6U7DuHyDnGGGk6IoLlovggx7/WEMNNe4A==
+
 pixi-sound@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/pixi-sound/-/pixi-sound-3.0.4.tgz#de2b1bfaccf92e8ef4a2352d272e6608f4588eed"
