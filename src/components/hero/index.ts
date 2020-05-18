@@ -115,6 +115,7 @@ export const hero = (props: HeroProps): Hero => {
 
   // Update particle position based on hero container position
   const updateParticles = (delta): void => {
+    if (!state.particles) return;
     Object.keys(state.particles).forEach((key) => {
       state.particles[key]?.setPos({
         x: container.x - 16,
@@ -185,7 +186,13 @@ export const hero = (props: HeroProps): Hero => {
 
   // Reset called by play again and also on init
   const reset = (): void => {
-    state = { ...initialState };
+    // keep certain items to spread back in
+    // for example, we don't need to re-create particles, we can just reuse the existing ones
+    const keepers = {
+      particles: state.particles,
+    };
+    // reset the state
+    state = { ...initialState, ...keepers };
     container.x = state.xOrrig;
     container.y = state.yOrrig;
     container.rotation = 0;

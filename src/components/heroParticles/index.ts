@@ -58,15 +58,7 @@ export const heroParticles = (props: ParticleProps): HeroParticles => {
       y: -64,
     },
     maxSpeed: 256,
-    // startRotation: {
-    //   min: 0,
-    //   max: 360,
-    // },
     noRotation: true,
-    // rotationSpeed: {
-    //   min: 0,
-    //   max: 32,
-    // },
     lifetime: {
       min: 0.35,
       max: 1,
