@@ -17,6 +17,7 @@ import './index.scss';
 import * as COMP from './components';
 import * as HERO from './components/hero';
 import { Sounds } from './components/audio';
+import { highScores, HighScoreManager } from './util/highScores';
 
 const hostDiv = document.getElementById('canvas');
 const hostWidth = APP_WIDTH;
@@ -90,6 +91,9 @@ const bootstrapApp = (props: {
 
   const { spriteSheets, sounds } = props;
 
+  // High Score Manager
+  const highScoreManager: HighScoreManager = highScores();
+
   // Declare component variables in advance when needed
   let hero: HERO.Hero = null;
   let runtime = null;
@@ -121,6 +125,12 @@ const bootstrapApp = (props: {
   const uiCoin = COMP.uiCoin({ pos: { x: 30, y: APP_HEIGHT - 30 } });
   uiContainer.addChild(uiCoin.container);
 
+  // Best Score Display
+  const bestScore = COMP.bestScoreDisplay({
+    pos: { x: Math.round(APP_WIDTH * 0.5), y: 10 },
+  });
+  uiContainer.addChild(bestScore.container);
+
   // Play Again Button
   let btnAgain = null;
 
@@ -133,6 +143,7 @@ const bootstrapApp = (props: {
       shop.reset();
       btnAgain.setEnabled(false);
       audioLayer.music.mainTheme();
+      bestScore.reset();
       filtersOut();
     }
   };
@@ -142,12 +153,26 @@ const bootstrapApp = (props: {
   });
   btnAgain.setEnabled(false);
 
-  // Events
+  // Events --------------------------------------------------
+
+  /**
+   * Hero died event/callback - pretty much our game over sequence for now
+   */
   const onHeroDied = (): void => {
-    console.log('enabling button');
+    console.log('HERO DIED!');
     audioLayer.music.somber();
     btnAgain.setEnabled(true);
     shop.animatePanel(false);
+
+    // check to see if this is a personal best
+    const finalScore = runtime.getRunTime();
+    const isNewPersonalBest = highScoreManager.checkPersonalBest(finalScore);
+    bestScore.setText(
+      String(highScoreManager.getPersonalBest()),
+      isNewPersonalBest
+    );
+    bestScore.setVisibility(true);
+
     filtersIn();
   };
 
@@ -321,6 +346,7 @@ const bootstrapApp = (props: {
     hero.update(delta);
     dropCoin.update(delta);
     runtime.update(delta);
+    bestScore.update(delta);
   });
 
   return { app: pixiApp };

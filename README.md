@@ -25,10 +25,26 @@ Given the opportunity I'll keep working on this on and off until the next LD in 
 - [ ] Additional shop items: other potions, weapons, armor, etc
   - Potion ideas:
     - Invisibility - enemies do not attack the hero
+    - Coin magnet - all couns are automatically gatherd for X seconds
 - Real enemy artwork and enemy variety
   - [x] slime
   - [ ] skeleton
-  - [ ] giant head
+  - [ ] giant head (final boss 1)
+- End of level SHOP/CHEST: at the end of the level, before the boss there will be
+
+  - [ ] a SHOP which allows The Hero to purchase ONE of TWO types of items
+
+    - [ ] give a permanent DODGE abilities ( dash, roll, back-step )
+    - [ ] new WEAPON ( bow, pole axe, better swort)
+
+  - [ ] a CHEST which spawns an item that permanently buffs The Hero
+    - [ ] rezilience - reduce damage taken by 1% - stacks
+    - [ ] strength - increase damage done by 1% - stacks
+    - [ ] health - increase max health by 1% - stacks
+    - [ ] metabolizm - increase potion duration by 1% - stacks
+    - [ ] luck - increase chance for gem drop (gem is worth 10 coins) - stacks
+
+- End of level BOSS
 - [ ] Refactor enemy manamgement system to make it more dynamic
 - [ ] Refactor Component Type definitions to use a base type and extend as needed
 - [x] A time survived clock
@@ -62,6 +78,8 @@ Given the opportunity I'll keep working on this on and off until the next LD in 
   - [ ] Pause button or keyboard command
   - [ ] Other game options...
 - [ ] Balance Audio - some sounds effects are much louder than others
+- [ ] High scores
+  - [ ] Online leaderboard w/ database (later)
 
 ### Up Next : Round of Polish / Odds and Ends
 
@@ -75,13 +93,17 @@ Given the opportunity I'll keep working on this on and off until the next LD in 
 - [ ] Get all "oldschool" sprite sheets into main sprite sheet
   - [x] Hero
   - [ ] Others?
-- [ ] High scores
-  - [ ] Store personal best
-  - [ ] Online leaderboard w/ database (later)
+- [ ] add gem drop (rarely, 0 to 1 times per wave based on luck attribute)
+  - [ ] make gem sprite
+  - [ ] add drop mechanic and luck chance (gem is worth 10 coin)
 
 ### Completed!
 
 #### General Polish
+
+- [x] High scores
+
+  - [x] Store personal best
 
 - [x] Tweak Hero attack animation
   - [x] Add a glint/shine to the sword to indicate "kill frame"

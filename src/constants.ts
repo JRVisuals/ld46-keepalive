@@ -3,8 +3,8 @@ export const APP_HEIGHT = 200;
 export const APP_WIDTH = 350;
 
 // Audio
-export const MUSIC_VOL_MULT = 0.05;
-export const SFX_VOL_MULT = 0.5;
+export const MUSIC_VOL_MULT = 0.5;
+export const SFX_VOL_MULT = 0.75;
 
 // Ground
 export const GROUND_TILE_HEIGHT = 64;

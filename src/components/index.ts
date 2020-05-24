@@ -16,3 +16,4 @@ export { waveDisplay } from './waveDisplay';
 export { runtime } from './runtime';
 export { heroParticles } from './heroParticles';
 export { dropCoin } from './dropCoin';
+export { bestScoreDisplay } from './bestScoreDisplay';

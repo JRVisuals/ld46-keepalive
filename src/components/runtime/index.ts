@@ -5,6 +5,7 @@ export interface RunTime {
   container: PIXI.Container;
   reset: () => void;
   update: (delta: number) => void;
+  getRunTime: () => number;
 }
 
 interface Props {
@@ -38,6 +39,8 @@ export const runtime = (props: Props): RunTime => {
   const timeString = (): string => {
     return `${state.currentTime.toFixed(2)}`;
   };
+
+  const getRunTime = (): number => Number(state.currentTime.toFixed(2));
 
   // Text
   const textStyle = new PIXI.TextStyle({
@@ -78,7 +81,8 @@ export const runtime = (props: Props): RunTime => {
     // Update called by main
     if (
       hero.getStatus() === HERO.STATUS.OFF_SCREEN ||
-      hero.getStatus() === HERO.STATUS.SPAWNING
+      hero.getStatus() === HERO.STATUS.SPAWNING ||
+      hero.getStatus() === HERO.STATUS.DYING
     )
       return;
     if (Date.now() > lastUpdateTime + 10) {
@@ -88,5 +92,5 @@ export const runtime = (props: Props): RunTime => {
     }
   };
 
-  return { container, reset, update };
+  return { container, reset, getRunTime, update };
 };
