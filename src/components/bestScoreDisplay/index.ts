@@ -12,6 +12,7 @@ export interface BestScoreDisplay {
 
 interface BestScoreProps {
   pos?: { x: number; y: number };
+  particleTextures: Array<PIXI.Texture>;
 }
 
 /**
@@ -28,6 +29,8 @@ export const bestScoreDisplay = (props: BestScoreProps): BestScoreDisplay => {
   container.y = pos.y;
 
   container.name = 'personal best';
+
+  const { particleTextures } = props;
 
   // Text
   const textStyle = new PIXI.TextStyle({
@@ -68,7 +71,6 @@ export const bestScoreDisplay = (props: BestScoreProps): BestScoreDisplay => {
 
   const setText = (newText: string, isNewPersonalBest: boolean): void => {
     timeText.text = newText;
-
     const newTextStyle = isNewPersonalBest ? bigTextGoldStyle : bigTextStyle;
     emitter.emit = isNewPersonalBest;
     particleContainer.alpha = isNewPersonalBest ? 1 : 0;
@@ -95,7 +97,6 @@ export const bestScoreDisplay = (props: BestScoreProps): BestScoreDisplay => {
   const particleContainer = new PIXI.Container();
   container.addChild(particleContainer);
   particleContainer.alpha = 0;
-  const particleTexture = PIXI.Texture.from('./assets/particle_3x3.png');
   const colorObject = { color: { start: '#fbc536', end: '#fbb336' } };
   const emitterConfigBase = {
     alpha: {
@@ -139,10 +140,11 @@ export const bestScoreDisplay = (props: BestScoreProps): BestScoreDisplay => {
       h: 32,
     },
   };
+
   const emitterConfig = { ...emitterConfigBase, ...colorObject };
   const emitter = new PIXIPARTICLES.Emitter(
     particleContainer,
-    [particleTexture],
+    particleTextures,
     emitterConfig
   );
 

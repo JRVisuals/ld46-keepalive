@@ -22,6 +22,8 @@ export interface WavedDisplay {
 
 interface Props {
   pos?: { x: number; y: number };
+  aliveMarkerTexture: PIXI.Texture;
+  deadMarkerTexture: PIXI.Texture;
 }
 
 /**
@@ -38,6 +40,8 @@ export const waveDisplay = (props: Props): WavedDisplay => {
   container.y = pos.y;
 
   container.name = 'waveDisplay';
+
+  const { aliveMarkerTexture, deadMarkerTexture } = props;
 
   let state: State = {
     waveInfo: {
@@ -75,9 +79,6 @@ export const waveDisplay = (props: Props): WavedDisplay => {
 
   container.addChild(waveText);
 
-  // Enemy Alive / Dead Skull Icons
-  const enemyAliveTex = PIXI.Texture.from('./assets/enemyskull0.png');
-  const enemyDeadTex = PIXI.Texture.from('./assets/enemyskull1.png');
   // Set container for the icons
   const enemyIconsAlive = new PIXI.Container();
   enemyIconsAlive.name = 'enemyIconsAlive';
@@ -103,7 +104,7 @@ export const waveDisplay = (props: Props): WavedDisplay => {
       // Lay down the empty "alive" icons
       // this only happens when we're on a new wave
       for (let i = 0; i < totalEnemies; i++) {
-        const enemyIconSprite = new PIXI.Sprite(enemyAliveTex);
+        const enemyIconSprite = new PIXI.Sprite(aliveMarkerTexture);
         enemyIconSprite.anchor.set(0.5);
         const thisIcon = enemyIconsAlive.addChild(enemyIconSprite);
         thisIcon.y = i < ENEMY_ICON_WRAP ? 0 : ENEMY_ICON_DIM - 2;
@@ -130,7 +131,7 @@ export const waveDisplay = (props: Props): WavedDisplay => {
 
     // Dead Enemy Icons
     for (let i = 0; i < enemiesSlain; i++) {
-      const enemyIconSprite = new PIXI.Sprite(enemyDeadTex);
+      const enemyIconSprite = new PIXI.Sprite(deadMarkerTexture);
       enemyIconSprite.anchor.set(0.5);
       const thisIcon = enemyIconsDead.addChild(enemyIconSprite);
       thisIcon.y = i < ENEMY_ICON_WRAP ? 0 : ENEMY_ICON_DIM - 2;
@@ -167,8 +168,9 @@ export const waveDisplay = (props: Props): WavedDisplay => {
     }
   };
 
-  const updateDisplay = (waveInfo: WaveInfo): void => {
-    const isNewWave = state.waveInfo.num != waveInfo.num;
+  const updateDisplay = (waveInfo: WaveInfo, forceNew?: boolean): void => {
+    const isNewWave = forceNew ? forceNew : state.waveInfo.num != waveInfo.num;
+
     state = { ...state, waveInfo: { ...waveInfo } };
     //console.table(state);
     updateWaveText({ isNewWave });

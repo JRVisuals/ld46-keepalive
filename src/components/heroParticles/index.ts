@@ -11,6 +11,7 @@ export interface HeroParticles {
 
 interface ParticleProps {
   pos?: { x: number; y: number };
+  particleTextures: Array<PIXI.Texture>;
   colors?: { start: string; end: string };
 }
 
@@ -29,12 +30,12 @@ export const heroParticles = (props: ParticleProps): HeroParticles => {
 
   container.name = 'hero particles';
 
+  const { particleTextures } = props;
+
   let state = {};
   const initialState = { ...state };
 
   const { colors } = props;
-
-  const texture = PIXI.Texture.from('./assets/particle_3x3.png');
 
   const colorObject = colors ? { color: colors } : {};
 
@@ -85,7 +86,7 @@ export const heroParticles = (props: ParticleProps): HeroParticles => {
 
   const emitter = new PIXIPARTICLES.Emitter(
     container,
-    [texture],
+    particleTextures,
     emitterConfig
   );
 

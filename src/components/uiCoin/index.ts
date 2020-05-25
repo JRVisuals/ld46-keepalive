@@ -12,6 +12,7 @@ export interface UiCoin {
 
 interface Props {
   pos?: { x: number; y: number };
+  coinTexture: PIXI.Texture;
 }
 
 /**
@@ -29,6 +30,8 @@ export const uiCoin = (props: Props): UiCoin => {
 
   container.name = 'coin';
 
+  const { coinTexture } = props;
+
   let state = {
     total: HERO_START_GOLD,
   };
@@ -37,8 +40,7 @@ export const uiCoin = (props: Props): UiCoin => {
 
   const coinString = (): string => `= ${state.total}`;
 
-  const texture = PIXI.Texture.from('./assets/coin.png');
-  const sprite = new PIXI.Sprite(texture);
+  const sprite = new PIXI.Sprite(coinTexture);
   sprite.anchor.set(0.5);
   container.addChild(sprite);
 

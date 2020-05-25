@@ -1,9 +1,11 @@
 import * as PIXI from 'pixi.js';
-import gsap, { Bounce, Power0 } from 'gsap';
+import gsap, { Power0 } from 'gsap';
 import PixiPlugin from 'gsap/PixiPlugin';
-import { GodrayFilter, KawaseBlurFilter, TiltShiftFilter } from 'pixi-filters';
+import { GodrayFilter } from 'pixi-filters';
 
 import jrvascii from './util/jrvascii';
+import { browserVisibility } from './util/browserVisibility';
+
 import initPIXI, { PixiConfig } from './pixi';
 import {
   APP_HEIGHT,
@@ -11,6 +13,7 @@ import {
   GROUND_TILE_HEIGHT,
   GROUND_TILE_WIDTH,
   HERO_HEIGHT,
+  HERO_PARTICLE,
 } from './constants';
 import './index.scss';
 
@@ -18,6 +21,7 @@ import * as COMP from './components';
 import * as HERO from './components/hero';
 import { Sounds } from './components/audio';
 import { highScores, HighScoreManager } from './util/highScores';
+import { HeroParticleConfig } from './components/hero';
 
 const hostDiv = document.getElementById('canvas');
 const hostWidth = APP_WIDTH;
@@ -78,6 +82,7 @@ const bootstrapApp = (props: {
   spriteSheets: SpriteSheets;
   sounds: Sounds;
 }): BootstrapApp => {
+  // Throw down ye olde ASCII tag
   jrvascii();
 
   // Instantiate PIXI
@@ -118,16 +123,28 @@ const bootstrapApp = (props: {
   gameContainer.addChild(ground.container);
 
   // Hearts
-  const hearts = COMP.hearts({ pos: { x: 32, y: 32 } });
+  const hearts = COMP.hearts({
+    pos: { x: 32, y: 32 },
+    baseTexture: spriteSheets.main.textures['heart_base.png'],
+    fillTexture: spriteSheets.main.textures['heart_fill.png'],
+    outlineTexture: spriteSheets.main.textures['heart_outline.png'],
+    shieldTexture: spriteSheets.main.textures['heart_shield.png'],
+    whiteTexture: spriteSheets.main.textures['heart_whitefill.png'],
+  });
   uiContainer.addChild(hearts.container);
 
   // Coin
-  const uiCoin = COMP.uiCoin({ pos: { x: 30, y: APP_HEIGHT - 30 } });
+  const coinTexture = spriteSheets.main.textures['coin.png'];
+  const uiCoin = COMP.uiCoin({
+    pos: { x: 30, y: APP_HEIGHT - 30 },
+    coinTexture,
+  });
   uiContainer.addChild(uiCoin.container);
 
   // Best Score Display
   const bestScore = COMP.bestScoreDisplay({
     pos: { x: Math.round(APP_WIDTH * 0.5), y: 10 },
+    particleTextures: [spriteSheets.main.textures['particle_3x3.png']],
   });
   uiContainer.addChild(bestScore.container);
 
@@ -147,13 +164,27 @@ const bootstrapApp = (props: {
       filtersOut();
     }
   };
+
   btnAgain = COMP.btnAgain({
+    buttonTexture: spriteSheets.main.textures['btn_again.png'],
     onPress: onPlayAgain,
     pos: { x: APP_WIDTH / 2, y: APP_HEIGHT / 2 },
   });
   btnAgain.setEnabled(false);
 
   // Events --------------------------------------------------
+
+  // Handle Browser visibility changes
+  const handleBrowserVisibility = (isHidden: boolean): void => {
+    if (isHidden) {
+      audioLayer.muteToggle(true);
+      pixiApp.stop();
+    } else {
+      audioLayer.muteToggle(false);
+      pixiApp.start();
+    }
+  };
+  browserVisibility(handleBrowserVisibility);
 
   /**
    * Hero died event/callback - pretty much our game over sequence for now
@@ -205,18 +236,25 @@ const bootstrapApp = (props: {
 
   // Hero status/particle effects
   const shieldParticles = COMP.heroParticles({
+    particleTextures: [spriteSheets.main.textures['particle_3x3.png']],
     colors: {
       start: '89b3ff',
       end: '717fbc',
     },
   });
   const healthParticles = COMP.heroParticles({
+    particleTextures: [spriteSheets.main.textures['particle_3x3.png']],
     colors: {
       start: 'c00f0f',
       end: 'cc0000',
     },
   });
-  hero.setParticles({ shieldParticles, healthParticles });
+
+  // Trying to be strict about how we send in the particles - not sure its worth it
+  const particlesForHero: HeroParticleConfig | {} = {};
+  particlesForHero[HERO_PARTICLE.SHIELD] = shieldParticles;
+  particlesForHero[HERO_PARTICLE.HEALTH] = healthParticles;
+  hero.setParticles(particlesForHero as HeroParticleConfig);
 
   // Add the hero items to the game container
   gameContainer.addChild(hero.container);
@@ -231,6 +269,8 @@ const bootstrapApp = (props: {
   // Wave Display
   const waveDisplay = COMP.waveDisplay({
     pos: { x: APP_WIDTH - 10, y: APP_HEIGHT - 30 },
+    aliveMarkerTexture: spriteSheets.main.textures['enemyskull0.png'],
+    deadMarkerTexture: spriteSheets.main.textures['enemyskull1.png'],
   });
   uiContainer.addChild(waveDisplay.container);
 
@@ -241,6 +281,8 @@ const bootstrapApp = (props: {
     anims: {
       hourglass: spriteSheets.main.animations['hourglass'],
     },
+    coinTexture: spriteSheets.main.textures['shopCoin.png'],
+    panelTexture: spriteSheets.main.textures['shopPanel.png'],
     potionTextures: {
       healthSmall: spriteSheets.main.textures['potion_health_small.png'],
       healthLarge: spriteSheets.main.textures['potion_health_large.png'],

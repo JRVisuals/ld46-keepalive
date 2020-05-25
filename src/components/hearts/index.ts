@@ -13,6 +13,11 @@ interface ReturnType {
 
 interface Props {
   pos?: { x: number; y: number };
+  baseTexture: PIXI.Texture;
+  fillTexture: PIXI.Texture;
+  outlineTexture: PIXI.Texture;
+  shieldTexture: PIXI.Texture;
+  whiteTexture: PIXI.Texture;
 }
 /**
  * Display UI for Hero health and shield buff states.
@@ -29,6 +34,14 @@ export const hearts = (props: Props): ReturnType => {
 
   container.name = 'hearts';
 
+  const {
+    baseTexture,
+    fillTexture,
+    outlineTexture,
+    shieldTexture,
+    whiteTexture,
+  } = props;
+
   container.pivot.x = 16;
   container.pivot.y = 16;
 
@@ -36,14 +49,12 @@ export const hearts = (props: Props): ReturnType => {
   let lowShieldTriggered = false;
 
   // base
-  const base = new PIXI.Sprite(PIXI.Texture.from(`./assets/heart_base.png`));
+  const base = new PIXI.Sprite(baseTexture);
 
   // red fill (to be masked)
-  const fill = new PIXI.Sprite(PIXI.Texture.from(`./assets/heart_fill.png`));
+  const fill = new PIXI.Sprite(fillTexture);
   // white fill
-  const fillWhite = new PIXI.Sprite(
-    PIXI.Texture.from(`./assets/heart_whitefill.png`)
-  );
+  const fillWhite = new PIXI.Sprite(whiteTexture);
   fillWhite.alpha = 0;
 
   // mask for fill (Graphic?)
@@ -57,14 +68,10 @@ export const hearts = (props: Props): ReturnType => {
   container.addChild(fillMask);
 
   // outlines
-  const outline = new PIXI.Sprite(
-    PIXI.Texture.from(`./assets/heart_outline.png`)
-  );
+  const outline = new PIXI.Sprite(outlineTexture);
 
   // shield icon
-  const shieldIcon = new PIXI.Sprite(
-    PIXI.Texture.from(`./assets/heart_shield.png`)
-  );
+  const shieldIcon = new PIXI.Sprite(shieldTexture);
   shieldIcon.x = shieldIcon.y = 16;
   shieldIcon.anchor.set(0.5);
 

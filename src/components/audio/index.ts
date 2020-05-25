@@ -13,7 +13,9 @@ export interface AudioLayer {
     somber: () => void;
     fanfare: () => void;
   };
+  muteToggle: (shouldMute: boolean) => void;
 }
+
 /**
  * Audio component which maps preloaded audio resources to the
  * default PIXISOUND class and returns functions which handle
@@ -80,7 +82,16 @@ export const audio = (sounds: Sounds): AudioLayer => {
     });
   };
 
+  const muteToggle = (shouldMute: boolean): void => {
+    if (shouldMute) {
+      audio.muteAll();
+    } else {
+      audio.unmuteAll();
+    }
+  };
+
   return {
     music: { mainTheme, somber, fanfare },
+    muteToggle,
   };
 };

@@ -98,7 +98,7 @@ export const waves: Array<Wave> = [
   },
   {
     name: 'How can you have any pudding?!',
-    totalEnemies: 24,
+    totalEnemies: 20,
     respawnCooldown: 2000,
     enemies: [
       {
@@ -106,6 +106,34 @@ export const waves: Array<Wave> = [
         enemyDps: 25,
         enemyTextureKey: 'CubeBlack',
         coinsDropped: 3,
+      },
+    ],
+  },
+  {
+    name: 'Endless Wave!!!',
+    totalEnemies: 24,
+    respawnCooldown: 1800,
+    enemies: [
+      {
+        enemySpeed: 1.2,
+        enemyDps: 25,
+        enemyTextureKey: 'CubeBlack',
+        coinsDropped: 3,
+        weight: 0.7,
+      },
+      {
+        enemySpeed: 1.25,
+        enemyDps: 10,
+        enemyTextureKey: 'CubeGreen',
+        weight: 0.15,
+        coinsDropped: 1,
+      },
+      {
+        enemySpeed: 1.5,
+        enemyDps: 5,
+        enemyTextureKey: 'CubeOrange',
+        weight: 0.15,
+        coinsDropped: 2,
       },
     ],
   },

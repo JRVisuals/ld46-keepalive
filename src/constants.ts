@@ -3,8 +3,8 @@ export const APP_HEIGHT = 200;
 export const APP_WIDTH = 350;
 
 // Audio
-export const MUSIC_VOL_MULT = 0.5;
-export const SFX_VOL_MULT = 0.75;
+export const MUSIC_VOL_MULT = 0.35;
+export const SFX_VOL_MULT = 0.5;
 
 // Ground
 export const GROUND_TILE_HEIGHT = 64;
@@ -20,16 +20,14 @@ export const HERO_HEIGHT = 64;
 export const HERO_COLLISION_BUFFER = 20;
 export const HERO_ATTACK_FRAME = 3;
 export const HERO_FRAMES = 4;
-
-// TOODO Create enumeration of particle keys
-/*
-enum PARTICLE_KEY {
+export enum HERO_PARTICLE {
   SHIELD = 'shieldParticles',
-  HEALTH = 'healthParticls',
+  HEALTH = 'healthParticles',
 }
-*/
 
 // Enemy
+export const WAVE_START_ON = 0;
+export const WAVE_SPAWN_COOL_REDUCTION = 250;
 
 // Wave Display
 export const ENEMY_ICON_WRAP = 12;

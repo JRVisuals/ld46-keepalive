@@ -4,6 +4,8 @@ import {
   GROUND_TILE_WIDTH,
   HERO_ATTACK_FRAME,
   HERO_COLLISION_BUFFER,
+  WAVE_START_ON,
+  WAVE_SPAWN_COOL_REDUCTION,
 } from '../../constants';
 import { enemy, Enemy } from '.';
 import { AudioLayer } from '../audio/';
@@ -23,7 +25,7 @@ interface ManagerReturnType {
 interface ManagerProps {
   pos?: { x: number; y: number };
   anims: { [key: string]: Array<PIXI.Texture> };
-  updateWaveDisplay: (waveInfo: WaveInfo) => void;
+  updateWaveDisplay: (waveInfo: WaveInfo, forceNew?: boolean) => void;
   audioLayer: AudioLayer;
   dropCoin: DropCoin;
 }
@@ -32,6 +34,7 @@ interface State {
   currentWaveNum: number;
   currentWaveData: Wave;
   currentWaveEnemiesSlain: number;
+  repeatWaveCount: number;
 }
 
 /**
@@ -46,9 +49,10 @@ export const enemyManager = (props: ManagerProps): ManagerReturnType => {
   const { anims, updateWaveDisplay, audioLayer, dropCoin } = props;
 
   const initialState: State = {
-    currentWaveNum: 0,
+    currentWaveNum: WAVE_START_ON,
     currentWaveData: null,
     currentWaveEnemiesSlain: 0,
+    repeatWaveCount: 0,
   };
 
   let state: State = { ...initialState };
@@ -80,24 +84,51 @@ export const enemyManager = (props: ManagerProps): ManagerReturnType => {
   const startWave = (): void => {
     const waveNum = state.currentWaveNum;
     const waveData = waves[waveNum];
-    state = { ...state, currentWaveData: waveData, currentWaveEnemiesSlain: 0 };
-    console.log(`Starting Wave: ${state.currentWaveData.name}`);
+
+    // Temp create wave data modifier
+    const waveDisplayName =
+      state.repeatWaveCount > 0
+        ? waveData.name + ` ( ${state.repeatWaveCount + 1}x )`
+        : waveData.name;
+    const modWaveData = {
+      name: waveDisplayName,
+      respawnCooldown: Math.max(
+        500,
+        waveData.respawnCooldown -
+          WAVE_SPAWN_COOL_REDUCTION * state.repeatWaveCount
+      ),
+    };
+
+    state = {
+      ...state,
+      currentWaveData: { ...waveData, ...modWaveData },
+      currentWaveEnemiesSlain: 0,
+    };
+    console.log(`Starting Wave: ${waveDisplayName}`);
     waveNum != 0 && audioLayer.music.fanfare();
-    updateWaveDisplay({
-      num: waveNum,
-      name: state.currentWaveData.name,
-      totalEnemies: state.currentWaveData.totalEnemies,
-      enemiesSlain: state.currentWaveEnemiesSlain,
-    });
+    updateWaveDisplay(
+      {
+        num: waveNum,
+        name: waveDisplayName,
+        totalEnemies: state.currentWaveData.totalEnemies,
+        enemiesSlain: state.currentWaveEnemiesSlain,
+      },
+      true // <- forceNew because we know this is a new wave even if it's a repeat
+    );
   };
 
   const nextWave = (): void => {
     // if we run out of waves let's stay on the final wave for now
+    const prevWaveNum = state.currentWaveNum;
     const nextWaveNum =
       state.currentWaveNum + 1 > waves.length - 1
         ? state.currentWaveNum
         : state.currentWaveNum + 1;
     state.currentWaveNum = nextWaveNum;
+    // Temp Track Wave repetition
+    if (state.currentWaveNum === prevWaveNum) {
+      state.repeatWaveCount++;
+    }
     startWave();
   };
 

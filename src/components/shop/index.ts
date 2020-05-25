@@ -22,6 +22,8 @@ interface Props {
   pos?: { x: number; y: number };
   hero: Hero;
   anims: { [key: string]: Array<PIXI.Texture> };
+  coinTexture: PIXI.Texture;
+  panelTexture: PIXI.Texture;
   potionTextures: { [TKey in PotionTextureId]: PIXI.Texture };
 }
 
@@ -42,7 +44,7 @@ export const shop = (props: Props): Shop => {
 
   container.name = 'shop';
 
-  const { hero, anims, potionTextures } = props;
+  const { hero, anims, potionTextures, panelTexture, coinTexture } = props;
 
   const shopState: ShopState = { items: itemList };
 
@@ -53,8 +55,7 @@ export const shop = (props: Props): Shop => {
   pixiSound.add('chainsDown', './assets/chains.mp3');
   pixiSound.add('chainsUp', './assets/chainsUp.mp3');
 
-  const texture = PIXI.Texture.from('./assets/shopPanel.png');
-  const sprite = new PIXI.Sprite(texture);
+  const sprite = new PIXI.Sprite(panelTexture);
   sprite.anchor.set(0);
   container.addChild(sprite);
 
@@ -194,8 +195,7 @@ export const shop = (props: Props): Shop => {
       coinsContainer.y = potionY + coinOffsetY;
       container.addChild(coinsContainer);
       for (let i = 0; i < item.cost; i++) {
-        const shopCoinTex = PIXI.Texture.from('./assets/shopCoin.png');
-        const shopCoinSprite = new PIXI.Sprite(shopCoinTex);
+        const shopCoinSprite = new PIXI.Sprite(coinTexture);
         shopCoinSprite.anchor.set(0.5);
         shopCoinSprite.x = 10 * i - (item.cost - 1) * 5;
         coinsContainer.addChild(shopCoinSprite);

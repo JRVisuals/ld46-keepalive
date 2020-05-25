@@ -34,7 +34,7 @@ Given the opportunity I'll keep working on this on and off until the next LD in 
 
   - [ ] a SHOP which allows The Hero to purchase ONE of TWO types of items
 
-    - [ ] give a permanent DODGE abilities ( dash, roll, back-step )
+    - [ ] give a permanent DODGE abilities ( dash, roll, jump, back-step )
     - [ ] new WEAPON ( bow, pole axe, better swort)
 
   - [ ] a CHEST which spawns an item that permanently buffs The Hero
@@ -80,31 +80,29 @@ Given the opportunity I'll keep working on this on and off until the next LD in 
 - [ ] Balance Audio - some sounds effects are much louder than others
 - [ ] High scores
   - [ ] Online leaderboard w/ database (later)
+- [ ] Tooltips for potions
 
 ### Up Next : Round of Polish / Odds and Ends
 
-- [ ] TEMPFIX: Reset wave counter when on final wave
-- [ ] TEMPFIX: When on final wave, reduce spawn time by 250 each time you clear the final wave
+- [ ] ** Get haste potion working -> switch this to be a coin magnet potion **
 - [ ] Tint-friendly enemy sprites (can we use a single gray sprite set and tint it to make any color cubes?)
-- [ ] Make PIXI stop updating when window is unfocused
-- [ ] Get haste potion working
-- [ ] Tooltips for potions
-- [ ] REFACTOR: Use enums for particle keys (heroParticles)
-- [ ] Get all "oldschool" sprite sheets into main sprite sheet
-  - [x] Hero
-  - [ ] Others?
 - [ ] add gem drop (rarely, 0 to 1 times per wave based on luck attribute)
   - [ ] make gem sprite
   - [ ] add drop mechanic and luck chance (gem is worth 10 coin)
 
 ### Completed!
 
-#### General Polish
+#### General Polish / Odds and Ends
 
+- [x] Get all "oldschool" sprite sheets into main sprite sheet
+  - [x] Hero
+  - [x] Others?
+- [x] Make PIXI stop updating when window is unfocused
+- [x] REFACTOR: Use enums for particle keys (heroParticles)
+- [x] TEMPFIX: Reset wave counter when on final wave
+- [x] TEMPFIX: When on final wave, reduce spawn time by 250 each time you clear the final wave
 - [x] High scores
-
   - [x] Store personal best
-
 - [x] Tweak Hero attack animation
   - [x] Add a glint/shine to the sword to indicate "kill frame"
 - [x] Dynamic coin drops

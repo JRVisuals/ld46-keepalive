@@ -7,6 +7,7 @@ export interface Button {
 }
 
 interface Props {
+  buttonTexture: PIXI.Texture;
   onPress: () => void;
   pos?: { x: number; y: number };
 }
@@ -27,8 +28,9 @@ export const btnAgain = (props: Props): Button => {
 
   container.name = 'btnAgain';
 
-  const texture = PIXI.Texture.from('./assets/btn_again.png');
-  const sprite = new PIXI.Sprite(texture);
+  const { buttonTexture } = props;
+
+  const sprite = new PIXI.Sprite(buttonTexture);
   sprite.anchor.set(0.5);
   sprite.interactive = false;
   sprite.buttonMode = true;

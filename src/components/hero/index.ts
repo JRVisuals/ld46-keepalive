@@ -7,12 +7,15 @@ import {
   APP_HEIGHT,
   GROUND_TILE_HEIGHT,
   GROUND_TILE_WIDTH,
-  HERO_FRAMES,
   SFX_VOL_MULT,
   HERO_START_HP,
+  HERO_PARTICLE,
 } from '../../constants';
 import { UiCoin } from '../uiCoin';
 import { HeroNumbers } from '../heroNumbers';
+import { HeroParticles } from '../heroParticles';
+
+export type HeroParticleConfig = { [key in HERO_PARTICLE]: HeroParticles };
 
 export interface Hero {
   container: PIXI.Container;
@@ -24,8 +27,9 @@ export interface Hero {
   doAttack: () => void;
   getStatus: () => STATUS;
   buyPotion: (itemData: SHOP.ItemData) => boolean;
-  setParticles: (p: any) => void;
+  setParticles: (p: HeroParticleConfig) => void;
 }
+
 export enum STATUS {
   SPAWNING,
   DYING,
@@ -43,8 +47,10 @@ interface HeroState {
   status: STATUS;
   effects: {
     shield: number;
+    shieldExpire: number;
     cooldownSpeed: number;
   };
+  particles: HeroParticleConfig;
 }
 
 interface HeroProps {
@@ -71,7 +77,7 @@ export const hero = (props: HeroProps): Hero => {
 
   const { anims, heroNubmers, hpDisplay, coinDisplay, onHeroDied } = props;
 
-  let state = {
+  let state: HeroState = {
     hp: HERO_START_HP,
     xOrrig: 0 - GROUND_TILE_WIDTH,
     yOrrig: pos.y,
@@ -98,9 +104,9 @@ export const hero = (props: HeroProps): Hero => {
   /**
    * Hero particle reference and control functions
    *
-   * @param p - instance of the heroParticle component
+   * @param p - an array of heroParticle components
    */
-  const setParticles = (p): void => {
+  const setParticles = (p: HeroParticleConfig): void => {
     state.particles = p;
     Object.keys(p).forEach((key) => {
       p[key].toggleEmitter(false);
@@ -212,7 +218,7 @@ export const hero = (props: HeroProps): Hero => {
     if (duration > 0) state.effects.shieldExpire = Date.now() + duration;
 
     // Display particles for shield buff
-    emitterOn('shieldParticles');
+    emitterOn(HERO_PARTICLE.SHIELD);
   };
 
   const doAttack = (): void => {
@@ -272,9 +278,9 @@ export const hero = (props: HeroProps): Hero => {
         effectPixidust.tint = 0xc00f0f;
         effectPixidust.play();
         // Briefly show health particles
-        emitterOn('healthParticles');
+        emitterOn(HERO_PARTICLE.HEALTH);
         setTimeout(() => {
-          emitterOff('healthParticles');
+          emitterOff(HERO_PARTICLE.HEALTH);
         }, 2000);
         break;
       case SHOP.Actions.SHIELD:
@@ -329,7 +335,7 @@ export const hero = (props: HeroProps): Hero => {
 
       // Turn off particle emitter if we used up our shield
       if (state.effects.shield === 0) {
-        emitterOff('shieldParticles');
+        emitterOff(HERO_PARTICLE.SHIELD);
       }
     } else {
       pixiSound.play('gotHit', { loop: false, volume: 0.65 * SFX_VOL_MULT });
@@ -405,7 +411,7 @@ export const hero = (props: HeroProps): Hero => {
       state.effects.shield = 0;
       updateHpDisplay();
       // Turn off particle emitter
-      emitterOff('shieldParticles');
+      emitterOff(HERO_PARTICLE.SHIELD);
     }
     // Shield is almost out
     const shieldTimeRemaining = state.effects.shieldExpire - Date.now();
